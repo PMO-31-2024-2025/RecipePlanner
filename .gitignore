@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+#Ignore ConnectionString.txt file in DataAccess folder
+DataAccess/ConnectionString.txt

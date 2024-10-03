@@ -12,7 +12,7 @@ namespace DataAccess.Models
     public class AccountInfo
     {
         [Key]
-        public string AccountEmail { get; set; } = null!;
+        public int Id { get; set; }
         public string Sex { get; set; } = null!;
         public int Age { get; set; }
         public int Weight { get; set; }
@@ -21,6 +21,7 @@ namespace DataAccess.Models
         public string? Goal { get; set; }
         public int DailyCalories { get; set; }
         public string? ImageUrl { get; set; }
+        public string AccountEmail { get; set; } = null!;
 
         [ForeignKey(nameof(AccountEmail))]
         public Account Account { get; set; } = null!;
