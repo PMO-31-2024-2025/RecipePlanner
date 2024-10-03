@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataAccess.Models
+{
+    [Table("account_informations")]
+    public class AccountInfo
+    {
+        [Key]
+        public string AccountEmail { get; set; } = null!;
+        public string Sex { get; set; } = null!;
+        public int Age { get; set; }
+        public int Weight { get; set; }
+        public int Height { get; set; }
+        public int DesiredWeight { get; set; }
+        public string? Goal { get; set; }
+        public int DailyCalories { get; set; }
+        public string? ImageUrl { get; set; }
+
+        [ForeignKey(nameof(AccountEmail))]
+        public Account Account { get; set; } = null!;
+    }
+}

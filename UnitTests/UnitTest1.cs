@@ -1,5 +1,5 @@
 //using BusinessLogic; Розкоментувати, коли в проекті BusinessLogic буде хоч 1 клас 
-//using DataAccess; Розкоментувати, коли в проекті DataAccess буде хоч 1 клас 
+using DataAccess;
 
 namespace UnitTests
 {
