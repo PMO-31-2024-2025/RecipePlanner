@@ -25,5 +25,11 @@ namespace DataAccess.Models
 
         [ForeignKey(nameof(AccountEmail))]
         public Account Account { get; set; } = null!;
+
+        public override string ToString()
+        {
+            return $"Age: {Age}; Weight: {Weight}; Height: {Height}; Sex: {Sex}\n" +
+                   $"Goal: {Goal}; Desired weight: {DesiredWeight}; DailyCalories: {DailyCalories}";
+        }
     }
 }

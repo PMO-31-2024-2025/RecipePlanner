@@ -14,12 +14,17 @@ namespace DataAccess.Models
         [Key]
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
-        public int AccountInfoId { get; set; }
+        public int? AccountInfoId { get; set; }
 
         [ForeignKey(nameof(AccountInfoId))]
         public AccountInfo? AccountInfo { get; set; }
         public List<StatisticEntity>? StatisticEntities { get; set; }
         public List<Dish>? Dishes { get; set; }
         public List<FoodPlan>? FoodPlans { get; set; }
+
+        public override string ToString()
+        {
+            return $"Emal: {Email}; Password: {Password}";
+        }
     }
 }

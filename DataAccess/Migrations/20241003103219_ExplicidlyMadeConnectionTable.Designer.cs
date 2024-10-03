@@ -3,6 +3,7 @@ using System;
 using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20241003103219_ExplicidlyMadeConnectionTable")]
+    partial class ExplicidlyMadeConnectionTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -22,7 +25,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("AccountInfoId")
+                    b.Property<int>("AccountInfoId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Password")
@@ -33,7 +36,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("AccountInfoId");
 
-                    b.ToTable("accounts", (string)null);
+                    b.ToTable("accounts");
                 });
 
             modelBuilder.Entity("DataAccess.Models.AccountInfo", b =>
@@ -75,7 +78,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("AccountEmail");
 
-                    b.ToTable("account_informations", (string)null);
+                    b.ToTable("account_informations");
                 });
 
             modelBuilder.Entity("DataAccess.Models.Dish", b =>
@@ -119,7 +122,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("AccountEmail");
 
-                    b.ToTable("dish", (string)null);
+                    b.ToTable("dish");
                 });
 
             modelBuilder.Entity("DataAccess.Models.FoodPlan", b =>
@@ -152,7 +155,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("AccountEmail");
 
-                    b.ToTable("food_plan", (string)null);
+                    b.ToTable("food_plan");
                 });
 
             modelBuilder.Entity("DataAccess.Models.Meal", b =>
@@ -184,7 +187,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("FoodPlanId");
 
-                    b.ToTable("meal", (string)null);
+                    b.ToTable("meal");
                 });
 
             modelBuilder.Entity("DataAccess.Models.StatisticEntity", b =>
@@ -207,7 +210,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("AccountEmail");
 
-                    b.ToTable("statistic_entity", (string)null);
+                    b.ToTable("statistic_entity");
                 });
 
             modelBuilder.Entity("DishMeal", b =>
@@ -229,7 +232,9 @@ namespace DataAccess.Migrations
                 {
                     b.HasOne("DataAccess.Models.AccountInfo", "AccountInfo")
                         .WithMany()
-                        .HasForeignKey("AccountInfoId");
+                        .HasForeignKey("AccountInfoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("AccountInfo");
                 });

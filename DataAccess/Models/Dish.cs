@@ -26,5 +26,10 @@ namespace DataAccess.Models
         [ForeignKey(nameof(AccountEmail))]
         public Account Account { get; set; } = null!;
         public List<Meal>? Meals { get; set; }
+
+        public override string ToString()
+        {
+            return $"Title: {Title}; Protein: {Protein}; Carbs: {Carbs}; Fat: {Fat}; Calories: {Calories}";
+        }
     }
 }

@@ -19,11 +19,18 @@ namespace DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            using (StreamReader SR = new StreamReader(@"../DataAccess\ConnectionString.txt"))
+            using (StreamReader SR = new StreamReader(@"D:\ConnectionString.txt"))
             {
                 string connectionString = SR.ReadLine()!;
                 optionsBuilder.UseSqlite(connectionString);
             }
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Dish>()
+                .HasMany(dish => dish.Meals)
+                .WithMany(meal => meal.Dishes)
+                .UsingEntity(entity => entity.ToTable("DishMeal"));
         }
     }
 }

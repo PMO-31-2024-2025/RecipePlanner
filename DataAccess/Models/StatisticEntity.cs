@@ -18,5 +18,10 @@ namespace DataAccess.Models
         public string AccountEmail { get; set; } = null!;
         [ForeignKey(nameof(AccountEmail))]
         public Account Account { get; set; } = null!;
+
+        public override string ToString()
+        {
+            return $"Date: {Date}; Weight: {Weight}";
+        }
     }
 }
