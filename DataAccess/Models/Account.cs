@@ -24,7 +24,7 @@ namespace DataAccess.Models
 
         public override string ToString()
         {
-            return $"Emal: {Email}; Password: {Password}";
+            return $"Email: {Email}; Password: {Password}";
         }
     }
 }
