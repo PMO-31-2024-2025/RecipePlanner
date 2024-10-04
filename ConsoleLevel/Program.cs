@@ -6,6 +6,5 @@ class Program
     {
         Account accFromDb = DbHelper.db.Accounts.Where(acc => acc.Email == "oleh.chyzhov@gmail.com").First();
         Console.WriteLine(accFromDb);
-        Console.WriteLine(accFromDb);
     }
 }
