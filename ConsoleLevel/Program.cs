@@ -3,10 +3,9 @@ using DataAccess.Models;
 class Program
 {
     
-    
-    public static void Main(string[] args)
+    public static void FillAccountsTable()
     {
-        Account accFromDb = DbHelper.db.Accounts.Where(acc => acc.Email == "oleh.chyzhov@gmail.com").First();
+        DbHelper.db.Add(new Account() { Email = "oleh.chyzhov@gmail.com", Password = "Oleg2005" });
         DbHelper.db.Add(new Account() { Email = "nazar.valaga@gmail.com", Password = "12345" });
         DbHelper.db.Add(new Account() { Email = "yulia.tymochko@gmail.com", Password = "54321" });
         DbHelper.db.Add(new Account() { Email = "roman.torskiy@gmail.com", Password = "46532" });
@@ -22,6 +21,13 @@ class Program
         DbHelper.db.Add(new Account() { Email = "nazar.midyk@gmail.com", Password = "11111" });
         DbHelper.db.Add(new Account() { Email = "maks.salo@gmail.com", Password = "55555" });
         DbHelper.db.SaveChanges();
-        Console.WriteLine(accFromDb);
+    }
+    public static void Main(string[] args)
+    {
+        //FillAccountsTable();
+        foreach (var item in DbHelper.db.Accounts)
+        {
+            Console.WriteLine(item);
+        }
     }
 }
