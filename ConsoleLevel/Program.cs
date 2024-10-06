@@ -2,6 +2,7 @@
 using DataAccess.Models;
 class Program
 {
+    
     public static void FillAccountsTable()
     {
         DbHelper.db.Add(new Account() { Email = "oleh.chyzhov@gmail.com", Password = "Oleg2005" });
