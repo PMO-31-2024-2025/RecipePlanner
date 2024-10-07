@@ -77,7 +77,8 @@ class Program
     {
        DbHelper.db.Add(new Dish() { Id = 1, Title = "Oatmeal with fruits", Calories = 300, Protein = 8, Carbs = 45, Fat = 7,
        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-       Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml", AccountEmail = "anastasiya.seliverstova@gmail.com" });
+           Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+           AccountEmail = "anastasiya.seliverstova@gmail.com" });
         DbHelper.db.Add(new Dish()
         {
             Id = 2,
@@ -87,7 +88,7 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "lilya.voloshchuk@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -99,7 +100,7 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "maks.salo@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -111,7 +112,7 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "markian.kravets@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -123,7 +124,7 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "nazar.midyk@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -135,7 +136,7 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "nazar.valaga@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -147,7 +148,7 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "oleh.chyzhov@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -159,7 +160,7 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "oleh.diduch@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -171,7 +172,7 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "oleh.kit@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -183,7 +184,7 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "olena.kupchak@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -195,7 +196,7 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "roman.shmyhelskiy@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -207,7 +208,7 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "roman.torskiy@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -219,7 +220,7 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "valeriya.ponomariova@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -230,8 +231,8 @@ class Program
             Protein = 8,
             Carbs = 45,
             Fat = 7,
-            Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Recipe = "Pour hot water over he oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "veronika.filippova@gmail.com"
         });
         DbHelper.db.Add(new Dish()
@@ -243,11 +244,32 @@ class Program
             Carbs = 45,
             Fat = 7,
             Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal: 50g; Banana: 1 medium (100g); Apple: 1 medium(100g); Almonds: 20g; Water: 200ml",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
             AccountEmail = "yulia.tymochko@gmail.com"
         });
         DbHelper.db.SaveChanges();
     }
+
+    public static void FillFoodPlanTable()
+    {
+        DbHelper.db.Add(new FoodPlan() { Id = 1, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "anastasiya.seliverstova@gmail.com"});
+        DbHelper.db.Add(new FoodPlan() { Id = 2, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "lilya.voloshchuk@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 3, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "maks.salo@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 4, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "markian.kravets@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 5, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "nazar.midyk@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 6, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "nazar.valaga@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 7, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "oleh.chyzhov@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 8, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "oleh.diduch@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 9, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "oleh.kit@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 10, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "olena.kupchak@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 11, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "roman.shmyhelskiy@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 12, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "roman.torskiy@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 13, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "valeriya.ponomariova@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 14, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "veronika.filippova@gmail.com" });
+        DbHelper.db.Add(new FoodPlan() { Id = 15, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "yulia.tymochko@gmail.com" });
+    }
+
+    
 
     public static void Main(string[] args)
     {
@@ -266,6 +288,12 @@ class Program
         //FillDishTable
         Console.WriteLine("\n" + "Table Dish:" + "\n");
         foreach(var item in DbHelper.db.Dishes)
+        {
+            Console.WriteLine(item + "\n");
+        }
+        //FillFoodPlanTable
+        Console.WriteLine("\n" + "Table FoodPlan" + "\n");
+        foreach(var item in DbHelper.db.FoodPlans)
         {
             Console.WriteLine(item + "\n");
         }
