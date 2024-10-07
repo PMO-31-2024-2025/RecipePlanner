@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using DataAccess.Models;
+using Microsoft.EntityFrameworkCore;
 class Program
 {
 
@@ -73,6 +74,201 @@ class Program
     //    DbHelper.db.SaveChanges();
     //}
 
+    //public static void FillDishTable()
+    //{
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 1,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "anastasiya.seliverstova@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 2,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "lilya.voloshchuk@gmail.com"
+    //    });
+
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 3,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "maks.salo@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 4,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "markian.kravets@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 5,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "nazar.midyk@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 6,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "nazar.valaga@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 7,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "oleh.chyzhov@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 8,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "oleh.diduch@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 9,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "oleh.kit@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 10,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "olena.kupchak@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 11,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "roman.shmyhelskiy@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 12,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "roman.torskiy@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 13,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "valeriya.ponomariova@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 14,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over he oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "veronika.filippova@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 15,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+    //        Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "yulia.tymochko@gmail.com"
+    //    });
+    //    DbHelper.db.Add(new Dish()
+    //    {
+    //        Id = 16,
+    //        Title = "Oatmeal with fruits",
+    //        Calories = 300,
+    //        Protein = 8,
+    //        Carbs = 45,
+    //        Fat = 7,
+    //        Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and apple and add to the oatmeal.Add the almonds and stir.",
+    //        Ingredients = " Oatmeal,Banana,Apple,Almonds,Water",
+    //        AccountEmail = "andriy.stefurak@gmail.com"
+    //    });
 
     //    DbHelper.db.Add(new Dish()
     //    {
@@ -245,75 +441,112 @@ class Program
     //    DbHelper.db.SaveChanges();
     //}
 
-    public static void FillFoodPlanTable()
+    //public static void FillFoodPlanTable()
+    //{
+    //    DbHelper.db.Add(new FoodPlan() { Id = 1, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "anastasiya.seliverstova@gmail.com"});
+    //    DbHelper.db.Add(new FoodPlan() { Id = 2, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "lilya.voloshchuk@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 3, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "maks.salo@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 4, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "markian.kravets@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 5, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "nazar.midyk@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 6, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "nazar.valaga@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 7, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "oleh.chyzhov@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 8, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "oleh.diduch@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 9, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "oleh.kit@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 10, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "olena.kupchak@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 11, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "roman.shmyhelskiy@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 12, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "roman.torskiy@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 13, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "valeriya.ponomariova@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 14, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "veronika.filippova@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 15, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "yulia.tymochko@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 16, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "andriy.stefurak@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 17, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "anna.lukianchuk@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 18, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "anna.tkach@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 19, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "kristian.matiyishyn@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 20, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "maksym.kuzelyak@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 21, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "maksym.slipkevych@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 22, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "misha.chekan@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 23, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "nastya.sashchack@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 24, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "olesia.rudevych@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 25, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "pavlo.smahula@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 26, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "tanya.mazyr@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 27, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "uliana.maydanska@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 28, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "vika.mochevynska@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 29, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "yulia.bohatyr@gmail.com" });
+    //    DbHelper.db.Add(new FoodPlan() { Id = 30, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "yulia.holub@gmail.com" });
+    //    DbHelper.db.SaveChanges();
+    //}
+
+    //public static void FillMealTable()
+    //{
+    //    DbHelper.db.Add(new Meal() { Id = 1, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+    //    DbHelper.db.Add(new Meal() { Id = 2, Title = "Name of Meal", Calories = 690, Protein = 30, Carbs = 25, Fat = 5, FoodPlanId = 2 });
+    //    DbHelper.db.Add(new Meal() { Id = 3, Title = "Name of Meal", Calories = 800, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 3 });
+    //    DbHelper.db.Add(new Meal() { Id = 4, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 4 });
+    //    DbHelper.db.Add(new Meal() { Id = 5, Title = "Name of Meal", Calories = 760, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 5 });
+    //    DbHelper.db.Add(new Meal() { Id = 6, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 6 });
+    //    DbHelper.db.Add(new Meal() { Id = 7, Title = "Name of Meal", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 7 });
+    //    DbHelper.db.Add(new Meal() { Id = 8, Title = "Name of Meal", Calories = 200, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 8 });
+    //    DbHelper.db.Add(new Meal() { Id = 9, Title = "Name of Meal", Calories = 640, Protein = 15, Carbs = 35, Fat = 10, FoodPlanId = 9 });
+    //    DbHelper.db.Add(new Meal() { Id = 10, Title = "Name of Meal", Calories = 530, Protein = 30, Carbs = 35, Fat = 10, FoodPlanId = 10 });
+    //    DbHelper.db.Add(new Meal() { Id = 11, Title = "Name of Meal", Calories = 580, Protein = 40, Carbs = 35, Fat = 10, FoodPlanId = 11 });
+    //    DbHelper.db.Add(new Meal() { Id = 12, Title = "Name of Meal", Calories = 350, Protein = 20, Carbs = 5, Fat = 11, FoodPlanId = 12 });
+    //    DbHelper.db.Add(new Meal() { Id = 13, Title = "Name of Meal", Calories = 700, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 13 });
+    //    DbHelper.db.Add(new Meal() { Id = 14, Title = "Name of Meal", Calories = 430, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 14 });
+    //    DbHelper.db.Add(new Meal() { Id = 15, Title = "Name of Meal", Calories = 250, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 15 });
+    //    DbHelper.db.Add(new Meal() { Id = 16, Title = "Name of Meal", Calories = 250, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 16 });
+    //    DbHelper.db.Add(new Meal() { Id = 17, Title = "Name of Meal", Calories = 430, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 17 });
+    //    DbHelper.db.Add(new Meal() { Id = 18, Title = "Name of Meal", Calories = 640, Protein = 15, Carbs = 35, Fat = 10, FoodPlanId = 18 });
+    //    DbHelper.db.Add(new Meal() { Id = 19, Title = "Name of Meal", Calories = 250, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 19 });
+    //    DbHelper.db.Add(new Meal() { Id = 20, Title = "Name of Meal", Calories = 580, Protein = 40, Carbs = 35, Fat = 10, FoodPlanId = 20 });
+    //    DbHelper.db.Add(new Meal() { Id = 21, Title = "Name of Meal", Calories = 580, Protein = 40, Carbs = 35, Fat = 10, FoodPlanId = 21 });
+    //    DbHelper.db.Add(new Meal() { Id = 22, Title = "Name of Meal", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 22 });
+    //    DbHelper.db.Add(new Meal() { Id = 23, Title = "Name of Meal", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 23 });
+    //    DbHelper.db.Add(new Meal() { Id = 24, Title = "Name of Meal", Calories = 800, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 24 });
+    //    DbHelper.db.Add(new Meal() { Id = 25, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 25 });
+    //    DbHelper.db.Add(new Meal() { Id = 26, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 26 });
+    //    DbHelper.db.Add(new Meal() { Id = 27, Title = "Name of Meal", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 27 });
+    //    DbHelper.db.Add(new Meal() { Id = 28, Title = "Name of Meal", Calories = 200, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 28 });
+    //    DbHelper.db.Add(new Meal() { Id = 29, Title = "Name of Meal", Calories = 640, Protein = 15, Carbs = 35, Fat = 10, FoodPlanId = 29 });
+    //    DbHelper.db.Add(new Meal() { Id = 30, Title = "Name of Meal", Calories = 530, Protein = 30, Carbs = 35, Fat = 10, FoodPlanId = 30 });
+    //    DbHelper.db.SaveChanges();
+    //}
+
+    public static void FillStatisticEntityTable()
     {
-        DbHelper.db.Add(new FoodPlan() { Id = 1, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "anastasiya.seliverstova@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 2, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "lilya.voloshchuk@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 3, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "maks.salo@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 4, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "markian.kravets@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 5, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "nazar.midyk@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 6, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "nazar.valaga@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 7, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "oleh.chyzhov@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 8, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "oleh.diduch@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 9, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "oleh.kit@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 10, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "olena.kupchak@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 11, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "roman.shmyhelskiy@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 12, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "roman.torskiy@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 13, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "valeriya.ponomariova@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 14, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "veronika.filippova@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 15, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "yulia.tymochko@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 16, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "andriy.stefurak@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 17, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "anna.lukianchuk@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 18, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "anna.tkach@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 19, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "kristian.matiyishyn@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 20, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "maksym.kuzelyak@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 21, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "maksym.slipkevych@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 22, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "misha.chekan@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 23, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "nastya.sashchack@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 24, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "olesia.rudevych@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 25, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "pavlo.smahula@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 26, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "tanya.mazyr@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 27, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "uliana.maydanska@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 28, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "vika.mochevynska@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 29, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "yulia.bohatyr@gmail.com" });
-        DbHelper.db.Add(new FoodPlan() { Id = 30, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "yulia.holub@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 1, Date = DateTime.Now, Weight = 56, AccountEmail = "anastasiya.seliverstova@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 2, Date = DateTime.Now, Weight = 59, AccountEmail = "lilya.voloshchuk@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 3, Date = DateTime.Now, Weight = 83, AccountEmail = "maks.salo@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 4, Date = DateTime.Now, Weight = 85, AccountEmail = "markian.kravets@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 5, Date = DateTime.Now, Weight = 72, AccountEmail = "nazar.midyk@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 6, Date = DateTime.Now, Weight = 75, AccountEmail = "nazar.valaga@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 7, Date = DateTime.Now, Weight = 89, AccountEmail = "oleh.chyzhov@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 8, Date = DateTime.Now, Weight = 85, AccountEmail = "oleh.diduch@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 9, Date = DateTime.Now, Weight = 65, AccountEmail = "oleh.kit@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 10, Date = DateTime.Now, Weight = 65, AccountEmail = "olena.kupchak@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 11, Date = DateTime.Now, Weight = 78, AccountEmail = "roman.shmyhelskiy@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 12, Date = DateTime.Now, Weight = 96, AccountEmail = "roman.torskiy-@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 13, Date = DateTime.Now, Weight = 65, AccountEmail = "valeriya.ponomariova@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 14, Date = DateTime.Now, Weight = 63, AccountEmail = "veronika.filippova@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 15, Date = DateTime.Now, Weight = 62, AccountEmail = "yulia.tymochko@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 16, Date = DateTime.Now, Weight = 60, AccountEmail = "andriy.stefurak@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 17, Date = DateTime.Now, Weight = 70, AccountEmail = "anna.lukianchuk@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 18, Date = DateTime.Now, Weight = 60, AccountEmail = "anna.tkach@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 19, Date = DateTime.Now, Weight = 65, AccountEmail = "kristian.matiyishyn@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 20, Date = DateTime.Now, Weight = 57, AccountEmail = "maksym.kuzelyak@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 21, Date = DateTime.Now, Weight = 68, AccountEmail = "maksym.slipkevych@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 22, Date = DateTime.Now, Weight = 70, AccountEmail = "misha.chekan@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 23, Date = DateTime.Now, Weight = 67, AccountEmail = "nastya.sashchack@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 24, Date = DateTime.Now, Weight = 55, AccountEmail = "olesia.rudevych@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 25, Date = DateTime.Now, Weight = 69, AccountEmail = "pavlo.smahula@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 26, Date = DateTime.Now, Weight = 68, AccountEmail = "tanya.mazyr@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 27, Date = DateTime.Now, Weight = 61, AccountEmail = "uliana.maydanska@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 28, Date = DateTime.Now, Weight = 66, AccountEmail = "vika.mochevynska@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 29, Date = DateTime.Now, Weight = 56, AccountEmail = "yulia.bohatyr@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 30, Date = DateTime.Now, Weight = 52, AccountEmail = "yulia.holub@gmail.com" });
         DbHelper.db.SaveChanges();
     }
 
-    public static void FillMealTable()
-    {
-        DbHelper.db.Add(new Meal() { Id = 1, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 1 });
-        DbHelper.db.Add(new Meal() { Id = 2, Title = "Name of Meal", Calories = 690, Protein = 30, Carbs = 25, Fat = 5, FoodPlanId = 2 });
-        DbHelper.db.Add(new Meal() { Id = 3, Title = "Name of Meal", Calories = 800, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 3 });
-        DbHelper.db.Add(new Meal() { Id = 4, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 4 });
-        DbHelper.db.Add(new Meal() { Id = 5, Title = "Name of Meal", Calories = 760, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 5 });
-        DbHelper.db.Add(new Meal() { Id = 6, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 6 });
-        DbHelper.db.Add(new Meal() { Id = 7, Title = "Name of Meal", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 7 });
-        DbHelper.db.Add(new Meal() { Id = 8, Title = "Name of Meal", Calories = 200, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 8 });
-        DbHelper.db.Add(new Meal() { Id = 9, Title = "Name of Meal", Calories = 640, Protein = 15, Carbs = 35, Fat = 10, FoodPlanId = 9 });
-        DbHelper.db.Add(new Meal() { Id = 10, Title = "Name of Meal", Calories = 530, Protein = 30, Carbs = 35, Fat = 10, FoodPlanId = 10 });
-        DbHelper.db.Add(new Meal() { Id = 11, Title = "Name of Meal", Calories = 580, Protein = 40, Carbs = 35, Fat = 10, FoodPlanId = 11 });
-        DbHelper.db.Add(new Meal() { Id = 12, Title = "Name of Meal", Calories = 350, Protein = 20, Carbs = 5, Fat = 11, FoodPlanId = 12 });
-        DbHelper.db.Add(new Meal() { Id = 13, Title = "Name of Meal", Calories = 700, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 13 });
-        DbHelper.db.Add(new Meal() { Id = 14, Title = "Name of Meal", Calories = 430, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 14 });
-        DbHelper.db.Add(new Meal() { Id = 15, Title = "Name of Meal", Calories = 250, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 15 });
-        DbHelper.db.Add(new Meal() { Id = 16, Title = "Name of Meal", Calories = 250, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 16 });
-        DbHelper.db.Add(new Meal() { Id = 17, Title = "Name of Meal", Calories = 430, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 17 });
-        DbHelper.db.Add(new Meal() { Id = 18, Title = "Name of Meal", Calories = 640, Protein = 15, Carbs = 35, Fat = 10, FoodPlanId = 18 });
-        DbHelper.db.Add(new Meal() { Id = 19, Title = "Name of Meal", Calories = 250, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 19 });
-        DbHelper.db.Add(new Meal() { Id = 20, Title = "Name of Meal", Calories = 580, Protein = 40, Carbs = 35, Fat = 10, FoodPlanId = 20 });
-        DbHelper.db.Add(new Meal() { Id = 21, Title = "Name of Meal", Calories = 580, Protein = 40, Carbs = 35, Fat = 10, FoodPlanId = 21 });
-        DbHelper.db.Add(new Meal() { Id = 22, Title = "Name of Meal", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 22 });
-        DbHelper.db.Add(new Meal() { Id = 23, Title = "Name of Meal", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 23 });
-        DbHelper.db.Add(new Meal() { Id = 24, Title = "Name of Meal", Calories = 800, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 24 });
-        DbHelper.db.Add(new Meal() { Id = 25, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 25 });
-        DbHelper.db.Add(new Meal() { Id = 26, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 26 });
-        DbHelper.db.Add(new Meal() { Id = 27, Title = "Name of Meal", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 27 });
-        DbHelper.db.Add(new Meal() { Id = 28, Title = "Name of Meal", Calories = 200, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 28 });
-        DbHelper.db.Add(new Meal() { Id = 29, Title = "Name of Meal", Calories = 640, Protein = 15, Carbs = 35, Fat = 10, FoodPlanId = 29 });
-        DbHelper.db.Add(new Meal() { Id = 30, Title = "Name of Meal", Calories = 530, Protein = 30, Carbs = 35, Fat = 10, FoodPlanId = 30 });
-        DbHelper.db.SaveChanges();
-    }
+
 
     public static void Main(string[] args)
     {
@@ -331,16 +564,30 @@ class Program
         }
 
         //FillDishTable();
-        Console.WriteLine("\n" + "Table Dish:" + "\n");
-        foreach(var item in DbHelper.db.Dishes)
+        Console.WriteLine("\n" + "Table dish:" + "\n");
+        foreach (var item in DbHelper.db.Dishes)
         {
             Console.WriteLine(item + "\n");
         }
-        //FillFoodPlanTable
-        Console.WriteLine("\n" + "Table FoodPlan" + "\n");
-        foreach(var item in DbHelper.db.FoodPlans)
+
+        //FillFoodPlanTable();
+        Console.WriteLine("\n" + "Table food_plan" + "\n");
+        foreach (var item in DbHelper.db.FoodPlans)
         {
             Console.WriteLine(item + "\n");
         }
+        //FillMealTable();
+        Console.WriteLine("\n" + "Table meal" + "\n");
+        foreach (var item in DbHelper.db.Meals)
+        {
+            Console.WriteLine(item + "\n");
+        }
+
+        //FillStatisticEntityTable();
+        //Console.WriteLine("\n" + "Table statistic_entity" + "\n");
+        //foreach (var item in DbHelper.db.Meals)
+        //{
+        //    Console.WriteLine(item + "\n");
+        //}
     }
 }
