@@ -74,202 +74,10 @@ class Program
     //    DbHelper.db.SaveChanges();
     //}
 
-    public static void FillDishTable()
-    {
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 16,
-            Title = "Oatmeal with fruits",
-            Calories = 300,
-            Protein = 8,
-            Carbs = 45,
-            Fat = 7,
-            Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and apple and add to the oatmeal.Add the almonds and stir.",
-            Ingredients = " Oatmeal,Banana,Apple,Almonds,Water",
-            AccountEmail = "andriy.stefurak@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 17,
-            Title = "Salad with tuna",
-            Calories = 250,
-            Protein = 30,
-            Carbs = 10,
-            Fat = 12,
-            Recipe = "Mix the canned tuna with lettuce, chopped cucumber and olive oil.",
-            Ingredients = "Tuna,Lettuce leaves,Cucumber,Olive oil",
-            AccountEmail = "anna.lukianchuk@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 18,
-            Title = "Omelet with cheese and vegetables",
-            Calories = 250,
-            Protein = 18,
-            Carbs = 5,
-            Fat = 18,
-            Recipe = "Beat the eggs. Add chopped cheese and vegetables. Fry in a pan until cooked. ",
-            Ingredients = "Eggs,cheese,tomatoes,pepper,oil",
-            AccountEmail = "anna.tkach@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 19,
-            Title = "Buckwheat with mushrooms",
-            Calories = 200,
-            Protein = 8,
-            Carbs = 35,
-            Fat = 4,
-            Recipe = "Cook the buckwheat. Fry mushrooms with onions. Mix and serve.",
-            Ingredients = "Buckwheat,mushrooms,onions,oil.",
-            AccountEmail = "kristian.matiyishyn@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 20,
-            Title = "Chicken with vegetables",
-            Calories = 220,
-            Protein = 25,
-            Carbs = 10,
-            Fat = 7,
-            Recipe = "Fry the chicken fillet. Add the chopped vegetables and simmer until fully cooked.",
-            Ingredients = "Chicken fillet,carrots,peppers,broccoli,oil",
-            AccountEmail = "maksym.kuzelyak@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 21,
-            Title = "Pasta with tomato sauce",
-            Calories = 400,
-            Protein = 15,
-            Carbs = 70,
-            Fat = 10,
-            Recipe = "Cook the pasta. Prepare the tomato sauce. Mix and serve.",
-            Ingredients = "Pasta,tomato sauce,basil,parmesan cheese",
-            AccountEmail = "maksym.slipkevych@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 22,
-            Title = "Smoothie with banana and spinach",
-            Calories = 150,
-            Protein = 5,
-            Carbs = 30,
-            Fat = 2,
-            Recipe = "Blend banana, spinach and water in a blender. Add ice for freshness",
-            Ingredients = "Banana,spinach,water,ice",
-            AccountEmail = "misha.chekan@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 23,
-            Title = "Rice with vegetables",
-            Calories = 280,
-            Protein = 6,
-            Carbs = 50,
-            Fat = 6,
-            Recipe = "Cook the rice.Fry the vegetables. Mix with rice and serve.",
-            Ingredients = "Rice,carrots,peppers,onions,soy sauce",
-            AccountEmail = "nastya.sashchack@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 24,
-            Title = "Salad with salmon and avocado",
-            Calories = 320,
-            Protein = 20,
-            Carbs = 12,
-            Fat = 22,
-            Recipe = "Mix chopped avocado, salmon and vegetables. Drizzle with lemon juice.",
-            Ingredients = "Avocado,salmon,lettuce,cucumber,lemon juice",
-            AccountEmail = "olesia.rudevych@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-             Id = 25,
-             Title = "Pilaf with chicken",
-             Calories = 380,
-             Protein = 18,
-             Carbs = 50,
-             Fat = 12,
-             Recipe = "Fry the chicken with carrots and onions.Add rice and cook until tender",
-             Ingredients = "Chicken,rice,carrots,onions,spices",
-             AccountEmail = "pavlo.smahula@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 26,
-            Title = "Greek Yogurt with Honey and Nuts",
-            Calories = 220,
-            Protein = 12,
-            Carbs = 20,
-            Fat = 9,
-            Recipe = "Spoon Greek yogurt into a bowl. Drizzle honey over the top. Add chopped nuts and stir.",
-            Ingredients = "Greek yogurt,honey,walnuts,almonds",
-            AccountEmail = "tanya.mazyr@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 27,
-            Title = "Egg and Avocado Toast",
-            Calories = 250,
-            Protein = 10,
-            Carbs = 28,
-            Fat = 12,
-            Recipe = "Toast whole grain bread. Spread mashed avocado on top. Add a poached or fried egg.",
-            Ingredients = "Whole grain bread,avocado,egg,olive oil",
-            AccountEmail = "uliana.maydanska@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 28,
-            Title = "Smoothie Bowl with Granola",
-            Calories = 300,
-            Protein = 10,
-            Carbs = 50,
-            Fat = 8,
-            Recipe = "Blend frozen berries, banana, and yogurt. Top with granola and chia seeds.",
-            Ingredients = "Frozen berries,banana,ogurt,granola,chia seeds",
-            AccountEmail = "vika.mochevynska@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 29,
-            Title = "Pesto Pasta",
-            Calories = 400,
-            Protein = 12,
-            Carbs = 60,
-            Fat = 14,
-            Recipe = "Cook pasta.Toss with homemade or store-bought pesto sauce.Garnish with Parmesan cheese.",
-            Ingredients = "Pasta,basil pesto,Parmesan cheese",
-            AccountEmail = "yulia.bohatyr@gmail.com"
-        });
-        DbHelper.db.Add(new Dish()
-        {
-            Id = 30,
-            Title = "Chia Pudding with Berries",
-            Calories = 250,
-            Protein = 8,
-            Carbs = 30,
-            Fat = 12,
-            Recipe = "Mix chia seeds with milk and let sit overnight.Top with fresh berries and nuts.",
-            Ingredients = "Chia seeds,milk,strawberries,blueberries,almonds",
-            AccountEmail = "yulia.holub@gmail.com"
-        });
-
-
-
-
-
-
-
-    }
-
 
     public static void Main(string[] args)
     {
         //FillAccountsTable();
-        Console.WriteLine("Table accounts" + "\n");
         foreach (var item in DbHelper.db.Accounts)
         {
             Console.WriteLine(item + "\n");
@@ -281,6 +89,17 @@ class Program
         {
             Console.WriteLine(item + "\n");
         }
-
+        //FillDishTable
+        Console.WriteLine("\n" + "Table Dish:" + "\n");
+        foreach(var item in DbHelper.db.Dishes)
+        {
+            Console.WriteLine(item + "\n");
+        }
+        //FillFoodPlanTable
+        Console.WriteLine("\n" + "Table FoodPlan" + "\n");
+        foreach(var item in DbHelper.db.FoodPlans)
+        {
+            Console.WriteLine(item + "\n");
+        }
     }
 }
