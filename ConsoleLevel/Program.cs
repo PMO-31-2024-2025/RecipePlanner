@@ -1,6 +1,7 @@
 ﻿using DataAccess;
 using DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 class Program
 {
 
@@ -511,52 +512,52 @@ class Program
     //    DbHelper.db.SaveChanges();
     //}
 
-    public static void FillStatisticEntityTable()
-    {
-        DbHelper.db.Add(new StatisticEntity() { Id = 1, Date = DateTime.Now, Weight = 56, AccountEmail = "anastasiya.seliverstova@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 2, Date = DateTime.Now, Weight = 59, AccountEmail = "lilya.voloshchuk@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 3, Date = DateTime.Now, Weight = 83, AccountEmail = "maks.salo@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 4, Date = DateTime.Now, Weight = 85, AccountEmail = "markian.kravets@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 5, Date = DateTime.Now, Weight = 72, AccountEmail = "nazar.midyk@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 6, Date = DateTime.Now, Weight = 75, AccountEmail = "nazar.valaga@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 7, Date = DateTime.Now, Weight = 89, AccountEmail = "oleh.chyzhov@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 8, Date = DateTime.Now, Weight = 85, AccountEmail = "oleh.diduch@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 9, Date = DateTime.Now, Weight = 65, AccountEmail = "oleh.kit@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 10, Date = DateTime.Now, Weight = 65, AccountEmail = "olena.kupchak@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 11, Date = DateTime.Now, Weight = 78, AccountEmail = "roman.shmyhelskiy@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 12, Date = DateTime.Now, Weight = 96, AccountEmail = "roman.torskiy-@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 13, Date = DateTime.Now, Weight = 65, AccountEmail = "valeriya.ponomariova@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 14, Date = DateTime.Now, Weight = 63, AccountEmail = "veronika.filippova@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 15, Date = DateTime.Now, Weight = 62, AccountEmail = "yulia.tymochko@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 16, Date = DateTime.Now, Weight = 60, AccountEmail = "andriy.stefurak@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 17, Date = DateTime.Now, Weight = 70, AccountEmail = "anna.lukianchuk@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 18, Date = DateTime.Now, Weight = 60, AccountEmail = "anna.tkach@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 19, Date = DateTime.Now, Weight = 65, AccountEmail = "kristian.matiyishyn@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 20, Date = DateTime.Now, Weight = 57, AccountEmail = "maksym.kuzelyak@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 21, Date = DateTime.Now, Weight = 68, AccountEmail = "maksym.slipkevych@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 22, Date = DateTime.Now, Weight = 70, AccountEmail = "misha.chekan@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 23, Date = DateTime.Now, Weight = 67, AccountEmail = "nastya.sashchack@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 24, Date = DateTime.Now, Weight = 55, AccountEmail = "olesia.rudevych@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 25, Date = DateTime.Now, Weight = 69, AccountEmail = "pavlo.smahula@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 26, Date = DateTime.Now, Weight = 68, AccountEmail = "tanya.mazyr@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 27, Date = DateTime.Now, Weight = 61, AccountEmail = "uliana.maydanska@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 28, Date = DateTime.Now, Weight = 66, AccountEmail = "vika.mochevynska@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 29, Date = DateTime.Now, Weight = 56, AccountEmail = "yulia.bohatyr@gmail.com" });
-        DbHelper.db.Add(new StatisticEntity() { Id = 30, Date = DateTime.Now, Weight = 52, AccountEmail = "yulia.holub@gmail.com" });
-        DbHelper.db.SaveChanges();
-    }
+    //public static void FillStatisticEntityTable()
+    //{
+    //DbHelper.db.Add(new StatisticEntity() { Id = 1, Date = DateTime.Now, Weight = 56, AccountEmail = "anastasiya.seliverstova@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 2, Date = DateTime.Now, Weight = 59, AccountEmail = "lilya.voloshchuk@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 3, Date = DateTime.Now, Weight = 83, AccountEmail = "maks.salo@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 4, Date = DateTime.Now, Weight = 85, AccountEmail = "markian.kravets@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 5, Date = DateTime.Now, Weight = 72, AccountEmail = "nazar.midyk@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 6, Date = DateTime.Now, Weight = 75, AccountEmail = "nazar.valaga@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 7, Date = DateTime.Now, Weight = 89, AccountEmail = "oleh.chyzhov@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 8, Date = DateTime.Now, Weight = 85, AccountEmail = "oleh.diduch@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 9, Date = DateTime.Now, Weight = 65, AccountEmail = "oleh.kit@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 10, Date = DateTime.Now, Weight = 65, AccountEmail = "olena.kupchak@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 11, Date = DateTime.Now, Weight = 78, AccountEmail = "roman.shmyhelskiy@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 12, Date = DateTime.Now, Weight = 96, AccountEmail = "roman.torskiy@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 13, Date = DateTime.Now, Weight = 65, AccountEmail = "valeriya.ponomariova@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 14, Date = DateTime.Now, Weight = 63, AccountEmail = "veronika.filippova@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 15, Date = DateTime.Now, Weight = 62, AccountEmail = "yulia.tymochko@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 16, Date = DateTime.Now, Weight = 60, AccountEmail = "andriy.stefurak@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 17, Date = DateTime.Now, Weight = 70, AccountEmail = "anna.lukianchuk@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 18, Date = DateTime.Now, Weight = 60, AccountEmail = "anna.tkach@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 19, Date = DateTime.Now, Weight = 65, AccountEmail = "kristian.matiyishyn@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 20, Date = DateTime.Now, Weight = 57, AccountEmail = "maksym.kuzelyak@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 21, Date = DateTime.Now, Weight = 68, AccountEmail = "maksym.slipkevych@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 22, Date = DateTime.Now, Weight = 70, AccountEmail = "misha.chekan@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 23, Date = DateTime.Now, Weight = 67, AccountEmail = "nastya.sashchack@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 24, Date = DateTime.Now, Weight = 55, AccountEmail = "olesia.rudevych@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 25, Date = DateTime.Now, Weight = 69, AccountEmail = "pavlo.smahula@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 26, Date = DateTime.Now, Weight = 68, AccountEmail = "tanya.mazyr@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 27, Date = DateTime.Now, Weight = 61, AccountEmail = "uliana.maydanska@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 28, Date = DateTime.Now, Weight = 66, AccountEmail = "vika.mochevynska@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 29, Date = DateTime.Now, Weight = 56, AccountEmail = "yulia.bohatyr@gmail.com" });
+    //DbHelper.db.Add(new StatisticEntity() { Id = 30, Date = DateTime.Now, Weight = 52, AccountEmail = "yulia.holub@gmail.com" });
+    //DbHelper.db.SaveChanges();
+    //}
 
 
-
-    public static void Main(string[] args)
+public static void Main(string[] args)
     {
         //FillAccountsTable();
+        Console.WriteLine("Table accounts"+ "\n");
         foreach (var item in DbHelper.db.Accounts)
         {
             Console.WriteLine(item + "\n");
         }
 
-        ////FillAccountsInfoTable();
+        //FillAccountsInfoTable();
         Console.WriteLine("\n" + "Table account_informations" + "\n");
         foreach (var item in DbHelper.db.AccountInformations)
         {
@@ -564,7 +565,7 @@ class Program
         }
 
         //FillDishTable();
-        Console.WriteLine("\n" + "Table dish:" + "\n");
+        Console.WriteLine("\n" + "Table dish" + "\n");
         foreach (var item in DbHelper.db.Dishes)
         {
             Console.WriteLine(item + "\n");
@@ -576,6 +577,7 @@ class Program
         {
             Console.WriteLine(item + "\n");
         }
+
         //FillMealTable();
         Console.WriteLine("\n" + "Table meal" + "\n");
         foreach (var item in DbHelper.db.Meals)
@@ -584,10 +586,10 @@ class Program
         }
 
         //FillStatisticEntityTable();
-        //Console.WriteLine("\n" + "Table statistic_entity" + "\n");
-        //foreach (var item in DbHelper.db.Meals)
-        //{
-        //    Console.WriteLine(item + "\n");
-        //}
+        Console.WriteLine("\n" + "Table statistic_entity" + "\n");
+        foreach (var item in DbHelper.db.StatisticEntities)
+        {
+            Console.WriteLine(item + "\n");
+        }
     }
 }
