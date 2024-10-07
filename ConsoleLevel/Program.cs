@@ -25,7 +25,7 @@ class Program
     public static void Main(string[] args)
     {
         //FillAccountsTable();
-        foreach (var item in DbHelper.db.Accounts)
+        foreach (var item in DbHelper.db.Accounts.OrderByDescending(account => account.Email))
         {
             Console.WriteLine(item);
         }
