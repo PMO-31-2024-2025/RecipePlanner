@@ -269,7 +269,45 @@ class Program
         DbHelper.db.Add(new FoodPlan() { Id = 15, Title = "Name of the plan", Calories = 300, Protein = 8, Carbs = 45, Fat = 7, AccountEmail = "yulia.tymochko@gmail.com" });
     }
 
-    
+    public static void FillMealTable()
+    {
+        DbHelper.db.Add(new Meal() { Id = 1, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 1});
+        DbHelper.db.Add(new Meal() { Id = 2, Title = "Name of Meal", Calories = 690, Protein = 30, Carbs = 25, Fat = 5, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 3, Title = "Name of Meal", Calories = 800, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 4, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 5, Title = "Name of Meal", Calories = 760, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 6, Title = "Name of Meal", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 7, Title = "Name of Meal", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 8, Title = "Name of Meal", Calories = 200, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 9, Title = "Name of Meal", Calories = 640, Protein = 15, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 10, Title = "Name of Meal", Calories = 530, Protein = 30, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 11, Title = "Name of Meal", Calories = 580, Protein = 40, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 12, Title = "Name of Meal", Calories = 350, Protein = 20, Carbs = 5, Fat = 11, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 13, Title = "Name of Meal", Calories = 700, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 14, Title = "Name of Meal", Calories = 430, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+        DbHelper.db.Add(new Meal() { Id = 15, Title = "Name of Meal", Calories = 250, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 1 });
+        DbHelper.db.SaveChanges();
+    }
+
+    public static void FillStatisticEntityTable()
+    {
+        DbHelper.db.Add(new StatisticEntity() { Id = 1, Date = DateTime.Now, Weight = 56, AccountEmail = "anastasiya.seliverstova@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 2, Date = DateTime.Now, Weight = 59, AccountEmail = "lilya.voloshchuk@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 3, Date = DateTime.Now, Weight = 83, AccountEmail = "maks.salo@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 4, Date = DateTime.Now, Weight = 85, AccountEmail = "markian.kravets@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 5, Date = DateTime.Now, Weight = 72, AccountEmail = "nazar.midyk@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 6, Date = DateTime.Now, Weight = 75, AccountEmail = "nazar.valaga@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 7, Date = DateTime.Now, Weight = 89, AccountEmail = "oleh.chyzhov@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 8, Date = DateTime.Now, Weight = 85, AccountEmail = "oleh.diduch@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 9, Date = DateTime.Now, Weight = 65, AccountEmail = "oleh.kit@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 10, Date = DateTime.Now, Weight = 65, AccountEmail = "olena.kupchak@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 11, Date = DateTime.Now, Weight = 78, AccountEmail = "roman.shmyhelskiy@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 12, Date = DateTime.Now, Weight = 96, AccountEmail = "roman.torskiy-@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 13, Date = DateTime.Now, Weight = 65, AccountEmail = "valeriya.ponomariova@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 14, Date = DateTime.Now, Weight = 63, AccountEmail = "veronika.filippova@gmail.com" });
+        DbHelper.db.Add(new StatisticEntity() { Id = 15, Date = DateTime.Now, Weight = 62, AccountEmail = "yulia.tymochko@gmail.com" });
+        DbHelper.db.SaveChanges();
+    }
 
     public static void Main(string[] args)
     {
@@ -294,6 +332,12 @@ class Program
         //FillFoodPlanTable
         Console.WriteLine("\n" + "Table FoodPlan" + "\n");
         foreach(var item in DbHelper.db.FoodPlans)
+        {
+            Console.WriteLine(item + "\n");
+        }
+        //FillMealTable
+        Console.WriteLine("\n" + "Table Meal" + "\n");
+        foreach(var item in DbHelper.db.Meals)
         {
             Console.WriteLine(item + "\n");
         }
