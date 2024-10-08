@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 namespace BusinessLogic
 {
     public enum Sex { Female, Male }
-    public enum Goal { GainWeight, LooseWeight }
+    public enum WeightGoal { Gain, Lose, Maintain }
 }

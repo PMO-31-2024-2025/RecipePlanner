@@ -19,7 +19,7 @@ namespace DataAccess.Models
         public int Weight { get; set; }
         public int Height { get; set; }
         public int DesiredWeight { get; set; }
-        public Goal Goal { get; set; }
+        public WeightGoal Goal { get; set; }
         public int DailyCalories { get; set; }
         public string? ImageUrl { get; set; }
         public string AccountEmail { get; set; } = null!;

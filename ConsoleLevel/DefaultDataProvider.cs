@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusinessLogic;
 
 namespace ConsoleLevel
 {
@@ -46,36 +47,36 @@ namespace ConsoleLevel
         }
         public static void FillAccountsInfoTable()
         {
-            DbHelper.db.Add(new AccountInfo() { Id = 1, Sex = "female", Age = 19, Weight = 69, Height = 163, DesiredWeight = 56, Goal = "lose weight", DailyCalories = 1522, AccountEmail = "anastasiya.seliverstova@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 2, Sex = "female", Age = 19, Weight = 49, Height = 157, DesiredWeight = 59, Goal = "gain weight", DailyCalories = 1319, AccountEmail = "lilya.voloshchuk@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 3, Sex = "male", Age = 19, Weight = 69, Height = 183, DesiredWeight = 83, Goal = "gain weight", DailyCalories = 1797, AccountEmail = "maks.salo@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 4, Sex = "male", Age = 19, Weight = 72, Height = 177, DesiredWeight = 85, Goal = "gain weight", DailyCalories = 1724, AccountEmail = "markian.kravets@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 5, Sex = "male", Age = 19, Weight = 89, Height = 173, DesiredWeight = 72, Goal = "lose weight", DailyCalories = 1927, AccountEmail = "nazar.midyk@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 6, Sex = "male", Age = 19, Weight = 62, Height = 182, DesiredWeight = 75, Goal = "gain weight", DailyCalories = 1574, AccountEmail = "nazar.valaga@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 7, Sex = "male", Age = 19, Weight = 75, Height = 178, DesiredWeight = 89, Goal = "gain weight", DailyCalories = 1711, AccountEmail = "oleh.chyzhov@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 8, Sex = "male", Age = 19, Weight = 72, Height = 177, DesiredWeight = 85, Goal = "gain weight", DailyCalories = 1687, AccountEmail = "oleh.diduch@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 9, Sex = "male", Age = 19, Weight = 75, Height = 173, DesiredWeight = 65, Goal = "gain weight", DailyCalories = 1681, AccountEmail = "oleh.kit@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 10, Sex = "female", Age = 19, Weight = 73, Height = 167, DesiredWeight = 65, Goal = "lose weight", DailyCalories = 1683, AccountEmail = "olena.kupchak@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 11, Sex = "male", Age = 19, Weight = 69, Height = 183, DesiredWeight = 78, Goal = "gain weight", DailyCalories = 1743, AccountEmail = "roman.shmyhelskiy@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 12, Sex = "male", Age = 19, Weight = 76, Height = 185, DesiredWeight = 96, Goal = "gain weight", DailyCalories = 1791, AccountEmail = "roman.torskiy@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 13, Sex = "female", Age = 19, Weight = 75, Height = 176, DesiredWeight = 65, Goal = "lose weight", DailyCalories = 1475, AccountEmail = "valeriya.ponomariova@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 14, Sex = "female", Age = 19, Weight = 53, Height = 177, DesiredWeight = 63, Goal = "gain weight", DailyCalories = 1333, AccountEmail = "veronika.filippova@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 15, Sex = "female", Age = 19, Weight = 72, Height = 166, DesiredWeight = 62, Goal = "lose weight", DailyCalories = 1440, AccountEmail = "yulia.tymochko@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 16, Sex = "male", Age = 19, Weight = 55, Height = 158, DesiredWeight = 60, Goal = "gain weight", DailyCalories = 1448, AccountEmail = "andriy.stefurak@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 17, Sex = "female", Age = 19, Weight = 65, Height = 175, DesiredWeight = 70, Goal = "gain weight", DailyCalories = 1488, AccountEmail = "anna.lukianchuk@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 18, Sex = "female", Age = 20, Weight = 67, Height = 170, DesiredWeight = 60, Goal = "lose weight", DailyCalories = 1476, AccountEmail = "anna.tkach@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 19, Sex = "male", Age = 20, Weight = 50, Height = 180, DesiredWeight = 65, Goal = "gain weight", DailyCalories = 1680, AccountEmail = "kristian.matiyishyn@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 20, Sex = "male", Age = 19, Weight = 57, Height = 165, DesiredWeight = 57, Goal = "maintain weight", DailyCalories = 1520, AccountEmail = "maksym.kuzelyak@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 21, Sex = "male", Age = 20, Weight = 59, Height = 173, DesiredWeight = 68, Goal = "gain weight", DailyCalories = 1570, AccountEmail = "maksym.slipkevych@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 22, Sex = "male", Age = 19, Weight = 79, Height = 172, DesiredWeight = 70, Goal = "lose weight", DailyCalories = 1600, AccountEmail = "misha.chekan@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 23, Sex = "female", Age = 20, Weight = 67, Height = 176, DesiredWeight = 67, Goal = "maintain weight", DailyCalories = 1450, AccountEmail = "nastya.sashchack@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 24, Sex = "female", Age = 20, Weight = 50, Height = 155, DesiredWeight = 55, Goal = "gain weight", DailyCalories = 1430, AccountEmail = "olesia.rudevych@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 25, Sex = "male", Age = 19, Weight = 69, Height = 171, DesiredWeight = 69, Goal = "maintain weight", DailyCalories = 1670, AccountEmail = "pavlo.smahula@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 26, Sex = "female", Age = 20, Weight = 62, Height = 178, DesiredWeight = 68, Goal = "gain weight", DailyCalories = 1620, AccountEmail = "tanya.mazyr@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 27, Sex = "female", Age = 19, Weight = 54, Height = 161, DesiredWeight = 61, Goal = "gain weight", DailyCalories = 1320, AccountEmail = "uliana.maydanska@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 28, Sex = "female", Age = 20, Weight = 52, Height = 163, DesiredWeight = 66, Goal = "gain weight", DailyCalories = 1440, AccountEmail = "vika.mochevynska@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 29, Sex = "female", Age = 19, Weight = 62, Height = 174, DesiredWeight = 56, Goal = "lose weight", DailyCalories = 1310, AccountEmail = "yulia.bohatyr@gmail.com" });
-            DbHelper.db.Add(new AccountInfo() { Id = 30, Sex = "female", Age = 20, Weight = 52, Height = 163, DesiredWeight = 52, Goal = "maintain weight", DailyCalories = 1280, AccountEmail = "yulia.holub@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 1, Sex = Sex.Female, Age = 19, Weight = 69, Height = 163, DesiredWeight = 56, Goal = WeightGoal.Lose, DailyCalories = 1522, AccountEmail = "anastasiya.seliverstova@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 2, Sex = Sex.Female, Age = 19, Weight = 49, Height = 157, DesiredWeight = 59, Goal = WeightGoal.Gain, DailyCalories = 1319, AccountEmail = "lilya.voloshchuk@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 3, Sex = Sex.Male, Age = 19, Weight = 69, Height = 183, DesiredWeight = 83, Goal = WeightGoal.Gain, DailyCalories = 1797, AccountEmail = "maks.salo@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 4, Sex = Sex.Male, Age = 19, Weight = 72, Height = 177, DesiredWeight = 85, Goal = WeightGoal.Gain, DailyCalories = 1724, AccountEmail = "markian.kravets@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 5, Sex = Sex.Male, Age = 19, Weight = 89, Height = 173, DesiredWeight = 72, Goal = WeightGoal.Lose, DailyCalories = 1927, AccountEmail = "nazar.midyk@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 6, Sex = Sex.Male, Age = 19, Weight = 62, Height = 182, DesiredWeight = 75, Goal = WeightGoal.Gain, DailyCalories = 1574, AccountEmail = "nazar.valaga@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 7, Sex = Sex.Male, Age = 19, Weight = 75, Height = 178, DesiredWeight = 89, Goal = WeightGoal.Gain, DailyCalories = 1711, AccountEmail = "oleh.chyzhov@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 8, Sex = Sex.Male, Age = 19, Weight = 72, Height = 177, DesiredWeight = 85, Goal = WeightGoal.Gain, DailyCalories = 1687, AccountEmail = "oleh.diduch@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 9, Sex = Sex.Male, Age = 19, Weight = 75, Height = 173, DesiredWeight = 65, Goal = WeightGoal.Gain, DailyCalories = 1681, AccountEmail = "oleh.kit@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 10, Sex = Sex.Female, Age = 19, Weight = 73, Height = 167, DesiredWeight = 65, Goal = WeightGoal.Lose, DailyCalories = 1683, AccountEmail = "olena.kupchak@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 11, Sex = Sex.Male, Age = 19, Weight = 69, Height = 183, DesiredWeight = 78, Goal = WeightGoal.Gain, DailyCalories = 1743, AccountEmail = "roman.shmyhelskiy@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 12, Sex = Sex.Male, Age = 19, Weight = 76, Height = 185, DesiredWeight = 96, Goal = WeightGoal.Gain, DailyCalories = 1791, AccountEmail = "roman.torskiy@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 13, Sex = Sex.Female, Age = 19, Weight = 75, Height = 176, DesiredWeight = 65, Goal = WeightGoal.Lose, DailyCalories = 1475, AccountEmail = "valeriya.ponomariova@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 14, Sex = Sex.Female, Age = 19, Weight = 53, Height = 177, DesiredWeight = 63, Goal = WeightGoal.Gain, DailyCalories = 1333, AccountEmail = "veronika.filippova@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 15, Sex = Sex.Female, Age = 19, Weight = 72, Height = 166, DesiredWeight = 62, Goal = WeightGoal.Lose, DailyCalories = 1440, AccountEmail = "yulia.tymochko@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 16, Sex = Sex.Male, Age = 19, Weight = 55, Height = 158, DesiredWeight = 60, Goal = WeightGoal.Gain, DailyCalories = 1448, AccountEmail = "andriy.stefurak@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 17, Sex = Sex.Female, Age = 19, Weight = 65, Height = 175, DesiredWeight = 70, Goal = WeightGoal.Gain, DailyCalories = 1488, AccountEmail = "anna.lukianchuk@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 18, Sex = Sex.Female, Age = 20, Weight = 67, Height = 170, DesiredWeight = 60, Goal = WeightGoal.Lose, DailyCalories = 1476, AccountEmail = "anna.tkach@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 19, Sex = Sex.Male, Age = 20, Weight = 50, Height = 180, DesiredWeight = 65, Goal = WeightGoal.Gain, DailyCalories = 1680, AccountEmail = "kristian.matiyishyn@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 20, Sex = Sex.Male, Age = 19, Weight = 57, Height = 165, DesiredWeight = 57, Goal = WeightGoal.Maintain, DailyCalories = 1520, AccountEmail = "maksym.kuzelyak@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 21, Sex = Sex.Male, Age = 20, Weight = 59, Height = 173, DesiredWeight = 68, Goal = WeightGoal.Gain, DailyCalories = 1570, AccountEmail = "maksym.slipkevych@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 22, Sex = Sex.Male, Age = 19, Weight = 79, Height = 172, DesiredWeight = 70, Goal = WeightGoal.Lose, DailyCalories = 1600, AccountEmail = "misha.chekan@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 23, Sex = Sex.Female, Age = 20, Weight = 67, Height = 176, DesiredWeight = 67, Goal = WeightGoal.Maintain, DailyCalories = 1450, AccountEmail = "nastya.sashchack@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 24, Sex = Sex.Female, Age = 20, Weight = 50, Height = 155, DesiredWeight = 55, Goal = WeightGoal.Gain, DailyCalories = 1430, AccountEmail = "olesia.rudevych@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 25, Sex = Sex.Male, Age = 19, Weight = 69, Height = 171, DesiredWeight = 69, Goal = WeightGoal.Maintain, DailyCalories = 1670, AccountEmail = "pavlo.smahula@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 26, Sex = Sex.Female, Age = 20, Weight = 62, Height = 178, DesiredWeight = 68, Goal = WeightGoal.Gain, DailyCalories = 1620, AccountEmail = "tanya.mazyr@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 27, Sex = Sex.Female, Age = 19, Weight = 54, Height = 161, DesiredWeight = 61, Goal = WeightGoal.Gain, DailyCalories = 1320, AccountEmail = "uliana.maydanska@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 28, Sex = Sex.Female, Age = 20, Weight = 52, Height = 163, DesiredWeight = 66, Goal = WeightGoal.Gain, DailyCalories = 1440, AccountEmail = "vika.mochevynska@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 29, Sex = Sex.Female, Age = 19, Weight = 62, Height = 174, DesiredWeight = 56, Goal = WeightGoal.Lose, DailyCalories = 1310, AccountEmail = "yulia.bohatyr@gmail.com" });
+            DbHelper.db.Add(new AccountInfo() { Id = 30, Sex = Sex.Female, Age = 20, Weight = 52, Height = 163, DesiredWeight = 52, Goal = WeightGoal.Maintain, DailyCalories = 1280, AccountEmail = "yulia.holub@gmail.com" });
             DbHelper.db.SaveChanges();
         }
         public static void FillDishTable()
@@ -445,36 +446,36 @@ namespace ConsoleLevel
         }
         public static void FillMealTable()
         {
-            DbHelper.db.Add(new Meal() { Id = 1, Title = "Breakfast ", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 1 });
-            DbHelper.db.Add(new Meal() { Id = 2, Title = "Lunch", Calories = 690, Protein = 30, Carbs = 25, Fat = 5, FoodPlanId = 2 });
-            DbHelper.db.Add(new Meal() { Id = 3, Title = "Lunch", Calories = 800, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 3 });
-            DbHelper.db.Add(new Meal() { Id = 4, Title = "Lunch", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 4 });
-            DbHelper.db.Add(new Meal() { Id = 5, Title = "Breakfast ", Calories = 760, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 5 });
-            DbHelper.db.Add(new Meal() { Id = 6, Title = "Lunch", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 6 });
-            DbHelper.db.Add(new Meal() { Id = 7, Title = "Supper", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 7 });
-            DbHelper.db.Add(new Meal() { Id = 8, Title = "Lunch", Calories = 200, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 8 });
-            DbHelper.db.Add(new Meal() { Id = 9, Title = "Supper", Calories = 640, Protein = 15, Carbs = 35, Fat = 10, FoodPlanId = 9 });
-            DbHelper.db.Add(new Meal() { Id = 10, Title = "Breakfast ", Calories = 530, Protein = 30, Carbs = 35, Fat = 10, FoodPlanId = 10 });
-            DbHelper.db.Add(new Meal() { Id = 11, Title = "Lunch", Calories = 580, Protein = 40, Carbs = 35, Fat = 10, FoodPlanId = 11 });
-            DbHelper.db.Add(new Meal() { Id = 12, Title = "Lunch", Calories = 350, Protein = 20, Carbs = 5, Fat = 11, FoodPlanId = 12 });
-            DbHelper.db.Add(new Meal() { Id = 13, Title = "Supper", Calories = 700, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 13 });
-            DbHelper.db.Add(new Meal() { Id = 14, Title = "Breakfast ", Calories = 430, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 14 });
-            DbHelper.db.Add(new Meal() { Id = 15, Title = "Breakfast ", Calories = 250, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 15 });
-            DbHelper.db.Add(new Meal() { Id = 16, Title = "Breakfast ", Calories = 250, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 16 });
-            DbHelper.db.Add(new Meal() { Id = 17, Title = "Supper", Calories = 430, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 17 });
-            DbHelper.db.Add(new Meal() { Id = 18, Title = "Breakfast ", Calories = 640, Protein = 15, Carbs = 35, Fat = 10, FoodPlanId = 18 });
-            DbHelper.db.Add(new Meal() { Id = 19, Title = "Supper", Calories = 250, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 19 });
-            DbHelper.db.Add(new Meal() { Id = 20, Title = "Breakfast ", Calories = 580, Protein = 40, Carbs = 35, Fat = 10, FoodPlanId = 20 });
-            DbHelper.db.Add(new Meal() { Id = 21, Title = "Lunch", Calories = 580, Protein = 40, Carbs = 35, Fat = 10, FoodPlanId = 21 });
-            DbHelper.db.Add(new Meal() { Id = 22, Title = "Lunch", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 22 });
-            DbHelper.db.Add(new Meal() { Id = 23, Title = "Breakfast ", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 23 });
-            DbHelper.db.Add(new Meal() { Id = 24, Title = "Supper", Calories = 800, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 24 });
-            DbHelper.db.Add(new Meal() { Id = 25, Title = "Breakfast ", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 25 });
-            DbHelper.db.Add(new Meal() { Id = 26, Title = "Supper", Calories = 500, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 26 });
-            DbHelper.db.Add(new Meal() { Id = 27, Title = "Lunch", Calories = 400, Protein = 20, Carbs = 35, Fat = 10, FoodPlanId = 27 });
-            DbHelper.db.Add(new Meal() { Id = 28, Title = "Lunch", Calories = 200, Protein = 10, Carbs = 35, Fat = 10, FoodPlanId = 28 });
-            DbHelper.db.Add(new Meal() { Id = 29, Title = "Supper", Calories = 640, Protein = 15, Carbs = 35, Fat = 10, FoodPlanId = 29 });
-            DbHelper.db.Add(new Meal() { Id = 30, Title = "Lunch", Calories = 530, Protein = 30, Carbs = 35, Fat = 10, FoodPlanId = 30 });
+            DbHelper.db.Add(new Meal() { Id = 1, Title = "Breakfast ", FoodPlanId = 1 });
+            DbHelper.db.Add(new Meal() { Id = 2, Title = "Lunch", FoodPlanId = 2 });
+            DbHelper.db.Add(new Meal() { Id = 3, Title = "Lunch", FoodPlanId = 3 });
+            DbHelper.db.Add(new Meal() { Id = 4, Title = "Lunch", FoodPlanId = 4 });
+            DbHelper.db.Add(new Meal() { Id = 5, Title = "Breakfast ", FoodPlanId = 5 });
+            DbHelper.db.Add(new Meal() { Id = 6, Title = "Lunch", FoodPlanId = 6 });
+            DbHelper.db.Add(new Meal() { Id = 7, Title = "Supper", FoodPlanId = 7 });
+            DbHelper.db.Add(new Meal() { Id = 8, Title = "Lunch", FoodPlanId = 8 });
+            DbHelper.db.Add(new Meal() { Id = 9, Title = "Supper", FoodPlanId = 9 });
+            DbHelper.db.Add(new Meal() { Id = 10, Title = "Breakfast ", FoodPlanId = 10 });
+            DbHelper.db.Add(new Meal() { Id = 11, Title = "Lunch", FoodPlanId = 11 });
+            DbHelper.db.Add(new Meal() { Id = 12, Title = "Lunch", FoodPlanId = 12 });
+            DbHelper.db.Add(new Meal() { Id = 13, Title = "Supper", FoodPlanId = 13 });
+            DbHelper.db.Add(new Meal() { Id = 14, Title = "Breakfast ", FoodPlanId = 14 });
+            DbHelper.db.Add(new Meal() { Id = 15, Title = "Breakfast ", FoodPlanId = 15 });
+            DbHelper.db.Add(new Meal() { Id = 16, Title = "Breakfast ", FoodPlanId = 16 });
+            DbHelper.db.Add(new Meal() { Id = 17, Title = "Supper", FoodPlanId = 17 });
+            DbHelper.db.Add(new Meal() { Id = 18, Title = "Breakfast ", FoodPlanId = 18 });
+            DbHelper.db.Add(new Meal() { Id = 19, Title = "Supper", FoodPlanId = 19 });
+            DbHelper.db.Add(new Meal() { Id = 20, Title = "Breakfast ", FoodPlanId = 20 });
+            DbHelper.db.Add(new Meal() { Id = 21, Title = "Lunch", FoodPlanId = 21 });
+            DbHelper.db.Add(new Meal() { Id = 22, Title = "Lunch", FoodPlanId = 22 });
+            DbHelper.db.Add(new Meal() { Id = 23, Title = "Breakfast ", FoodPlanId = 23 });
+            DbHelper.db.Add(new Meal() { Id = 24, Title = "Supper", FoodPlanId = 24 });
+            DbHelper.db.Add(new Meal() { Id = 25, Title = "Breakfast ", FoodPlanId = 25 });
+            DbHelper.db.Add(new Meal() { Id = 26, Title = "Supper", FoodPlanId = 26 });
+            DbHelper.db.Add(new Meal() { Id = 27, Title = "Lunch", FoodPlanId = 27 });
+            DbHelper.db.Add(new Meal() { Id = 28, Title = "Lunch", FoodPlanId = 28 });
+            DbHelper.db.Add(new Meal() { Id = 29, Title = "Supper", FoodPlanId = 29 });
+            DbHelper.db.Add(new Meal() { Id = 30, Title = "Lunch", FoodPlanId = 30 });
             DbHelper.db.SaveChanges();
         }
         public static void ConnectDishAndMeals()
