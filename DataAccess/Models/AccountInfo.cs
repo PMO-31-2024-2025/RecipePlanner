@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,12 +14,12 @@ namespace DataAccess.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Sex { get; set; } = null!;
+        public Sex Sex { get; set; }
         public int Age { get; set; }
         public int Weight { get; set; }
         public int Height { get; set; }
         public int DesiredWeight { get; set; }
-        public string? Goal { get; set; }
+        public Goal Goal { get; set; }
         public int DailyCalories { get; set; }
         public string? ImageUrl { get; set; }
         public string AccountEmail { get; set; } = null!;

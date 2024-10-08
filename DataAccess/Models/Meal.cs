@@ -14,10 +14,6 @@ namespace DataAccess.Models
         [Key]
         public int Id { get; set; }
         public string Title { get; set; } = null!;
-        public int Calories { get; set; }
-        public int Protein { get; set; }
-        public int Carbs { get; set; }
-        public int Fat { get; set; }
         public int FoodPlanId { get; set; }
 
         [ForeignKey(nameof(FoodPlanId))]
@@ -26,7 +22,7 @@ namespace DataAccess.Models
 
         public override string ToString()
         {
-            return $"Title: {Title}; Protein: {Protein}; Carbs: {Carbs}; Fat: {Fat}; Calories: {Calories}";
+            return $"Title: {Title}";
         }
     }
 }

@@ -1,8 +1,6 @@
-﻿using ConsoleLevel;
-using DataAccess;
+﻿using DataAccess;
 using DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 class Program
 {
     public static void SimplePrint()
@@ -83,16 +81,6 @@ class Program
                 }
             }
         }
-        //Console.WriteLine("DISH-MEAL RELATIONSHIP:");
-        //foreach (var meal in DbHelper.db.Meals.Include("DishMeals"))
-        //{
-        //    Console.WriteLine($"Meal:'{meal.Title}' | ID:'{meal.Id}' has following dishes:");
-        //    foreach (var dish_meal in meal.DishMeals.Where(dm => dm.MealId == meal.Id))
-        //    {
-        //        Console.WriteLine($"Dish:'{dish_meal.Dish.Title}' | ID:'{dish_meal.DishId}'");
-        //    }
-        //    Console.WriteLine();
-        //}
     }
     public static void Main(string[] args)
     {
