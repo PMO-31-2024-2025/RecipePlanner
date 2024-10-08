@@ -14,7 +14,7 @@ namespace DataAccess.Models
         [Key]
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
-        public AccountInfo? AccountInfo { get; set; }
+        public AccountInfo AccountInfo { get; set; } = null!;
         public List<StatisticEntity>? StatisticEntities { get; set; }
         public List<Dish>? Dishes { get; set; }
         public List<FoodPlan>? FoodPlans { get; set; }

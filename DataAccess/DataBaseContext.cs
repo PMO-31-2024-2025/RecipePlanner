@@ -16,6 +16,7 @@ namespace DataAccess
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<Meal> Meals { get; set; }
         public DbSet<FoodPlan> FoodPlans { get; set; }
+        public DbSet<DishMeal> DishMealConnectTable { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,12 +26,12 @@ namespace DataAccess
                 optionsBuilder.UseSqlite(connectionString);
             }
         }
+        // Only in many-to-many relationship
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Dish>()
-                .HasMany(dish => dish.Meals)
-                .WithMany(meal => meal.Dishes)
-                .UsingEntity(entity => entity.ToTable("DishMeal"));
+            modelBuilder.Entity<DishMeal>().HasKey(dm => new { dm.DishId, dm.MealId });
+            modelBuilder.Entity<DishMeal>().HasOne(dm => dm.Dish).WithMany(m => m.DishMeals).HasForeignKey(dm => dm.DishId);
+            modelBuilder.Entity<DishMeal>().HasOne(dm => dm.Meal).WithMany(m => m.DishMeals).HasForeignKey(dm => dm.MealId);
         }
     }
 }

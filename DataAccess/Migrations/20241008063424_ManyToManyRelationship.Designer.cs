@@ -3,6 +3,7 @@ using System;
 using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20241008063424_ManyToManyRelationship")]
+    partial class ManyToManyRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -130,7 +133,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("MealId");
 
-                    b.ToTable("DishMealConnectTable");
+                    b.ToTable("DishMeal");
                 });
 
             modelBuilder.Entity("DataAccess.Models.FoodPlan", b =>

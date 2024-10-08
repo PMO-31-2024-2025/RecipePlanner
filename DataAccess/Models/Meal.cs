@@ -22,7 +22,7 @@ namespace DataAccess.Models
 
         [ForeignKey(nameof(FoodPlanId))]
         public FoodPlan FoodPlan { get; set; } = null!;
-        public List<Dish> Dishes { get; set; } = null!;
+        public List<DishMeal> DishMeals { get; set; } = null!;
 
         public override string ToString()
         {
