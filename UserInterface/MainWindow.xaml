@@ -5,8 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserInterface"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="MainWindow" Height="450" Width="800">
+    <!--General Grid-->
     <Grid>
+        <!--Divide all application workspace into two parts-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Left Side-->
+        <Grid Grid.Column="0">
+            <!--Space for main buttons-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!--Main buttons-->
+            <Button x:Name="AccountButton" Click="Button_Click" 
+                    Grid.Row="0" Content="Акаунт" 
+                    Style="{StaticResource MainButtonStyle}"/>
+            
+            <Button x:Name="StatisticsButton" Click="Button_Click" 
+                    Grid.Row="1" Content="Статистика" 
+                    Style="{StaticResource MainButtonStyle}"/>
+            
+            <Button x:Name="FoodPlansButton" Click="Button_Click" 
+                    Grid.Row="2" Content="Плани Харчувань" 
+                    Style="{StaticResource MainButtonStyle}"/>
+            
+            <Button x:Name="RecipesButton" Click="Button_Click"
+                    Grid.Row="3" Content="Рецепти" 
+                    Style="{StaticResource MainButtonStyle}"/>
 
+            <Button x:Name="SettingsButton" Click="Button_Click"
+                    Grid.Row="4" Content="Налаштування" 
+                    Style="{StaticResource MainButtonStyle}"/>
+        </Grid>
+        
+        <!--Right Side-->
+        <Grid Grid.Column="1">
+            <!--This will load the page. It sets in MainWindow.xaml.cs file-->
+            <Frame x:Name="RightSideFrame"/>
+        </Grid>
     </Grid>
 </Window>

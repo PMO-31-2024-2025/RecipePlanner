@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UserInterface.Views;
 
 namespace UserInterface
 {
@@ -16,9 +17,40 @@ namespace UserInterface
     /// </summary>
     public partial class MainWindow : Window
     {
+        private AccountWindow accountWindow = new AccountWindow();
+        private StatisticsWindow statisticsWindow = new StatisticsWindow();
+        private FoodPlansWindow foodPlansWindow = new FoodPlansWindow();
+        private RecipesWindow recipesWindow = new RecipesWindow();
+        private SettingsWindow settingsWindow = new SettingsWindow();
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            RightSideFrame.Navigate(accountWindow);
+        }
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button pressedButton = (Button)sender;
+            switch (pressedButton.Name)
+            {
+                case "AccountButton":
+                    RightSideFrame.Navigate(accountWindow);
+                    break;
+                case "StatisticsButton":
+                    RightSideFrame.Navigate(statisticsWindow);
+                    break;
+                case "FoodPlansButton":
+                    RightSideFrame.Navigate(foodPlansWindow);
+                    break;
+                case "RecipesButton":
+                    RightSideFrame.Navigate(recipesWindow);
+                    break;
+                case "SettingsButton":
+                    RightSideFrame.Navigate(settingsWindow);
+                    break;
+            }
         }
     }
 }
