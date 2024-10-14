@@ -21,7 +21,7 @@
         
         <!--Window-->
         <Style TargetType="Window" x:Key="MainWindowStyle">
-            <Setter Property="Background" Value="White"/>
+            <Setter Property="Background" Value="#FAF9F6"/>
         </Style>
     </Application.Resources>
 </Application>
