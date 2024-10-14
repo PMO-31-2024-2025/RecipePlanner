@@ -18,7 +18,7 @@ namespace UserInterface.Views
     /// <summary>
     /// Interaction logic for StatisticsWindow.xaml
     /// </summary>
-    public partial class StatisticsWindow : UserControl
+    public partial class StatisticsWindow : Page
     {
         public StatisticsWindow()
         {

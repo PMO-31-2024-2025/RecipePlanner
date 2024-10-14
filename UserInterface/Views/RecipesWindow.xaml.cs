@@ -18,7 +18,7 @@ namespace UserInterface.Views
     /// <summary>
     /// Interaction logic for RecipesWindow.xaml
     /// </summary>
-    public partial class RecipesWindow : UserControl
+    public partial class RecipesWindow : Page
     {
         public RecipesWindow()
         {

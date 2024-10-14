@@ -18,7 +18,7 @@ namespace UserInterface.Views
     /// <summary>
     /// Interaction logic for FoodPlansWindow.xaml
     /// </summary>
-    public partial class FoodPlansWindow : UserControl
+    public partial class FoodPlansWindow : Page
     {
         public FoodPlansWindow()
         {

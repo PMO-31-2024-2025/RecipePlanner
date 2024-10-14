@@ -18,7 +18,7 @@ namespace UserInterface.Views
     /// <summary>
     /// Interaction logic for AccountWindow.xaml
     /// </summary>
-    public partial class AccountWindow : UserControl
+    public partial class AccountWindow : Page
     {
         public AccountWindow()
         {
