@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:UserInterface"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Style="{StaticResource MainWindowStyle}">
     <!--General Grid-->
-    <Grid>
+    <Grid Margin="5">
         <!--Divide all application workspace into two parts-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -29,23 +30,28 @@
             <!--Main buttons-->
             <Button x:Name="AccountButton" Click="Button_Click" 
                     Grid.Row="0" Content="Акаунт" 
-                    Style="{StaticResource MainButtonStyle}"/>
+                    Style="{StaticResource MainButtonStyle}"
+                    Margin="0, 0, 0, 1"/>
             
             <Button x:Name="StatisticsButton" Click="Button_Click" 
                     Grid.Row="1" Content="Статистика" 
-                    Style="{StaticResource MainButtonStyle}"/>
+                    Style="{StaticResource MainButtonStyle}"
+                    Margin="0, 0, 0, 1"/>
             
             <Button x:Name="FoodPlansButton" Click="Button_Click" 
                     Grid.Row="2" Content="Плани Харчувань" 
-                    Style="{StaticResource MainButtonStyle}"/>
+                    Style="{StaticResource MainButtonStyle}"
+                    Margin="0, 0, 0, 1"/>
             
             <Button x:Name="RecipesButton" Click="Button_Click"
                     Grid.Row="3" Content="Рецепти" 
-                    Style="{StaticResource MainButtonStyle}"/>
+                    Style="{StaticResource MainButtonStyle}"
+                    Margin="0, 0, 0, 1"/>
 
             <Button x:Name="SettingsButton" Click="Button_Click"
                     Grid.Row="4" Content="Налаштування" 
-                    Style="{StaticResource MainButtonStyle}"/>
+                    Style="{StaticResource MainButtonStyle}"
+                    Margin="0, 0, 0, 0"/>
         </Grid>
         
         <!--Right Side-->
