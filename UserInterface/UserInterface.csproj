@@ -10,7 +10,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\MainButtons\Account.ico" />
+    <None Remove="Images\MainButtons\food-plans.ico" />
+    <None Remove="Images\MainButtons\recipe-book.ico" />
+    <None Remove="Images\MainButtons\Settings.ico" />
+    <None Remove="Images\MainButtons\Statistics.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Images\Logo\Logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Logo\Logo.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +43,18 @@
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\MainButtons\Account.ico" />
+    <Resource Include="Images\MainButtons\Food-Plans.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\MainButtons\Recipe-Book.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\MainButtons\Settings.ico" />
+    <Resource Include="Images\MainButtons\Statistics.ico" />
   </ItemGroup>
 
 </Project>

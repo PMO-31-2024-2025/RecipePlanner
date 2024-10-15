@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:UserInterface"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="600" Width="800"
         Style="{StaticResource MainWindowStyle}">
     <!--General Grid-->
-    <Grid Margin="5">
+    <Grid Margin="8">
         <!--Divide all application workspace into two parts-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -17,8 +17,8 @@
         </Grid.ColumnDefinitions>
         
         <!--Left Side-->
-        <Grid Grid.Column="0">
-            <!--Space for main buttons-->
+        <Grid Grid.Column="0" 
+                    Style="{StaticResource LeftSideGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -26,32 +26,79 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
             <!--Main buttons-->
-            <Button x:Name="AccountButton" Click="Button_Click" 
-                    Grid.Row="0" Content="Акаунт" 
-                    Style="{StaticResource MainButtonStyle}"
-                    Margin="0, 0, 0, 1"/>
+            <Button x:Name="AccountButton" 
+                    Click="Button_Click" 
+                    Grid.Row="0" 
+                    Style="{StaticResource MainButtonStyle}">
+
+                <StackPanel Orientation="Horizontal">
+                    <Image 
+                        Source="pack://application:,,,/Images/MainButtons/Account.ico"
+                        Style="{StaticResource ButtonsImageStyle}"/>
+                    
+                    <TextBlock Text="Аккаунт"
+                               Style="{StaticResource ButtonTextblockStyle}"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
             
+
             <Button x:Name="StatisticsButton" Click="Button_Click" 
-                    Grid.Row="1" Content="Статистика" 
-                    Style="{StaticResource MainButtonStyle}"
-                    Margin="0, 0, 0, 1"/>
+                    Grid.Row="1"
+                    Style="{StaticResource MainButtonStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <Image 
+                        Source="pack://application:,,,/Images/MainButtons/Statistics.ico"
+                        Style="{StaticResource ButtonsImageStyle}"/>
+
+                    <TextBlock Text="Статистика"
+                        Style="{StaticResource ButtonTextblockStyle}"
+                        VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="RecipesButton" Click="Button_Click"
+                    Grid.Row="2" 
+                    Style="{StaticResource MainButtonStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <Image 
+                        Source="pack://application:,,,/Images/MainButtons/Recipe-Book.ico"
+                        Style="{StaticResource ButtonsImageStyle}"/>
+
+                    <TextBlock Text="Рецепти"
+                        Style="{StaticResource ButtonTextblockStyle}"
+                        VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
             
             <Button x:Name="FoodPlansButton" Click="Button_Click" 
-                    Grid.Row="2" Content="Плани Харчувань" 
-                    Style="{StaticResource MainButtonStyle}"
-                    Margin="0, 0, 0, 1"/>
-            
-            <Button x:Name="RecipesButton" Click="Button_Click"
-                    Grid.Row="3" Content="Рецепти" 
-                    Style="{StaticResource MainButtonStyle}"
-                    Margin="0, 0, 0, 1"/>
+                    Grid.Row="3"
+                    Style="{StaticResource MainButtonStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <Image 
+                        Source="pack://application:,,,/Images/MainButtons/Food-Plans.ico"
+                        Style="{StaticResource ButtonsImageStyle}"/>
+
+                    <TextBlock Text="Плани харчувань"
+                        Style="{StaticResource ButtonTextblockStyle}"
+                        VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
 
             <Button x:Name="SettingsButton" Click="Button_Click"
-                    Grid.Row="4" Content="Налаштування" 
-                    Style="{StaticResource MainButtonStyle}"
-                    Margin="0, 0, 0, 0"/>
+                    Grid.Row="4"
+                    Style="{StaticResource MainButtonStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <Image 
+                        Source="pack://application:,,,/Images/MainButtons/Settings.ico"
+                        Style="{StaticResource ButtonsImageStyle}"/>
+
+                    <TextBlock Text="Налаштування"
+                        Style="{StaticResource ButtonTextblockStyle}"
+                        VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
         </Grid>
         
         <!--Right Side-->

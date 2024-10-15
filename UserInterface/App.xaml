@@ -5,13 +5,17 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         
-        <!--Buttons-->
+        <!--Main Buttons-->
         <Style TargetType="Button" x:Key="MainButtonStyle">
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="5"/>
+            
             <Setter Property="Background" Value="#89C4F4"/>
             <Setter Property="Foreground" Value="#011627"/>
+            
+            <Setter Property="BorderThickness" Value="0"/>
         </Style>
+        <!--Secondary Buttons-->
         <Style TargetType="Button" x:Key="SecondaryButtonStyle">
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Padding" Value="5"/>
@@ -19,9 +23,23 @@
             <Setter Property="Foreground" Value="#011627"/>
         </Style>
         
+        <!--Button TextBlock-->
+        <Style TargetType="TextBlock" x:Key="ButtonTextblockStyle">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <!--Image-->
+        <Style TargetType="Image" x:Key="ButtonsImageStyle">
+            <Setter Property="Width" Value="50"/>
+        </Style>
+        
         <!--Window-->
         <Style TargetType="Window" x:Key="MainWindowStyle">
             <Setter Property="Background" Value="#FAF9F6"/>
+        </Style>
+        
+        <!--StackPanel-->
+        <Style TargetType="Grid" x:Key="LeftSideGrid">
+            <Setter Property="Background" Value="#89C4F4"/>
         </Style>
     </Application.Resources>
 </Application>
