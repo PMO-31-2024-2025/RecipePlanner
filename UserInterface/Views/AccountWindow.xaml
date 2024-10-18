@@ -5,44 +5,117 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UserInterface.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="450" d:DesignWidth="800"
+             Style="{StaticResource PageResource}">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
+        <!--Left Side-->
+        <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" 
+                Style="{StaticResource PagePartStyle}">
 
-        <!--Left side-->
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            
-            <Button Grid.Row="0" 
-                    Content="Операція 1" 
-                    Style="{StaticResource SecondaryButtonStyle}"
-                    Margin="0, 0, 0, 1"/>
-            
-            <Button Grid.Row="1" 
-                    Content="Операція 2" 
-                    Style="{StaticResource SecondaryButtonStyle}"
-                    Margin="0, 0, 0, 1"/>
-            
-            <Button Grid.Row="2" 
-                    Content="Операція 3" 
-                    Style="{StaticResource SecondaryButtonStyle}"
-                    Margin="0, 0, 0, 0"/>
-        </Grid>
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-        <!--Right Side-->
-        <Grid Grid.Column="1" Margin="0, 0">
-            <TextBlock HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Text="Account Window"
-                       FontSize="40"/>
+                <!--Main Image-->
+                <Ellipse Grid.Column="0" Grid.Row="0"
+                         Style="{StaticResource AccountImage}">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="pack://application:,,,/Images/Accounts/MainPictures/Test.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
 
-        </Grid>
+                <!--Physical Information-->
+                <Grid Grid.Row="1" Margin="0, 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Style="{StaticResource NiceTextBlock}" 
+                               Text="My profile" 
+                               Grid.Column="0" 
+                               FontWeight="Bold"/>
+
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">
+                        <TextBlock Style="{StaticResource NiceTextBlock}"
+                            Text="Age: 31" FontSize="16"/>
+
+                        <TextBlock Style="{StaticResource NiceTextBlock}"
+                            Text="Current Weight: 76kg" FontSize="16"/>
+                        
+                        <TextBlock Style="{StaticResource NiceTextBlock}"
+                            Text="Height: 177cm" FontSize="16"/>
+                    </StackPanel>
+                </Grid>
+
+                <!--Main Information-->
+                <Grid VerticalAlignment="Center" Grid.Row="2" Margin="0, 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Style="{StaticResource NiceTextBlock}"
+                               Grid.Column="0" Grid.Row="0"
+                               Text="User"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Style="{StaticResource NiceTextBlock}"
+                               Grid.Column="1" Grid.Row="0" 
+                               Text="user@gmail.com"
+                               HorizontalAlignment="Center"/>
+
+                    <Line Margin="10" Grid.ColumnSpan="2" Grid.Row="1"
+                          Stroke="Gray" StrokeThickness="1.2"
+                          X1="0" X2="400"/>
+                </Grid>
+
+                <!--Buttons-->
+                <StackPanel Grid.Row="3" Margin="0, 20">
+                    <Button Style="{StaticResource NiceButton}" 
+                            Width="120" Height="40"
+                            Content="Edit" FontSize="18"/>
+
+                    <Button Style="{StaticResource NiceButton}" 
+                            Width="120" Height="40" 
+                            Margin="0, 10, 0, 0"
+                            Content="Exit" FontSize="18"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        
+
+        <!--Left Top-->
+        <Border Grid.Column="1" Grid.Row="0" Margin="10, 0, 0, 0" Style="{StaticResource PagePartStyle}">
+            <Grid>
+
+            </Grid>
+        </Border>
+        
+        <!--Left Bottom-->
+        <Border Grid.Column="1" Grid.Row="1" Margin="10, 10, 0, 0" Style="{StaticResource PagePartStyle}">
+            <Grid>
+
+            </Grid>
+        </Border>
     </Grid>
 </Page>

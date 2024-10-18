@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:UserInterface"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="MainWindow" Height="600" Width="800"
-        Style="{StaticResource MainWindowStyle}">
+        Title="MainWindow" Height="600" Width="1000">
     <!--General Grid-->
     <Grid Margin="8">
         <!--Divide all application workspace into two parts-->
