@@ -1,4 +1,5 @@
-﻿using DataAccess.Models;
+﻿using DataAccess;
+using DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,6 +26,13 @@ namespace UserInterface.Views
         public RecipesWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RecipeListView.Items.Clear();
+            RecipeListView.ItemsSource = DbHelper.db.Dishes.ToList();
         }
     }
 }

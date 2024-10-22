@@ -39,61 +39,51 @@
             <!--Add New Recipe-->
             <Grid Grid.Column="2" Margin="20">
                 <Button Content="Add New" Style="{StaticResource NiceButton}"
-                        FontSize="20"/>
+                        FontSize="20"
+                        Click="Button_Click"/>
             </Grid>
         </Grid>
         
         <!--Recipes-->
         <Grid Grid.Row="1">
             <ListView x:Name="RecipeListView">
-                <ListViewItem Height="50" FontSize="20" BorderBrush="Black" BorderThickness="1" Margin="0, 5">
-                    <Grid Width="790">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <TextBlock Text="Recipe 1" Grid.Column="0"
-                                   HorizontalAlignment="Center"/>
-                        
-                        <TextBlock Text="Calories" Grid.Column="1"
-                                   HorizontalAlignment="Center"/>
-                        <Button Content="Edit" Grid.Column="2"
-                                HorizontalAlignment="Center"
-                                Background="White"
-                                BorderThickness="0"/>
-                        <Button Content="Remove" Grid.Column="3"
-                                HorizontalAlignment="Center"
-                                Background="White"
-                                BorderThickness="0"/>
-                    </Grid>
-                </ListViewItem>
-                <ListViewItem Height="50" FontSize="20" BorderBrush="Black" BorderThickness="1" Margin="0, 5">
-                    <Grid Width="790">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <TextBlock Text="Recipe 2" Grid.Column="0"
-                                   HorizontalAlignment="Center"/>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" 
+                                BorderThickness="1"
+                                Margin="3"
+                                Padding="3"
+                                Width="870">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Calories" Grid.Column="1"
-                                   HorizontalAlignment="Center"/>
-                        <Button Content="Edit" Grid.Column="2"
-                                HorizontalAlignment="Center"
-                                Background="White"
-                                BorderThickness="0"/>
-                        <Button Content="Remove" Grid.Column="3"
-                                HorizontalAlignment="Center"
-                                Background="White"
-                                BorderThickness="0"/>
-                    </Grid>
-                </ListViewItem>
+                                <TextBlock Text="{Binding Title}"
+                                           HorizontalAlignment="Center"
+                                           Grid.Column="0"
+                                           FontSize="20"/>
+                                <TextBlock Text="{Binding Calories}"
+                                           HorizontalAlignment="Center"
+                                           Grid.Column="1"
+                                           FontSize="20"/>
+
+                                <Button Content="Edit"
+                                        x:Name="EditButton"
+                                        Grid.Column="2"
+                                        FontSize="20"/>
+                                <Button Content="Remove"
+                                        x:Name="RemoveButton"
+                                        Grid.Column="3"
+                                        FontSize="20"/>
+                            </Grid>
+                        </Border>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </Grid>
     </Grid>

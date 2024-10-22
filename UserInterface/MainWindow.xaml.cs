@@ -52,19 +52,5 @@ namespace UserInterface
                     break;
             }
         }
-
-        private void Button_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Button clickedButton = (Button)sender;
-            var mainButtonHoverStyle = (Style)FindResource("MainButtonHoverStyle");
-            clickedButton.Style = mainButtonHoverStyle;
-        }
-
-        private void Button_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Button clickedButton = (Button)sender;
-            var mainButtonHoverStyle = (Style)FindResource("MainButtonStyle");
-            clickedButton.Style = mainButtonHoverStyle;
-        }
     }
 }
