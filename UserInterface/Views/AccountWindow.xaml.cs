@@ -24,5 +24,15 @@ namespace UserInterface.Views
         {
             InitializeComponent();
         }
+
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
