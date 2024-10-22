@@ -7,42 +7,84 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
 
-        <!--Left side-->
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <Button Grid.Row="0" 
-                    Content="Операція 7" 
-                    Style="{StaticResource SecondaryButtonStyle}"
-                    Margin="0, 0, 0, 1"/>
-
-            <Button Grid.Row="1" 
-                    Content="Операція 8" 
-                    Style="{StaticResource SecondaryButtonStyle}"
-                    Margin="0, 0, 0, 1"/>
-
-            <Button Grid.Row="2" 
-                    Content="Операція 9" 
-                    Style="{StaticResource SecondaryButtonStyle}"
-                    Margin="0, 0, 0, 0"/>
+        <!--Top-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--Filtering ComboBox-->
+            <Grid Grid.Column="0">
+                <ComboBox Style="{StaticResource RecipeCombobox}">
+                    <ComboBoxItem Content="Filter by" IsSelected="True" 
+                                  IsEnabled="False"/>
+                    <ComboBoxItem Content="Protein"/>
+                    <ComboBoxItem Content="Carbs"/>
+                    <ComboBoxItem Content="Fat"/>
+                </ComboBox>
+            </Grid>
+            
+            <!--Search line-->
+            <Grid Grid.Column="1">
+                <TextBox Style="{StaticResource RecipeTextBox}"/>
+            </Grid>
+            
+            <!--Add New Recipe-->
+            <Grid Grid.Column="2" Margin="20">
+                <Button Content="Add New" Style="{StaticResource NiceButton}"
+                        FontSize="20"
+                        Click="Button_Click"/>
+            </Grid>
         </Grid>
+        
+        <!--Recipes-->
+        <Grid Grid.Row="1">
+            <ListView x:Name="RecipeListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" 
+                                BorderThickness="1"
+                                Margin="3"
+                                Padding="3"
+                                Width="870">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-        <!--Right Side-->
-        <Grid Grid.Column="1" Margin="0, 0">
-            <TextBlock HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Text="Recipes Window"
-                   FontSize="40"/>
+                                <TextBlock Text="{Binding Title}"
+                                           HorizontalAlignment="Center"
+                                           Grid.Column="0"
+                                           FontSize="20"/>
+                                <TextBlock Text="{Binding Calories}"
+                                           HorizontalAlignment="Center"
+                                           Grid.Column="1"
+                                           FontSize="20"/>
 
+                                <Button Content="Edit"
+                                        x:Name="EditButton"
+                                        Grid.Column="2"
+                                        FontSize="20"/>
+                                <Button Content="Remove"
+                                        x:Name="RemoveButton"
+                                        Grid.Column="3"
+                                        FontSize="20"/>
+                            </Grid>
+                        </Border>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </Grid>
 </Page>

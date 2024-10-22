@@ -38,10 +38,6 @@
             <Setter Property="Width" Value="50"/>
         </Style>
         
-        <!--Main Buttons Hover Style-->
-        <Style TargetType="Button" x:Key="MainButtonHoverStyle">
-            <Setter Property="Background" Value="Red"/>
-        </Style>
         <!--Secondary Buttons-->
         <Style TargetType="Button" x:Key="SecondaryButtonStyle">
             <Setter Property="FontSize" Value="15"/>
@@ -91,6 +87,23 @@
         <Style TargetType="Border" x:Key="PagePartStyle">
             <Setter Property="CornerRadius" Value="40"/>
             <Setter Property="Background" Value="#FAF9F6"/>
+        </Style>
+        
+        <!--RECIPIES PAGE-->
+        
+        <!--Recipe ComboBox-->
+        <Style TargetType="ComboBox" x:Key="RecipeCombobox">
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        
+        <!--Recipe TextBox-->
+        <Style TargetType="TextBox" x:Key="RecipeTextBox">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5"/>
         </Style>
         
     </Application.Resources>
