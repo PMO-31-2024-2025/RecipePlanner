@@ -1,7 +1,5 @@
-﻿using DataAccess.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +16,11 @@ using System.Windows.Shapes;
 namespace UserInterface.Views
 {
     /// <summary>
-    /// Interaction logic for RecipesWindow.xaml
+    /// Interaction logic for AddEditRecipe.xaml
     /// </summary>
-    public partial class RecipesWindow : Page
+    public partial class AddEditRecipe : Page
     {
-        public RecipesWindow()
+        public AddEditRecipe()
         {
             InitializeComponent();
         }
