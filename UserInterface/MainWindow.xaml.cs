@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using DataAccess.Models;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,18 +18,26 @@ namespace UserInterface
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Account Account;
+
         private AccountWindow accountWindow = new AccountWindow();
         private StatisticsWindow statisticsWindow = new StatisticsWindow();
         private FoodPlansWindow foodPlansWindow = new FoodPlansWindow();
         private RecipesWindow recipesWindow = new RecipesWindow();
         private SettingsWindow settingsWindow = new SettingsWindow();
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            RightSideFrame.Navigate(accountWindow);
-        }
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+        public MainWindow(Account account)
+        {
+            Account = account;
+            InitializeComponent();
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            RightSideFrame.Navigate(accountWindow);
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
