@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace UserInterface.Views
 {
     /// <summary>
-    /// Interaction logic for AddEditRecipe.xaml
+    /// Interaction logic for SeeRecipePage.xaml
     /// </summary>
-    public partial class AddEditRecipe : Page
+    public partial class SeeRecipePage : Page
     {
-        public AddEditRecipe()
+        public SeeRecipePage()
         {
             InitializeComponent();
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

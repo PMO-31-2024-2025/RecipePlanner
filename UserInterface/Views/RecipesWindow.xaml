@@ -53,7 +53,8 @@
                                 BorderThickness="1"
                                 Margin="3"
                                 Padding="3"
-                                Width="870">
+                                Width="870"
+                                MouseLeftButtonDown="Border_MouseLeftButtonDown">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="5*"/>
@@ -74,7 +75,8 @@
                                 <Button Content="Edit"
                                         x:Name="EditButton"
                                         Grid.Column="2"
-                                        FontSize="20"/>
+                                        FontSize="20"
+                                        Click="EditButton_Click"/>
                                 <Button Content="Remove"
                                         x:Name="RemoveButton"
                                         Grid.Column="3"

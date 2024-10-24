@@ -37,5 +37,17 @@ namespace UserInterface.Views
             AddEditRecipe window = new AddEditRecipe();
             mainFrame.Navigate(window);
         }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SeeRecipePage recipePage = new SeeRecipePage();
+            mainFrame.Navigate(recipePage);
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditRecipe window = new AddEditRecipe();
+            mainFrame.Navigate(window);
+        }
     }
 }
