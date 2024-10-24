@@ -18,8 +18,6 @@ namespace UserInterface
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Account Account;
-
         private AccountWindow accountWindow;
         private StatisticsWindow statisticsWindow;
         private FoodPlansWindow foodPlansWindow;
@@ -28,22 +26,21 @@ namespace UserInterface
 
         public MainWindow()
         {
+            InitializeComponent();
             accountWindow = new AccountWindow();
             statisticsWindow = new StatisticsWindow();
             foodPlansWindow = new FoodPlansWindow();
-            recipesWindow = new RecipesWindow();
+            recipesWindow = new RecipesWindow(RightSideFrame);
             settingsWindow = new SettingsWindow();
-            InitializeComponent();
         }
         public MainWindow(Account account)
         {
-            Account = account;
+            InitializeComponent();
             accountWindow = new AccountWindow();
             statisticsWindow = new StatisticsWindow();
             foodPlansWindow = new FoodPlansWindow();
-            recipesWindow = new RecipesWindow();
+            recipesWindow = new RecipesWindow(RightSideFrame);
             settingsWindow = new SettingsWindow();
-            InitializeComponent();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

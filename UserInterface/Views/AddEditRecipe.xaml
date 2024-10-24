@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:UserInterface.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Style="{StaticResource PageResource}"
       Title="AddEditRecipe">
 
     <Grid>
@@ -15,70 +16,157 @@
         </Grid.RowDefinitions>
         
         <!--Top-->
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            
-            <!--Top left-->
-            <Grid Grid.Column="0" Margin="10">
-                <Image Source="pack://application:,,,/Images/Accounts/MainPictures/Test.png"/>
-            </Grid>
+        <Border Grid.Row="0" Margin="10" Background="White" CornerRadius="40">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <!--Top middle-->
-            <Grid Grid.Column="1">
-                <StackPanel Margin="10">
-                    <TextBlock Text="Ingridient 1" FontSize="16" Margin="2.5"/>
-                    <TextBlock Text="Ingridient 2" FontSize="16" Margin="2.5"/>
-                    <TextBlock Text="Ingridient 3" FontSize="16" Margin="2.5"/>
-                    <TextBlock Text="Ingridient 4" FontSize="16" Margin="2.5"/>
-                    <TextBlock Text="Ingridient 5" FontSize="16" Margin="2.5"/>
-                    <TextBlock Text="Ingridient 6" FontSize="16" Margin="2.5"/>
-                    <TextBlock Text="Ingridient 7" FontSize="16" Margin="2.5"/>
-                    <TextBlock Text="Ingridient 8" FontSize="16" Margin="2.5"/>
-                </StackPanel>
-            </Grid>
-            <!--Top Right-->
-            <Grid Grid.Column="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                <!--Top left-->
+                <Ellipse Grid.Column="0" Width="190" Height="190">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="pack://application:,,,/Images/Accounts/MainPictures/Test.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
 
-                <Button Content="Add Recipe" Grid.Row="0" Margin="15"
-                        FontSize="20"/>
-                <Button Content="Cancel" Grid.Row="1" Margin="15"
-                        FontSize="20"/>
+                <!--Top middle-->
+                <Grid Grid.Column="1">
+                    <ListView VerticalAlignment="Center" Margin="10">
+                        <ListViewItem FontSize="20" FontWeight="SemiBold">
+                            <TextBlock Text="Ingridient 1"/>
+                        </ListViewItem>
+                        <ListViewItem FontSize="20" FontWeight="SemiBold">
+                            <TextBlock Text="Ingridient 2"/>
+                        </ListViewItem>
+                        <ListViewItem FontSize="20" FontWeight="SemiBold">
+                            <TextBlock Text="Ingridient 3"/>
+                        </ListViewItem>
+                        <ListViewItem FontSize="20" FontWeight="SemiBold">
+                            <TextBlock Text="Ingridient 4"/>
+                        </ListViewItem>
+                        <ListViewItem FontSize="20" FontWeight="SemiBold">
+                            <TextBlock Text="Ingridient 5"/>
+                        </ListViewItem>
+                        <ListViewItem FontSize="20" FontWeight="SemiBold">
+                            <TextBlock Text="Ingridient 6"/>
+                        </ListViewItem>
+                        <ListViewItem FontSize="20" FontWeight="SemiBold">
+                            <TextBlock Text="Ingridient 7"/>
+                        </ListViewItem>
+                        <ListViewItem FontSize="20" FontWeight="SemiBold">
+                            <TextBlock Text="Ingridient 8"/>
+                        </ListViewItem>
+                    </ListView>
+                </Grid>
+                <!--Top Right-->
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Content="Add Recipe" Grid.Row="0" 
+                            Margin="15" FontSize="20"/>
+                    <Button Content="Cancel" Grid.Row="1" 
+                            Margin="15" FontSize="20"/>
+                </Grid>
             </Grid>
-        </Grid>
+        </Border>
+        
 
         <!--Bottom-->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            
-            <!--Bottom left-->
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="Recipe" FontSize="20" FontWeight="Bold"
-                           HorizontalAlignment="Center"/>
+        <Border Grid.Row="1" Margin="10" Background="White" CornerRadius="40">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                <TextBox Grid.Row="1" FontSize="18" 
-                         Text="Here is the recipe"/>
+                <!--Bottom left-->
+                <Grid Grid.Column="0" Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Recipe" 
+                               FontSize="20" FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
 
+                    <TextBox Grid.Row="1" FontSize="18"
+                             FontWeight="SemiBold"
+                             Text="Here is the recipe"/>
+
+                </Grid>
+
+                <!--Bottom right-->
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="Protein"/>
+                    
+                    <TextBlock Grid.Column="0" Grid.Row="1"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="Carbs"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="2"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="Fat"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="3"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="Calories"/>
+
+                    <TextBox Grid.Column="1" Grid.Row="0"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Text="50 grams"
+                             BorderThickness="0"/>
+
+                    <TextBox Grid.Column="1" Grid.Row="1"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Text="120 grams"
+                             BorderThickness="0"/>
+
+                    <TextBox Grid.Column="1" Grid.Row="2"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Text="5 grams"
+                             BorderThickness="0"/>
+
+                    <TextBox Grid.Column="1" Grid.Row="3"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Text="900"
+                             BorderThickness="0"/>
+                </Grid>
             </Grid>
-            
-            <!--Bottom right-->
-            <Grid Grid.Column="1">
-                
-            </Grid>
-        </Grid>
+        </Border>
+        
     </Grid>
 </Page>
