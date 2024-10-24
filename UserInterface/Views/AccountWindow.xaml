@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Style="{StaticResource PageResource}">
-    <Grid Margin="10">
+    <Grid Margin="10"
+          DataContext="Account">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -90,16 +91,12 @@
                 <StackPanel Grid.Row="3" VerticalAlignment="Center">
                     <Button Style="{StaticResource NiceButton}" 
                             Width="120" Height="40"
-                            Content="Edit" FontSize="18"
-                            MouseEnter="Button_MouseEnter"
-                            MouseLeave="Button_MouseLeave"/>
+                            Content="Edit" FontSize="18"/>
 
                     <Button Style="{StaticResource NiceButton}" 
                             Width="120" Height="40" 
                             Margin="0, 10, 0, 0"
-                            Content="Exit" FontSize="18"
-                            MouseEnter="Button_MouseEnter"
-                            MouseLeave="Button_MouseLeave"/>
+                            Content="Exit" FontSize="18"/>
                 </StackPanel>
             </Grid>
         </Border>

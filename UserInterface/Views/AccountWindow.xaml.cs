@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,16 +24,6 @@ namespace UserInterface.Views
         public AccountWindow()
         {
             InitializeComponent();
-        }
-
-        private void Button_MouseEnter(object sender, MouseEventArgs e)
-        {
-            
-        }
-
-        private void Button_MouseLeave(object sender, MouseEventArgs e)
-        {
-
         }
     }
 }

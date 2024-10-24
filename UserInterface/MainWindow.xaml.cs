@@ -20,19 +20,29 @@ namespace UserInterface
     {
         private Account Account;
 
-        private AccountWindow accountWindow = new AccountWindow();
-        private StatisticsWindow statisticsWindow = new StatisticsWindow();
-        private FoodPlansWindow foodPlansWindow = new FoodPlansWindow();
-        private RecipesWindow recipesWindow = new RecipesWindow();
-        private SettingsWindow settingsWindow = new SettingsWindow();
+        private AccountWindow accountWindow;
+        private StatisticsWindow statisticsWindow;
+        private FoodPlansWindow foodPlansWindow;
+        private RecipesWindow recipesWindow;
+        private SettingsWindow settingsWindow;
 
         public MainWindow()
         {
+            accountWindow = new AccountWindow();
+            statisticsWindow = new StatisticsWindow();
+            foodPlansWindow = new FoodPlansWindow();
+            recipesWindow = new RecipesWindow();
+            settingsWindow = new SettingsWindow();
             InitializeComponent();
         }
         public MainWindow(Account account)
         {
             Account = account;
+            accountWindow = new AccountWindow();
+            statisticsWindow = new StatisticsWindow();
+            foodPlansWindow = new FoodPlansWindow();
+            recipesWindow = new RecipesWindow();
+            settingsWindow = new SettingsWindow();
             InitializeComponent();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)

@@ -61,8 +61,4 @@
     <Resource Include="Images\MainButtons\Statistics.ico" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-
 </Project>
