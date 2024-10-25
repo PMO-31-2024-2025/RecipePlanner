@@ -23,16 +23,31 @@ namespace UserInterface.Views
     /// </summary>
     public partial class RecipesWindow : Page
     {
-        public RecipesWindow()
+        Frame mainFrame;
+        public RecipesWindow(Frame givenFrame)
         {
             InitializeComponent();
-
+            mainFrame = givenFrame;
+            RecipeListView.Items.Clear();
+            RecipeListView.ItemsSource = DbHelper.db.Dishes.ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            RecipeListView.Items.Clear();
-            RecipeListView.ItemsSource = DbHelper.db.Dishes.ToList();
+            AddEditRecipe window = new AddEditRecipe();
+            mainFrame.Navigate(window);
+        }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SeeRecipePage recipePage = new SeeRecipePage();
+            mainFrame.Navigate(recipePage);
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditRecipe window = new AddEditRecipe();
+            mainFrame.Navigate(window);
         }
     }
 }

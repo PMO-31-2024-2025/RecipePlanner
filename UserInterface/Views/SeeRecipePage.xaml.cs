@@ -1,5 +1,4 @@
-﻿using DataAccess.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +16,11 @@ using System.Windows.Shapes;
 namespace UserInterface.Views
 {
     /// <summary>
-    /// Interaction logic for AccountWindow.xaml
+    /// Interaction logic for SeeRecipePage.xaml
     /// </summary>
-    public partial class AccountWindow : Page
+    public partial class SeeRecipePage : Page
     {
-        public AccountWindow()
+        public SeeRecipePage()
         {
             InitializeComponent();
         }

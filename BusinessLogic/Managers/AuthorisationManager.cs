@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using DataAccess.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace BusinessLogic.Managers
         {
             if (Registered(email))
             {
-                return DbHelper.db.Accounts.First(account => account.Email == email);
+                return DbHelper.db.Accounts.Include("AccountInfo").Include("Dishes").First(account => account.Email == email);
             }
             else
             {

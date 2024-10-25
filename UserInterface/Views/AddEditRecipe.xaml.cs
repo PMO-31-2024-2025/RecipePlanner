@@ -24,5 +24,10 @@ namespace UserInterface.Views
         {
             InitializeComponent();
         }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

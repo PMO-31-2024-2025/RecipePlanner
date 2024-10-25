@@ -1,4 +1,4 @@
-﻿<Page x:Class="UserInterface.Views.AddEditRecipe"
+﻿<Page x:Class="UserInterface.Views.SeeRecipePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,21 +6,20 @@
       xmlns:local="clr-namespace:UserInterface.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Style="{StaticResource PageResource}"
-      Title="AddEditRecipe">
+      Title="SeeRecipePage"
+      Style="{StaticResource PageResource}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <!--Top-->
         <Border Grid.Row="0" Margin="10" Background="White" CornerRadius="40">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="1.5*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
@@ -37,9 +36,9 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    
+
                     <ListView VerticalAlignment="Center" 
-                              Margin="10" Grid.Row="0">
+                          Margin="10" Grid.Row="0">
                         <ListViewItem FontSize="20" FontWeight="SemiBold">
                             <TextBlock Text="Ingridient 1"/>
                         </ListViewItem>
@@ -65,44 +64,10 @@
                             <TextBlock Text="Ingridient 8"/>
                         </ListViewItem>
                     </ListView>
-                    <Grid Grid.Row="1" Margin="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBox Text="New Ingridient" 
-                                 Grid.Column="0" Padding="0, 10, 0, 0"
-                                 Height="50"
-                                 FontSize="16"/>
-                        <Button Content="Add"
-                                Grid.Column="1"
-                                FontSize="18"
-                                Margin="5, 0"/>
-                        <Button Content="Remove"
-                                Grid.Column="2"
-                                FontSize="18"
-                                Margin="5, 0"/>
-                    </Grid>
-                </Grid>
-                <!--Top Right-->
-                <Grid Grid.Column="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Button Content="Add Recipe" Grid.Row="0" 
-                            Margin="15" FontSize="20"/>
-                    <Button Content="Cancel"
-                            x:Name="CancelButton"
-                            Click="CancelButton_Click"
-                            Grid.Row="1" 
-                            Margin="15" FontSize="20"/>
                 </Grid>
             </Grid>
         </Border>
-        
+
 
         <!--Bottom-->
         <Border Grid.Row="1" Margin="10" Background="White" CornerRadius="40">
@@ -124,8 +89,8 @@
 
                     <TextBox Grid.Row="1" FontSize="18"
                              FontWeight="SemiBold"
-                             Text="Here is the recipe"/>
-
+                             Text="Here is the recipe"
+                             IsEnabled="False"/>
                 </Grid>
 
                 <!--Bottom right-->
@@ -142,56 +107,60 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Column="0" Grid.Row="0"
-                               FontSize="20"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Text="Protein"/>
+                           FontSize="20"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="Protein"/>
 
                     <TextBlock Grid.Column="0" Grid.Row="1"
-                               FontSize="20"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Text="Carbs"/>
+                           FontSize="20"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="Carbs"/>
 
                     <TextBlock Grid.Column="0" Grid.Row="2"
-                               FontSize="20"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Text="Fat"/>
+                           FontSize="20"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="Fat"/>
 
                     <TextBlock Grid.Column="0" Grid.Row="3"
-                               FontSize="20"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Text="Calories"/>
+                           FontSize="20"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="Calories"/>
 
                     <TextBox Grid.Column="1" Grid.Row="0"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
                              Text="50 grams"
-                             BorderThickness="0"/>
+                             BorderThickness="0"
+                             IsEnabled="False"/>
 
                     <TextBox Grid.Column="1" Grid.Row="1"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
                              Text="120 grams"
-                             BorderThickness="0"/>
+                             BorderThickness="0"
+                             IsEnabled="False"/>
 
                     <TextBox Grid.Column="1" Grid.Row="2"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
                              Text="5 grams"
-                             BorderThickness="0"/>
+                             BorderThickness="0"
+                             IsEnabled="False"/>
 
                     <TextBox Grid.Column="1" Grid.Row="3"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
                              Text="900"
-                             BorderThickness="0"/>
+                             BorderThickness="0"
+                             IsEnabled="False"/>
                 </Grid>
             </Grid>
         </Border>
