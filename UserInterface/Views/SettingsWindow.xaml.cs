@@ -24,5 +24,41 @@ namespace UserInterface.Views
         {
             InitializeComponent();
         }
+
+        private void ChangeEmailButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ChangeSelectUkButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ChangeSelectEngButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TextBoxChangeEmail_MouseEnter(object sender, MouseEventArgs e)
+        {
+            
+            
+        }
+
+        private void TextBoxChangePassword_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
