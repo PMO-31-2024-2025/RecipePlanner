@@ -1,15 +1,151 @@
 ﻿<Page x:Class="UserInterface.Views.SettingsWindow"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:UserInterface.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UserInterface.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Style="{StaticResource PageResource}">
+
     <Grid>
-        <TextBlock HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Text="Settings Window"
-            FontSize="40"/>
+        <Border Background="White" CornerRadius="40" Margin="10,10,10,10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Header -->
+                <TextBlock Text="Settings" 
+                            Grid.Row="0"
+                            FontWeight="Bold"
+                            FontSize="28"
+                            Margin="38,18,630,0"/>
+
+                <!-- Change Email -->
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Email" 
+                                Grid.Row="0"
+                                FontSize="20" Margin="38,0,682,30" 
+                                FontStyle="Italic" Grid.RowSpan="2"/>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="11*"/>
+                            <ColumnDefinition Width="28*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column ="0"
+                                 x:Name="ChangeEmailTextBox"
+                                 FontSize="16"
+                                 MouseEnter="TextBoxChangeEmail_MouseEnter" Margin="37,0,22,5"/>
+
+                        <Button Grid.Column ="1"
+                                 x:Name="ChangeEmailButton" 
+                                 Content="Change"
+                                 FontSize="16"
+                                 Width="100"
+                                 HorizontalAlignment="Left"
+                                 Click="ChangeEmailButton_Click" Margin="10,0,0,5"/>
+                    </Grid>
+                </Grid>
+
+                <!-- Change Password -->
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Password" 
+                                Grid.Row="0"
+                                FontSize="20" Margin="40,2,651,3"
+                                FontStyle="Italic"/>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="11*"/>
+                            <ColumnDefinition Width="28*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column ="0"
+                                 x:Name="ChangePasswordTextBox"
+                                 FontSize="16"
+                                 MouseEnter="TextBoxChangePassword_MouseEnter" Margin="37,0,22,5"/>
+
+                        <Button
+                                x:Name="ChangePasswordButton" 
+                                Content="Change"
+                                FontSize="16"
+                                Width="100"
+                                HorizontalAlignment="Left"
+                                Click="ChangePasswordButton_Click" Margin="10,0,0,5" Grid.Column="1"/>
+                    </Grid>
+                </Grid>
+
+                <CheckBox Content="Receive notifications"
+                          HorizontalAlignment="Left"
+                          Margin="38,31,0,0"
+                          Grid.Row="3"
+                          FontSize="18"
+                          VerticalAlignment="Top"/>
+
+                <CheckBox Content="Receive the newsletter"
+                          HorizontalAlignment="Left"
+                          Margin="38,14,0,0"
+                          Grid.Row="4"
+                          FontSize="18"
+                          VerticalAlignment="Top"/>
+
+                <!-- Select Language -->
+                <Grid Grid.Row="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" MinWidth="181"/>
+                            <ColumnDefinition Width="Auto" MinWidth="54"/>
+                            <ColumnDefinition Width="57"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Grid.Column="0"
+                                   Text="Select language" 
+                                   FontSize="18" 
+                                   Margin="39,13,19,0"
+                                   VerticalAlignment="Top" Height="24" Grid.ColumnSpan="2"/>
+
+                        <Button Grid.Column="1"
+                                x:Name="ChangeSelectUkButton" 
+                                Content="UK" 
+                                Click="ChangeSelectUkButton_Click"
+                                Background="LightGray"
+                                Margin="4,10,0,30" RenderTransformOrigin="0.559,0.086"/>
+
+                        <Button Grid.Column="2"
+                                x:Name="ChangeSelectEngButton" 
+                                Content="ENG"
+                                Click="ChangeSelectEngButton_Click"
+                                Background="LightCyan"
+                                Margin="0,10,10,30" RenderTransformOrigin="0.5,0.5"/>
+                    </Grid>
+                </Grid>
+
+                <Button Grid.Row="6"
+                        Width="148"
+                        FontSize="16"
+                        Content="Delete account"
+                        x:Name="DeleteAccountButton"
+                        Click="DeleteAccountButton_Click" Margin="316,5,316,15" RenderTransformOrigin="0.509,0.305"/>
+
+            </Grid>
+        </Border>
     </Grid>
 </Page>
