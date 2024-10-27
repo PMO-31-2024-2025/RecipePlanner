@@ -22,10 +22,28 @@ namespace UserInterface.Views
     public partial class AccountWindow : Page
     {
         private Account LoginedAccount;
-        public AccountWindow(Account account)
+        private Frame RightSideFrame;
+        private MainWindow MyMainWindow;
+        public AccountWindow(Account account, Frame frame, MainWindow window)
         {
             LoginedAccount = account;
+            RightSideFrame = frame;
+            MyMainWindow = window;
+
             InitializeComponent();
+            MainGrid.DataContext = account;
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            RightSideFrame.Navigate(new SettingsWindow());
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            MyMainWindow.Close();
         }
     }
 }

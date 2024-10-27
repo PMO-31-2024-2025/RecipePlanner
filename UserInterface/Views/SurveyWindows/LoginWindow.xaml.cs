@@ -26,13 +26,13 @@ namespace UserInterface.Views
         List<Account> Accounts;
         public LoginWindow()
         {
-            GetAccountsAsync();
+            GetAccounts();
             InitializeComponent();
         }
 
-        public async void GetAccountsAsync()
+        public void GetAccounts()
         {
-            Accounts = await DbHelper.db.Accounts.Include("AccountInfo").Include("Dishes").ToListAsync();
+            Accounts = DbHelper.db.Accounts.Include("AccountInfo").Include("Dishes").ToList();
         }
 
         private void TextBox_MouseEnter(object sender, MouseEventArgs e)
@@ -73,7 +73,7 @@ namespace UserInterface.Views
             DbHelper.db.AddAsync(new Account() { Email = LoginTextBox.Text, Password = PasswordTextBox.Text });
 
             MessageBox.Show("Account Successfully Registered");
-            GetAccountsAsync();
+            GetAccounts();
 
             Account account = Accounts.Find(acc => acc.Email == LoginTextBox.Text)!;
             MainWindow programEntry = new MainWindow(account);

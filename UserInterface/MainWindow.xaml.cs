@@ -30,7 +30,7 @@ namespace UserInterface
             InitializeComponent();
             LoginedAccount = account;
 
-            accountWindow = new AccountWindow(LoginedAccount);
+            accountWindow = new AccountWindow(LoginedAccount, RightSideFrame, this);
             statisticsWindow = new StatisticsWindow();
             foodPlansWindow = new FoodPlansWindow();
             recipesWindow = new RecipesWindow(RightSideFrame);
