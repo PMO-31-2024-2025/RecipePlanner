@@ -25,11 +25,14 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Top left-->
-                <Ellipse Grid.Column="0" Width="190" Height="190">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="pack://application:,,,/Images/Accounts/MainPictures/Test.png"/>
-                    </Ellipse.Fill>
-                </Ellipse>
+                <Button Background="White" BorderThickness="0" Grid.Column="0">
+                    <Ellipse Width="190" Height="190">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="pack://application:,,,/Images/Accounts/MainPictures/Test.png"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Button>
+                
 
                 <!--Top middle-->
                 <Grid Grid.Column="1">
