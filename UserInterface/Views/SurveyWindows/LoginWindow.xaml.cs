@@ -1,6 +1,6 @@
-﻿using BusinessLogic.Managers;
-using DataAccess;
+﻿using DataAccess;
 using DataAccess.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +23,16 @@ namespace UserInterface.Views
     /// </summary>
     public partial class LoginWindow : Window
     {
+        List<Account> Accounts;
         public LoginWindow()
         {
+            GetAccountsAsync();
             InitializeComponent();
+        }
+
+        public async void GetAccountsAsync()
+        {
+            Accounts = await DbHelper.db.Accounts.Include("AccountInfo").Include("Dishes").ToListAsync();
         }
 
         private void TextBox_MouseEnter(object sender, MouseEventArgs e)
@@ -36,13 +43,13 @@ namespace UserInterface.Views
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if (AuthorisationManager.Registered(LoginTextBox.Text) == false)
+            if (Accounts.Where(acc => acc.Email == LoginTextBox.Text) == null)
             {
                 MessageBox.Show("Login Error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            Account account = AuthorisationManager.GetAccountByEmail(LoginTextBox.Text);
+            Account account = Accounts.Find(acc => acc.Email == LoginTextBox.Text)!;
             if (account.Password == PasswordTextBox.Text)
             {
                 MainWindow programEntry = new MainWindow(account);
@@ -57,15 +64,19 @@ namespace UserInterface.Views
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            if (AuthorisationManager.Registered(LoginTextBox.Text) == true)
+            if (Accounts.FirstOrDefault(acc => acc.Email == LoginTextBox.Text) != null)
             {
                 MessageBox.Show("Account Already Exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            AuthorisationManager.Register(LoginTextBox.Text, PasswordTextBox.Text);
+            DbHelper.db.AddAsync(new Account() { Email = LoginTextBox.Text, Password = PasswordTextBox.Text });
+
             MessageBox.Show("Account Successfully Registered");
-            MainWindow programEntry = new MainWindow(AuthorisationManager.GetAccountByEmail(LoginTextBox.Text));
+            GetAccountsAsync();
+
+            Account account = Accounts.Find(acc => acc.Email == LoginTextBox.Text)!;
+            MainWindow programEntry = new MainWindow(account);
             programEntry.Show();
             Close();
         }

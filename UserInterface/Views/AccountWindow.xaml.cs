@@ -21,8 +21,10 @@ namespace UserInterface.Views
     /// </summary>
     public partial class AccountWindow : Page
     {
-        public AccountWindow()
+        private Account LoginedAccount;
+        public AccountWindow(Account account)
         {
+            LoginedAccount = account;
             InitializeComponent();
         }
     }

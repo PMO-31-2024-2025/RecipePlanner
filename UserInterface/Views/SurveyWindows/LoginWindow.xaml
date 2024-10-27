@@ -5,29 +5,31 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UserInterface.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="450"
+      d:DesignHeight="600" d:DesignWidth="1000"
       Title="LoginWindow">
 
     <Grid>
         <Border Background="White" Width="400" Height="300" CornerRadius="50">
             <StackPanel>
-                <TextBlock Text="Login" 
+                <TextBlock Text="Login"
+                           FontSize="25"
                            HorizontalAlignment="Center" 
                            FontWeight="Bold" 
                            Margin="0 80 0 10"/>
                 
                 <TextBox Background="LightCyan" 
                          x:Name="LoginTextBox"
+                         FontSize="18"
                          FontStyle="Italic" 
-                         Width="150" Height="20" 
+                         Width="220"
                          Text="Email"
                          MouseEnter="TextBox_MouseEnter"/>
                 
                 <TextBox Background="LightCyan"
                          x:Name="PasswordTextBox"
                          FontStyle="Italic" 
-                         Width="150" 
-                         Height="20" 
+                         Width="220"
+                         FontSize="18"
                          Margin="10" 
                          Text="Password"
                          MouseEnter="TextBox_MouseEnter"/>
@@ -35,16 +37,17 @@
                 <Button Background="LightCyan"
                         x:Name="LoginButton"
                         Width="80" 
-                        Height="20" 
-                        Content="Login" 
+                        Content="Login"
+                        FontSize="18"
                         FontWeight="Bold" Click="LoginButton_Click"/>
                 <TextBlock Text="or" HorizontalAlignment="Center" 
-                           FontWeight="Bold" Margin="5"/>
+                           FontWeight="Bold" Margin="5"
+                           FontSize="16"/>
                 <Button Content="Register" 
                         x:Name="RegisterButton"
-                        Width="150" 
+                        Width="150" FontSize="18"
                         Background="LightCyan"
-                        Height="20" FontWeight="Bold" Click="RegisterButton_Click"/>
+                        FontWeight="Bold" Click="RegisterButton_Click"/>
             </StackPanel>
         </Border>
     </Grid>

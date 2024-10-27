@@ -24,19 +24,13 @@ namespace UserInterface
         private RecipesWindow recipesWindow;
         private SettingsWindow settingsWindow;
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            accountWindow = new AccountWindow();
-            statisticsWindow = new StatisticsWindow();
-            foodPlansWindow = new FoodPlansWindow();
-            recipesWindow = new RecipesWindow(RightSideFrame);
-            settingsWindow = new SettingsWindow();
-        }
+        private Account LoginedAccount;
         public MainWindow(Account account)
         {
             InitializeComponent();
-            accountWindow = new AccountWindow();
+            LoginedAccount = account;
+
+            accountWindow = new AccountWindow(LoginedAccount);
             statisticsWindow = new StatisticsWindow();
             foodPlansWindow = new FoodPlansWindow();
             recipesWindow = new RecipesWindow(RightSideFrame);

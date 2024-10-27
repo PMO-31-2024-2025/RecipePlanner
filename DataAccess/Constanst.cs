@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic
+namespace DataAccess
 {
     public enum Sex { Female, Male }
     public enum WeightGoal { Gain, Lose, Maintain }
