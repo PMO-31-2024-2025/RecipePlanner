@@ -31,9 +31,9 @@ namespace UserInterface
             LoginedAccount = account;
 
             accountWindow = new AccountWindow(LoginedAccount, RightSideFrame, this);
+            recipesWindow = new RecipesWindow(LoginedAccount, RightSideFrame);
             statisticsWindow = new StatisticsWindow();
             foodPlansWindow = new FoodPlansWindow();
-            recipesWindow = new RecipesWindow(RightSideFrame);
             settingsWindow = new SettingsWindow();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
