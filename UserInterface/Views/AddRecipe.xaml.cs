@@ -26,11 +26,9 @@ namespace UserInterface.Views
     {
         public ObservableCollection<Ingredient> Ingredients = new ObservableCollection<Ingredient>();
         
-        Dish? dishToEdit;
         Account LoginedAccount;
-        public AddRecipe(Account account, Dish? dish=null)
+        public AddRecipe(Account account)
         {
-            dishToEdit = dish;
             LoginedAccount = account;
             InitializeComponent();
 
