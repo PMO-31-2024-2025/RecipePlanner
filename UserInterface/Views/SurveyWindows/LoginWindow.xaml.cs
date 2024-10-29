@@ -9,6 +9,7 @@ namespace UserInterface.Views
         public LoginWindow()
         {
             InitializeComponent();
+            App.SurviesFrame = SurviesFrame;
         }
 
         private void TextBox_MouseEnter(object sender, MouseEventArgs e)

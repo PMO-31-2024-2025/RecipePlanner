@@ -24,5 +24,25 @@ namespace UserInterface.Views
         {
             InitializeComponent();
         }
+
+        private void LoseWeightButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GainWeightButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MaintainWeightButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.SurviesFrame.Navigate(App.SurveyWindow_2);
+        }
     }
 }

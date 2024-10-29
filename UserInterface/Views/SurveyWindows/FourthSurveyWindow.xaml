@@ -14,38 +14,33 @@
                 <DropShadowEffect BlurRadius="30" ShadowDepth="0"/>
             </Border.Effect>
 
-            <StackPanel>
-                <TextBlock Text="What is your name?" HorizontalAlignment="Center" Margin="0 70 0 0" FontWeight="Bold"></TextBlock>
-                <TextBox Width="100" 
-                         Background="LightGoldenrodYellow" 
-                         Margin="0 10 0 0"></TextBox>
+            <StackPanel VerticalAlignment="Center">
 
                 <TextBlock Text="How old are you?" 
                            HorizontalAlignment="Center" 
                            FontWeight="Bold" 
-                           Margin=" 0 10 0 0"></TextBlock>
+                           Margin=" 0 10 0 0"/>
                 <TextBox Width="100" 
                          Background="LightGoldenrodYellow"
-                         Margin=" 0 10 0 0"></TextBox>
-                <!--<Image Source="G:\RecipePlanner\UserInterface\Images\SurveyWindows\calendar.png"
-                       Width="20" Margin="0 -22 -150 0"></Image>-->
+                         Margin=" 0 10 0 0"
+                         x:Name="AgeTexBox"/>
 
                 <TextBlock Text="What is your gender?" 
                            HorizontalAlignment="Center"
                            FontWeight="Bold" 
                            Margin ="0 10 0 0"></TextBlock>
                 <RadioButton Content="Male" HorizontalAlignment="Center" 
-                             Margin="0 15 105 0"></RadioButton>
+                             Margin="0 15 105 0"
+                             x:Name="MaleRadiButton"/>
                 <RadioButton Content="Female" HorizontalAlignment="Center"
-                             Margin="0 -15 -85 0"></RadioButton>
+                             Margin="0 -15 -85 0"
+                             x:Name="FemaleRadiButton"/>
 
-                <Button Width="60" Height="20" Content="Back" 
-                        Background="LightGray" 
-                        Margin="0 10 80 0"></Button>
                 <Button Width="60" Height="20"
                         Content="Next"
                         Background="LightGray"
-                        Margin="0 -19.5 -80 0"></Button>
+                        Margin="40"
+                        x:Name="NextButton" Click="NextButton_Click"/>
             </StackPanel>
         </Border>
     </Grid>

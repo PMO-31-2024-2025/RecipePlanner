@@ -27,33 +27,29 @@
                         Height="30" 
                         Content="Not very active"
                         Margin="0 10 0 0"
-                        FontSize="18"></Button>
-                <Button Background="LightGray" 
-                        Width="140" 
-                        Height="30" 
-                        Content="Inactive" 
-                        Margin="0 10 0 0"
-                        FontSize="18"></Button>
+                        FontSize="18"
+                        x:Name="NotVeryActiveButton" 
+                        Click="Button_Click"/>
                 <Button Background="LightGray" 
                         Width="140" Height="30" 
                         Content="Active" 
                         Margin="0 10 0 0"
-                        FontSize="18"></Button>
+                        FontSize="18"
+                        x:Name="ActiveButton"
+                        Click="Button_Click"/>
                 <Button Background="LightGray" 
                         Width="140" Height="30" 
                         Content="Very active" 
                         Margin="0 10 0 0"
-                        FontSize="18"></Button>
-                
-                
+                        FontSize="18"
+                        x:Name="VeryActiveButton"
+                        Click="Button_Click"/>
+
                 <Button Background="LightGray" 
                         Width="70" Height="30" 
-                        Content="Back" Margin="0 20 150 0 "
-                        FontSize="18"></Button>
-                <Button Background="LightGray" 
-                        Width="70" Height="30" 
-                        Content="Next" Margin="0 -30 -150 0"
-                        FontSize="18"></Button>
+                        Content="Next" Margin="40"
+                        FontSize="18"
+                        x:Name="NextButton" Click="NextButton_Click"/>
             </StackPanel>
         </Border>
     </Grid>

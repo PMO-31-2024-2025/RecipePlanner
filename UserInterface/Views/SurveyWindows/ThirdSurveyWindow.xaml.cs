@@ -24,5 +24,25 @@ namespace UserInterface.Views
         {
             InitializeComponent();
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button PressedButton = (Button)sender;
+            if (PressedButton == NotVeryActiveButton)
+            {
+
+            }
+            else if (PressedButton == ActiveButton)
+            {
+
+            }
+            else if (PressedButton == VeryActiveButton)
+            {
+
+            }
+        }
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.SurviesFrame.Navigate(App.SurveyWindow_4);
+        }
     }
 }

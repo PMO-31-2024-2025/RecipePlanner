@@ -12,12 +12,14 @@ namespace UserInterface
         public static LoginWindow MyLoginWindow;
 
         //Additional information windows
-        public FirstSurveyWindow SurveyWindow_1;
-        public SecondSurveyWindow SurveyWindow_2;
-        public ThirdSurveyWindow SurveyWindow_3;
-        public FourthSurveyWindow SurveyWindow_4;
-        public FiveSurveyWindow SurveyWindow_5;
-        public CongratulationWindow SurveyWindow_6;
+        public static FirstSurveyWindow SurveyWindow_1;
+        public static SecondSurveyWindow SurveyWindow_2;
+        public static ThirdSurveyWindow SurveyWindow_3;
+        public static FourthSurveyWindow SurveyWindow_4;
+        public static FiveSurveyWindow SurveyWindow_5;
+        public static CongratulationWindow SurveyWindow_6;
+
+        public static Frame SurviesFrame;
 
         // Main application window and it's components
         public static Frame RightSideFrame;
