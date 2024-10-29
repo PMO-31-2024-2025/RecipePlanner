@@ -26,7 +26,7 @@ namespace UserInterface
         public static AddRecipe MyAddRecipeWindow = new AddRecipe();
         public static SeeRecipePage MySeeRecipeWindow = new SeeRecipePage();
 
-        private void Application_Startup(object sender, StartupEventArgs e)
+        public void Application_Startup(object sender, StartupEventArgs e)
         {
             MyLoginWindow = new LoginWindow();
             MyLoginWindow.Show();

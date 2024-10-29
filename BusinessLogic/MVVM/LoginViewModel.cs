@@ -1,4 +1,4 @@
-﻿using BusinessLogic.MVVM.Commands;
+﻿using BusinessLogic.MVVM.Commands.AuthenticationCommands;
 using DataAccess;
 using DataAccess.Models;
 using Microsoft.EntityFrameworkCore;

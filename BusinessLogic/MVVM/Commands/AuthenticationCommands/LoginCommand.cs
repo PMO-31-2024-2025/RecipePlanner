@@ -2,7 +2,7 @@
 using DataAccess.Models;
 using System.Windows.Input;
 
-namespace BusinessLogic.MVVM.Commands
+namespace BusinessLogic.MVVM.Commands.AuthenticationCommands
 {
     public class LoginCommand : ICommand
     {
@@ -12,7 +12,7 @@ namespace BusinessLogic.MVVM.Commands
             VM = vm;
         }
         public event EventHandler? CanExecuteChanged;
-        
+
         public void FireEvent()
         {
             CanExecuteChanged?.Invoke(this, new EventArgs());
@@ -21,7 +21,7 @@ namespace BusinessLogic.MVVM.Commands
         {
             bool validData = false;
             Account? account = DbHelper.db.Accounts.FirstOrDefault(acc => acc.Email == VM.Email);
-            
+
             if (account != null && account.Password == VM.Password)
             {
                 validData = true;

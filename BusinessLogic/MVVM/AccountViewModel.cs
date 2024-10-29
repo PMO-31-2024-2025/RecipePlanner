@@ -13,7 +13,6 @@ namespace BusinessLogic.MVVM
         private int _currentWeight = Globals.LoginedAccount.AccountInfo.Weight;
         private int _height = Globals.LoginedAccount.AccountInfo.Height;
         #endregion
-
         #region Properties
         public string Email 
         {
@@ -99,16 +98,6 @@ namespace BusinessLogic.MVVM
                 OnPropertyChanged(nameof(Height));
             }
         }
-        #endregion
-
-        #region Commands
-
-        #endregion
-
-        #region Constructors
-        #endregion
-
-        #region Methods
-        #endregion
+        #endregion 
     }
 }

@@ -1,7 +1,7 @@
 ﻿using DataAccess;
 using System.Windows.Input;
 
-namespace BusinessLogic.MVVM.Commands
+namespace BusinessLogic.MVVM.Commands.AuthenticationCommands
 {
     public class RegisterCommand : ICommand
     {

@@ -115,12 +115,16 @@
                 <StackPanel Grid.Row="3" VerticalAlignment="Center">
                     <Button Style="{StaticResource NiceButton}"
                             Width="120" Height="40"
-                            Content="Edit" FontSize="18"/>
+                            Content="Edit" FontSize="18"
+                            x:Name="EditCommand"
+                            Click="EditCommand_Click"/>
 
                     <Button Style="{StaticResource NiceButton}"
                             Width="120" Height="40" 
                             Margin="0, 10, 0, 0"
-                            Content="Exit" FontSize="18"/>
+                            Content="Exit" FontSize="18"
+                            x:Name="ExitButton"
+                            Click="ExitButton_Click"/>
                 </StackPanel>
             </Grid>
         </Border>
