@@ -57,7 +57,7 @@ namespace UserInterface.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddEditRecipe window = new AddEditRecipe();
+            AddRecipe window = new AddRecipe(LoginedAccount);
             mainFrame.Navigate(window);
         }
 
@@ -69,7 +69,7 @@ namespace UserInterface.Views
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            AddEditRecipe window = new AddEditRecipe();
+            AddRecipe window = new AddRecipe(LoginedAccount);
             mainFrame.Navigate(window);
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
