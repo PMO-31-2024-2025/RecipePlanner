@@ -2,6 +2,7 @@
 using DataAccess;
 using DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace BusinessLogic.MVVM
 {
@@ -12,6 +13,7 @@ namespace BusinessLogic.MVVM
         private string _password = "Password";
         private string _errorMessage;
         private bool _isLoginSuccessful = false;
+        private bool _timeToStartGainingAdditionalInformation = false;
         #endregion
 
         #region Properties
@@ -67,6 +69,18 @@ namespace BusinessLogic.MVVM
                 OnPropertyChanged(nameof(IsLoginSuccessful));
             }
         }
+        public bool GainAdditionalInformation
+        {
+            get
+            {
+                return _timeToStartGainingAdditionalInformation;
+            }
+            set
+            {
+                _timeToStartGainingAdditionalInformation = value;
+                OnPropertyChanged(nameof(GainAdditionalInformation));
+            }
+        }
         #endregion
 
         #region Commands
@@ -88,23 +102,20 @@ namespace BusinessLogic.MVVM
         {
             Globals.LoginedAccount = DbHelper.db.Accounts.Where(acc => acc.Email == Email).Include("AccountInfo").Include("Dishes").First();
             IsLoginSuccessful = true;
-            
-
         }
 
         public void ExecuteRegisterCommand()
         {
-            DbHelper.db.Accounts.Add(new Account()
+            Account registeredAccount = new Account()
             {
                 Email = Email,
                 Password = Password
-            });
-            DbHelper.db.SaveChanges();
+            };
 
-            // TODO: get additional information from user
+            DbHelper.db.Accounts.Add(registeredAccount);
+            //DbHelper.db.SaveChanges();
 
-            Globals.LoginedAccount = DbHelper.db.Accounts.Where(acc => acc.Email == Email).Include("AccountInfo").Include("Dishes").First();
-            IsLoginSuccessful = true;
+            GainAdditionalInformation = true;
         }
         #endregion
     }

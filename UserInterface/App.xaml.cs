@@ -11,6 +11,14 @@ namespace UserInterface
         // Startup windows
         public static LoginWindow MyLoginWindow;
 
+        //Additional information windows
+        public FirstSurveyWindow SurveyWindow_1;
+        public SecondSurveyWindow SurveyWindow_2;
+        public ThirdSurveyWindow SurveyWindow_3;
+        public FourthSurveyWindow SurveyWindow_4;
+        public FiveSurveyWindow SurveyWindow_5;
+        public CongratulationWindow SurveyWindow_6;
+
         // Main application window and it's components
         public static Frame RightSideFrame;
         public static MainWindow MyMainWindow;
@@ -39,6 +47,29 @@ namespace UserInterface
                     MyLoginWindow.Close();
                 }
             };
+
+            MyLoginWindow.StartGainingAdditionalInformation.TextChanged += (s, e) =>
+            {
+                if (MyLoginWindow.StartGainingAdditionalInformation.Text == "True")
+                {
+                    MyLoginWindow.LoginBorder.Visibility = Visibility.Hidden;
+                    MyLoginWindow.SurviesBorder.Visibility = Visibility.Visible;
+                    MyLoginWindow.SurviesFrame.Navigate(SurveyWindow_1);
+                }
+                else
+                {
+                    MyLoginWindow.SurviesFrame.Navigate(SurveyWindow_1);
+                    MyLoginWindow.SurviesBorder.Visibility = Visibility.Hidden;
+                    MyLoginWindow.LoginBorder.Visibility = Visibility.Visible;
+                }
+            };
+
+            SurveyWindow_1 = new FirstSurveyWindow();
+            SurveyWindow_2 = new SecondSurveyWindow();
+            SurveyWindow_3 = new ThirdSurveyWindow();
+            SurveyWindow_4 = new FourthSurveyWindow();
+            SurveyWindow_5 = new FiveSurveyWindow();
+            SurveyWindow_6 = new CongratulationWindow();
         }
     }
 }

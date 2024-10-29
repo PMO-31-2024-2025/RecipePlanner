@@ -13,12 +13,19 @@
     <Window.DataContext>
         <viewModel:LoginViewModel/>
     </Window.DataContext>
-    
+
     <Grid>
-        <Border Background="White" Width="400" Height="300" CornerRadius="50">
+        <Border Background="White" Width="1000" Height="600" 
+                CornerRadius="50" x:Name="LoginBorder">
             <StackPanel>
+                <!--Special objects to help with MVVM pattern
+                in App.xaml.cs file-->
                 <TextBox x:Name="IsLoginSuccessfulTextBox"
                          Text="{Binding IsLoginSuccessful, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Visibility="Collapsed"/>
+
+                <TextBox x:Name="StartGainingAdditionalInformation"
+                         Text="{Binding GainAdditionalInformation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Visibility="Collapsed"/>
 
                 <TextBlock Text="Login"
@@ -65,6 +72,10 @@
                         FontWeight="Bold"
                         Command="{Binding RegisterCommand}"/>
             </StackPanel>
+        </Border>
+        <Border Background="White" Width="1000" Height="600" 
+                CornerRadius="50" x:Name="SurviesBorder" Visibility="Hidden">
+            <Frame x:Name="SurviesFrame"/>
         </Border>
     </Grid>
 </Window>
