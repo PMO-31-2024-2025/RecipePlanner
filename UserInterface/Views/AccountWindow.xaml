@@ -4,10 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UserInterface.Views"
+             xmlns:viewModel="clr-namespace:BusinessLogic.MVVM;assembly=BusinessLogic"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Style="{StaticResource PageResource}">
 
+    <Page.DataContext>
+        <viewModel:AccountViewModel/>
+    </Page.DataContext>
+    
     <Grid Margin="10" x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -71,11 +76,11 @@
                         
                         <TextBlock Style="{StaticResource NiceTextBlock}"
                                    Grid.Column="1" Grid.Row="0"
-                                   Text="{Binding AccountInfo.Age}" FontSize="16"/>
+                                   Text="{Binding Age}" FontSize="16"/>
 
                         <TextBlock Style="{StaticResource NiceTextBlock}"
                                    Grid.Column="1" Grid.Row="1"
-                                   Text="{Binding AccountInfo.Sex}" FontSize="16"/>
+                                   Text="{Binding Gender}" FontSize="16"/>
                     </Grid>
                 </Grid>
 
@@ -109,17 +114,13 @@
                 <!--Buttons-->
                 <StackPanel Grid.Row="3" VerticalAlignment="Center">
                     <Button Style="{StaticResource NiceButton}"
-                            x:Name="EditButton"
                             Width="120" Height="40"
-                            Content="Edit" FontSize="18"
-                            Click="EditButton_Click"/>
+                            Content="Edit" FontSize="18"/>
 
-                    <Button Style="{StaticResource NiceButton}" 
-                            x:Name="ExitButton"
+                    <Button Style="{StaticResource NiceButton}"
                             Width="120" Height="40" 
                             Margin="0, 10, 0, 0"
-                            Content="Exit" FontSize="18"
-                            Click="ExitButton_Click"/>
+                            Content="Exit" FontSize="18"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -157,7 +158,7 @@
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
                     
-                    <TextBlock Text="{Binding AccountInfo.Goal, StringFormat='{}{0} Weight'}"
+                    <TextBlock Text="{Binding Goal, StringFormat='{}{0} Weight'}"
                                Grid.Column="1" Grid.Row="0"
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
@@ -167,7 +168,7 @@
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="{Binding AccountInfo.DesiredWeight, StringFormat='{}{0} kg'}"
+                    <TextBlock Text="{Binding DesiredWeight, StringFormat='{}{0} kg'}"
                                Grid.Column="1" Grid.Row="1"
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
@@ -177,7 +178,7 @@
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="{Binding AccountInfo.Weight, StringFormat='{}{0} kg'}"
+                    <TextBlock Text="{Binding CurrentWeight, StringFormat='{}{0} kg'}"
                                Grid.Column="1" Grid.Row="2"
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
@@ -187,7 +188,7 @@
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="{Binding AccountInfo.Height, StringFormat='{}{0} cm'}"
+                    <TextBlock Text="{Binding Height, StringFormat='{}{0} cm'}"
                                Grid.Column="1" Grid.Row="3"
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
