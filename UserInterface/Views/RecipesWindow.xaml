@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:UserInterface.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -22,7 +23,8 @@
             
             <!--Filtering ComboBox-->
             <Grid Grid.Column="0">
-                <ComboBox Style="{StaticResource RecipeCombobox}">
+                <ComboBox Style="{StaticResource RecipeCombobox}"
+                          SelectionChanged="ComboBox_SelectionChanged">
                     <ComboBoxItem Content="Filter by" IsSelected="True" 
                                   IsEnabled="False"/>
                     <ComboBoxItem Content="Protein"/>
@@ -33,12 +35,14 @@
             
             <!--Search line-->
             <Grid Grid.Column="1">
-                <TextBox Style="{StaticResource RecipeTextBox}"/>
+                <TextBox Style="{StaticResource RecipeTextBox}"
+                         x:Name="SearchTextbox"
+                         TextChanged="SearchTextbox_TextChanged"/>
             </Grid>
             
             <!--Add New Recipe-->
             <Grid Grid.Column="2" Margin="20">
-                <Button Content="Add New" Style="{StaticResource NiceButton}"
+                <Button Content="Add new" Style="{StaticResource NiceButton}"
                         FontSize="20"
                         Click="Button_Click"/>
             </Grid>

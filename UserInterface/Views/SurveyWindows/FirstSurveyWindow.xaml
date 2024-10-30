@@ -26,26 +26,27 @@
                         Width="170" 
                         Height="35" 
                         Content="Lose weight"
-                        FontSize="18"/>
+                        FontSize="18"
+                        x:Name="LoseWeightButton" Click="LoseWeightButton_Click"/>
+                
                 <Button Background="LightGray"
                         Width="170" Height="35"
                         Margin="0 20 0 0" 
                         Content="Gain weight"
-                        FontSize="18"/>
+                        FontSize="18"
+                        x:Name="GainWeightButton" Click="GainWeightButton_Click"/>
+                
                 <Button Background="LightGray" Width="170"
                         Height="35" Margin="0 20 0 0" 
                         Content="Maintain the weight"
-                        FontSize="18"/>
+                        FontSize="18"
+                        x:Name="MaintainWeightButton" Click="MaintainWeightButton_Click"/>
 
                 <Button Background="LightGray"
-                        Width="80" Height="35"
-                        Content="Back" 
-                        Margin="0 40 150 0"
-                        FontSize="18"></Button>
-                <Button Background="LightGray"
                         Width="80" Height="35" 
-                        Content="Next" Margin="0 -35 -150 0"
-                        FontSize="18"></Button>
+                        Content="Next" Margin="40"
+                        FontSize="18"
+                        x:Name="NextButton" Click="NextButton_Click"/>
             </StackPanel>
             
         </Border>

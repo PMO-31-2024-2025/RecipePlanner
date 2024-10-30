@@ -34,14 +34,11 @@
                            FontSize="18"
                            Margin="0 5 0 0"></TextBlock>
 
-                <Button Content="Back" Width="80" 
-                        Height="45"
-                        Margin="0 20 80 0"
-                        FontSize="24"></Button>
                 <Button Content="Next" Width="80" 
                         Height="45"
-                        Margin="0 -45 -100 0"
-                        FontSize="24"></Button>
+                        Margin="40"
+                        FontSize="24"
+                        x:Name="NextButton" Click="NextButton_Click"/>
             </StackPanel>
         </Border>
     </Grid>

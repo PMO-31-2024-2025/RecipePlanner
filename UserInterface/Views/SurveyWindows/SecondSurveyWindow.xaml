@@ -22,35 +22,40 @@
                 <Button Background="LightGray" 
                         Width="150" Height="35"
                         Content="Less than 1000"
-                        FontSize="18"/>
+                        FontSize="18"
+                        x:Name="LessThan1000Button" 
+                        Click="Button_Click"/>
                 <Button Background="LightGray" 
                         Width="150" Height="35" 
                         Margin="0 10 0 0" Content="1000-3000"
-                        FontSize="18"/>
+                        FontSize="18"
+                        x:Name="UpTo3000Button"
+                        Click="Button_Click"/>
                 <Button Background="LightGray" 
                         Width="150" Height="35" 
                         Margin="0 10 0 0" Content="3000-7000"
-                        FontSize="18"/>
+                        FontSize="18"
+                        x:Name="UpTo7000Button"
+                        Click="Button_Click"/>
                 <Button Background="LightGray" 
                         Width="150" Height="35" 
                         Margin="0 10 0 0" 
                         Content="More than 7000"
-                        FontSize="18"/>
+                        FontSize="18"
+                        x:Name="MoreThan7000Button"
+                        Click="Button_Click"/>
                 <Button Background="LightGray" 
                         Width="150" Height="35" 
                         Margin="0 10 0 0" 
-                        Content="I don't know" FontSize="18"/>
-                
-                
-                
-                <Button Background="LightGray" 
-                        Width="80" Height="35" 
-                        Content="Back" Margin="0 15 150 0"
-                        FontSize="18"></Button>
+                        Content="I don't know" FontSize="18"
+                        x:Name="NoIdeaButton"
+                        Click="Button_Click"/>
+
                 <Button Background="LightGray"
                         Width="80" Height="35" 
-                        Content="Next" Margin="0 -35 -150 0"
-                        FontSize="18"></Button>
+                        Content="Next" Margin="40"
+                        FontSize="18"
+                        x:Name="NextButton" Click="NextButton_Click"/>
             </StackPanel>
         </Border>
     </Grid>

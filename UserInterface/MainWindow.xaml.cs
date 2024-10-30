@@ -1,44 +1,23 @@
-﻿using DataAccess.Models;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using UserInterface.Views;
 
 namespace UserInterface
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        private AccountWindow accountWindow;
-        private StatisticsWindow statisticsWindow;
-        private FoodPlansWindow foodPlansWindow;
-        private RecipesWindow recipesWindow;
-        private SettingsWindow settingsWindow;
-
-        private Account LoginedAccount;
-        public MainWindow(Account account)
+        public MainWindow()
         {
             InitializeComponent();
-            LoginedAccount = account;
 
-            accountWindow = new AccountWindow(LoginedAccount, RightSideFrame, this);
-            statisticsWindow = new StatisticsWindow();
-            foodPlansWindow = new FoodPlansWindow();
-            recipesWindow = new RecipesWindow(RightSideFrame);
-            settingsWindow = new SettingsWindow();
-        }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            RightSideFrame.Navigate(accountWindow);
+            App.RightSideFrame = RightSideFrame;
+            App.MyAccountWindow = new AccountWindow();
+            App.MyRecipesWindow = new RecipesWindow();
+            App.MySettingsWindow = new SettingsWindow();
+            App.MyStatisticsWindow = new StatisticsWindow();
+            App.MyFoodPlansWindow = new FoodPlansWindow();
+
+            App.RightSideFrame.Navigate(App.MyAccountWindow);
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -46,19 +25,19 @@ namespace UserInterface
             switch (pressedButton.Name)
             {
                 case "AccountButton":
-                    RightSideFrame.Navigate(accountWindow);
+                    RightSideFrame.Navigate(App.MyAccountWindow);
                     break;
                 case "StatisticsButton":
-                    RightSideFrame.Navigate(statisticsWindow);
+                    RightSideFrame.Navigate(App.MyStatisticsWindow);
                     break;
                 case "FoodPlansButton":
-                    RightSideFrame.Navigate(foodPlansWindow);
+                    RightSideFrame.Navigate(App.MyFoodPlansWindow);
                     break;
                 case "RecipesButton":
-                    RightSideFrame.Navigate(recipesWindow);
+                    RightSideFrame.Navigate(App.MyRecipesWindow);
                     break;
                 case "SettingsButton":
-                    RightSideFrame.Navigate(settingsWindow);
+                    RightSideFrame.Navigate(App.MySettingsWindow);
                     break;
             }
         }

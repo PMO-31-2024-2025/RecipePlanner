@@ -1,4 +1,4 @@
-﻿<Page x:Class="UserInterface.Views.AddEditRecipe"
+﻿<Page x:Class="UserInterface.Views.AddRecipe"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Style="{StaticResource PageResource}"
-      Title="AddEditRecipe">
+      Title="AddRecipe">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -42,31 +42,18 @@
                     </Grid.RowDefinitions>
                     
                     <ListView VerticalAlignment="Center" 
-                              Margin="10" Grid.Row="0">
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 1"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 2"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 3"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 4"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 5"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 6"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 7"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 8"/>
-                        </ListViewItem>
+                              Margin="10" Grid.Row="0"
+                              x:Name="IngredientListView"
+                              BorderThickness="0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Text="{Binding IngredientName}"
+                                           HorizontalAlignment="Center"/>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                     </ListView>
                     <Grid Grid.Row="1" Margin="5">
                         <Grid.ColumnDefinitions>
@@ -77,31 +64,31 @@
                         <TextBox Text="New Ingridient" 
                                  Grid.Column="0" Padding="0, 10, 0, 0"
                                  Height="50"
-                                 FontSize="16"/>
+                                 FontSize="16"
+                                 x:Name="IngredientTextBox"/>
+                        
                         <Button Content="Add"
                                 Grid.Column="1"
                                 FontSize="18"
-                                Margin="5, 0"/>
+                                Margin="5, 0"
+                                x:Name="IngridientAddButton"
+                                Click="IngredientAddButton_Click"/>
                         <Button Content="Remove"
                                 Grid.Column="2"
                                 FontSize="18"
-                                Margin="5, 0"/>
+                                Margin="5, 0"
+                                x:Name="IngredientRemoveButton"
+                                Click="IngredientRemoveButton_Click"/>
                     </Grid>
                 </Grid>
                 <!--Top Right-->
                 <Grid Grid.Column="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
 
-                    <Button Content="Add Recipe" Grid.Row="0" 
-                            Margin="15" FontSize="20"/>
-                    <Button Content="Cancel"
-                            x:Name="CancelButton"
-                            Click="CancelButton_Click"
-                            Grid.Row="1" 
-                            Margin="15" FontSize="20"/>
+                    <Button Content="Add Recipe"
+                            Margin="15" FontSize="20"
+                            Height="100"
+                            x:Name="AddRecipeButton"
+                            Click="AddRecipeButton_Click"/>
                 </Grid>
             </Grid>
         </Border>
@@ -121,13 +108,17 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Recipe" 
-                               FontSize="20" FontWeight="Bold"
-                               HorizontalAlignment="Center"/>
+                    <TextBox Text="Title"
+                             Width="200"
+                             x:Name="RecipeTitle"
+                             FontSize="20" FontWeight="Bold"
+                             HorizontalAlignment="Center"
+                             TextAlignment="Center"/>
 
                     <TextBox Grid.Row="1" FontSize="18"
                              FontWeight="SemiBold"
-                             Text="Here is the recipe"/>
+                             Text="Here is the recipe"
+                             x:Name="RecipeTextBox"/>
 
                 </Grid>
 
@@ -172,29 +163,33 @@
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Text="50 grams"
-                             BorderThickness="0"/>
+                             Text="0"
+                             BorderThickness="0"
+                             x:Name="ProteingTextBox"/>
 
                     <TextBox Grid.Column="1" Grid.Row="1"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Text="120 grams"
-                             BorderThickness="0"/>
+                             Text="0"
+                             BorderThickness="0"
+                             x:Name="CarbsTextBox"/>
 
                     <TextBox Grid.Column="1" Grid.Row="2"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Text="5 grams"
-                             BorderThickness="0"/>
+                             Text="0"
+                             BorderThickness="0"
+                             x:Name="FatTextBox"/>
 
                     <TextBox Grid.Column="1" Grid.Row="3"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Text="900"
-                             BorderThickness="0"/>
+                             Text="0"
+                             BorderThickness="0"
+                             x:Name="CaloriesTextBox"/>
                 </Grid>
             </Grid>
         </Border>

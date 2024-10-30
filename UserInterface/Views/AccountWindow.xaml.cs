@@ -1,49 +1,35 @@
-﻿using DataAccess.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BusinessLogic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace UserInterface.Views
 {
-    /// <summary>
-    /// Interaction logic for AccountWindow.xaml
-    /// </summary>
     public partial class AccountWindow : Page
     {
-        private Account LoginedAccount;
-        private Frame RightSideFrame;
-        private MainWindow MyMainWindow;
-        public AccountWindow(Account account, Frame frame, MainWindow window)
+        public AccountWindow()
         {
-            LoginedAccount = account;
-            RightSideFrame = frame;
-            MyMainWindow = window;
-
             InitializeComponent();
-            MainGrid.DataContext = account;
         }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
+        private void EditCommand_Click(object sender, RoutedEventArgs e)
         {
-            RightSideFrame.Navigate(new SettingsWindow());
+            App.RightSideFrame.Navigate(App.MySettingsWindow);
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
-            MyMainWindow.Close();
+            App.MyLoginWindow = new LoginWindow();
+            App.MyLoginWindow.Show();
+            App.MyLoginWindow.IsLoginSuccessfulTextBox.TextChanged += (s, e) =>
+            {
+                if (App.MyLoginWindow.IsLoginSuccessfulTextBox.Text == "True")
+                {
+                    App.MyMainWindow = new MainWindow();
+                    App.MyMainWindow.Show();
+                    App.MyLoginWindow.Close();
+                }
+            };
+            App.MyMainWindow.Close();
         }
     }
 }

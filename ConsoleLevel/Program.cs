@@ -84,7 +84,62 @@ class Program
     }
     public static void Main(string[] args)
     {
-        SmartPrint();
-        SimplePrint();
+        DbHelper.db.Add(new Dish()
+        {
+            Title = "Spaghetti Carbonara",
+            Calories = 900,
+            Protein = 8,
+            Carbs = 45,
+            Fat = 7,
+            Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+            AccountEmail = "oleh.chyzhov@gmail.com"
+        });
+        DbHelper.db.Add(new Dish()
+        {
+            Title = "Paella",
+            Calories = 1000,
+            Protein = 56,
+            Carbs = 23,
+            Fat = 7,
+            Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+            AccountEmail = "oleh.chyzhov@gmail.com"
+        });
+        DbHelper.db.Add(new Dish()
+        {
+            Title = "Sushi",
+            Calories = 430,
+            Protein = 24,
+            Carbs = 5,
+            Fat = 7,
+            Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+            Ingredients = "Fish,Rice,Salmon,Salt,Water",
+            AccountEmail = "oleh.chyzhov@gmail.com"
+        });
+        DbHelper.db.Add(new Dish()
+        {
+            Title = "Tacos al Pastor",
+            Calories = 532,
+            Protein = 12,
+            Carbs = 63,
+            Fat = 10,
+            Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+            AccountEmail = "oleh.chyzhov@gmail.com"
+        });
+        DbHelper.db.Add(new Dish()
+        {
+            Title = "Falafel",
+            Calories = 156,
+            Protein = 12,
+            Carbs = 21,
+            Fat = 4,
+            Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+            AccountEmail = "oleh.chyzhov@gmail.com"
+        });
+
+        DbHelper.db.SaveChanges();
     }
 }

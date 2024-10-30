@@ -24,5 +24,35 @@ namespace UserInterface.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button PressedButton = (Button)sender;
+            if (PressedButton == LessThan1000Button)
+            {
+
+            }
+            else if (PressedButton == UpTo3000Button)
+            {
+
+            }
+            else if (PressedButton == UpTo7000Button)
+            {
+
+            }
+            else if (PressedButton == MoreThan7000Button)
+            {
+
+            }
+            else if (PressedButton == NoIdeaButton)
+            {
+
+            }
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.SurviesFrame.Navigate(App.SurveyWindow_3);
+        }
     }
 }

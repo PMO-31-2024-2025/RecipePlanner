@@ -4,13 +4,30 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UserInterface.Views"
+      xmlns:viewModel="clr-namespace:BusinessLogic.MVVM;assembly=BusinessLogic"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1000"
       Title="LoginWindow">
 
+    <!--Setting DataContext of the whole window-->
+    <Window.DataContext>
+        <viewModel:LoginViewModel/>
+    </Window.DataContext>
+
     <Grid>
-        <Border Background="White" Width="400" Height="300" CornerRadius="50">
+        <Border Background="White" Width="1000" Height="600" 
+                CornerRadius="50" x:Name="LoginBorder">
             <StackPanel>
+                <!--Special objects to help with MVVM pattern
+                in App.xaml.cs file-->
+                <TextBox x:Name="IsLoginSuccessfulTextBox"
+                         Text="{Binding IsLoginSuccessful, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Visibility="Collapsed"/>
+
+                <TextBox x:Name="StartGainingAdditionalInformation"
+                         Text="{Binding GainAdditionalInformation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Visibility="Collapsed"/>
+
                 <TextBlock Text="Login"
                            FontSize="25"
                            HorizontalAlignment="Center" 
@@ -22,8 +39,7 @@
                          FontSize="18"
                          FontStyle="Italic" 
                          Width="220"
-                         Text="Email"
-                         MouseEnter="TextBox_MouseEnter"/>
+                         Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 
                 <TextBox Background="LightCyan"
                          x:Name="PasswordTextBox"
@@ -31,24 +47,35 @@
                          Width="220"
                          FontSize="18"
                          Margin="10" 
-                         Text="Password"
-                         MouseEnter="TextBox_MouseEnter"/>
+                         Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBlock Width="220"
+                           FontSize="12"
+                           TextAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Foreground="DarkRed"
+                           Text="{Binding ErrorMessage, UpdateSourceTrigger=Explicit}"/>
 
                 <Button Background="LightCyan"
                         x:Name="LoginButton"
                         Width="80" 
                         Content="Login"
                         FontSize="18"
-                        FontWeight="Bold" Click="LoginButton_Click"/>
+                        FontWeight="Bold"
+                        Command="{Binding LoginCommand}"/>
                 <TextBlock Text="or" HorizontalAlignment="Center" 
                            FontWeight="Bold" Margin="5"
                            FontSize="16"/>
                 <Button Content="Register" 
-                        x:Name="RegisterButton"
                         Width="150" FontSize="18"
                         Background="LightCyan"
-                        FontWeight="Bold" Click="RegisterButton_Click"/>
+                        FontWeight="Bold"
+                        Command="{Binding RegisterCommand}"/>
             </StackPanel>
+        </Border>
+        <Border Background="White" Width="1000" Height="600" 
+                CornerRadius="50" x:Name="SurviesBorder" Visibility="Hidden">
+            <Frame x:Name="SurviesFrame"/>
         </Border>
     </Grid>
 </Window>

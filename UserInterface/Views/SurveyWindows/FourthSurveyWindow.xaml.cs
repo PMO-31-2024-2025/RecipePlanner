@@ -24,5 +24,10 @@ namespace UserInterface.Views
         {
             InitializeComponent();
         }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.SurviesFrame.Navigate(App.SurveyWindow_5);
+        }
     }
 }

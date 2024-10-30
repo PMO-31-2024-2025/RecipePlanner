@@ -24,5 +24,12 @@ namespace UserInterface.Views
         {
             InitializeComponent();
         }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.MyLoginWindow.SurviesFrame.Navigate(App.SurveyWindow_1);
+            App.MyLoginWindow.SurviesBorder.Visibility = Visibility.Hidden;
+            App.MyLoginWindow.LoginBorder.Visibility = Visibility.Visible;
+        }
     }
 }
