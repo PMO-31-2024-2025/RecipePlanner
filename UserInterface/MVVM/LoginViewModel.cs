@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Internal;
 using BusinessLogic;
 using System.Windows;
 using UserInterface.Views;
+using UserInterface.MVVM.Helpers;
 
 namespace UserInterface.MVVM
 {
@@ -15,8 +16,6 @@ namespace UserInterface.MVVM
         private string _email = "UserName";
         private string _password = "Password";
         private string _errorMessage;
-        private bool _isLoginSuccessful = false;
-        private bool _timeToStartGainingAdditionalInformation = false;
         #endregion
 
         #region Properties
@@ -60,30 +59,6 @@ namespace UserInterface.MVVM
                 OnPropertyChanged(nameof(ErrorMessage));
             }
         }
-        public bool IsLoginSuccessful
-        {
-            get
-            {
-                return _isLoginSuccessful;
-            }
-            set
-            {
-                _isLoginSuccessful = value;
-                OnPropertyChanged(nameof(IsLoginSuccessful));
-            }
-        }
-        public bool GainAdditionalInformation
-        {
-            get
-            {
-                return _timeToStartGainingAdditionalInformation;
-            }
-            set
-            {
-                _timeToStartGainingAdditionalInformation = value;
-                OnPropertyChanged(nameof(GainAdditionalInformation));
-            }
-        }
         #endregion
 
         #region Commands
@@ -103,20 +78,35 @@ namespace UserInterface.MVVM
         #region Methods
         public void ExecuteLoginCommand()
         {
-            Globals.LoginedAccount = DbHelper.db.Accounts.Where(acc => acc.Email == Email).Include("AccountInfo").Include("Dishes").First();
-            IsLoginSuccessful = true;
+            AccountManager.LoginedAccount = AccountManager.UpdateLoginedAccount(Email);
+            App.MyMainWindow = WindowIntitializer.InitMainWindow();
+            App.MyMainWindow.Show();
+            App.MyLoginWindow.Close();
         }
 
         public void ExecuteRegisterCommand()
         {
+            if (!Email.Contains("@gmail."))
+            {
+                MessageBox.Show("Invalid Email", "Register Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             Account registeredAccount = new Account()
             {
                 Email = Email,
                 Password = Password
             };
+            try
+            {
+                DbHelper.db.Accounts.Add(registeredAccount);
+                //DbHelper.db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Account already exists", "Register Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
-            DbHelper.db.Accounts.Add(registeredAccount);
-            //DbHelper.db.SaveChanges();
             App.MyLoginWindow.LoginBorder.Visibility = Visibility.Hidden;
             App.MyLoginWindow.SurviesBorder.Visibility = Visibility.Visible;
             App.MyLoginWindow.SurviesFrame.Navigate(App.SurveyWindow_1);

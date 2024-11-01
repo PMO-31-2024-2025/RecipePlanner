@@ -17,19 +17,19 @@ namespace UserInterface.Views
         {
             if (filter != null && orderFilter != null)
             {
-                RecipeListView.ItemsSource = Globals.LoginedAccount.Dishes!.Where(filter).OrderBy(orderFilter);
+                RecipeListView.ItemsSource = AccountManager.LoginedAccount.Dishes!.Where(filter).OrderBy(orderFilter);
             }
             else if (filter != null && orderFilter == null)
             {
-                RecipeListView.ItemsSource = Globals.LoginedAccount.Dishes!.Where(filter);
+                RecipeListView.ItemsSource = AccountManager.LoginedAccount.Dishes!.Where(filter);
             }
             else if (filter == null && orderFilter != null)
             {
-                RecipeListView.ItemsSource = Globals.LoginedAccount.Dishes!.OrderBy(orderFilter);
+                RecipeListView.ItemsSource = AccountManager.LoginedAccount.Dishes!.OrderBy(orderFilter);
             }
             else
             {
-                RecipeListView.ItemsSource = Globals.LoginedAccount.Dishes;
+                RecipeListView.ItemsSource = AccountManager.LoginedAccount.Dishes;
             }
         }
 

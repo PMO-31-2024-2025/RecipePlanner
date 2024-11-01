@@ -1,6 +1,7 @@
 ﻿using BusinessLogic;
 using System.Windows;
 using System.Windows.Controls;
+using UserInterface.MVVM.Helpers;
 
 namespace UserInterface.Views
 {
@@ -18,17 +19,9 @@ namespace UserInterface.Views
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            App.MyLoginWindow = new LoginWindow();
+            App.MyLoginWindow = WindowIntitializer.InitLoginWindow();
             App.MyLoginWindow.Show();
-            App.MyLoginWindow.IsLoginSuccessfulTextBox.TextChanged += (s, e) =>
-            {
-                if (App.MyLoginWindow.IsLoginSuccessfulTextBox.Text == "True")
-                {
-                    App.MyMainWindow = new MainWindow();
-                    App.MyMainWindow.Show();
-                    App.MyLoginWindow.Close();
-                }
-            };
+            
             App.MyMainWindow.Close();
         }
     }

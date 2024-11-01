@@ -18,12 +18,6 @@
         <Border Background="White" Width="1000" Height="600" 
                 CornerRadius="50" x:Name="LoginBorder">
             <StackPanel>
-                <!--Special objects to help with MVVM pattern
-                in App.xaml.cs file-->
-                <TextBox x:Name="IsLoginSuccessfulTextBox"
-                         Text="{Binding IsLoginSuccessful, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Visibility="Collapsed"/>
-
                 <TextBlock Text="Login"
                            FontSize="25"
                            HorizontalAlignment="Center" 
