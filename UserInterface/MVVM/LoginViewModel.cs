@@ -1,10 +1,13 @@
-﻿using BusinessLogic.MVVM.Commands.AuthenticationCommands;
+﻿using UserInterface.MVVM.Commands.AuthenticationCommands;
 using DataAccess;
 using DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
+using BusinessLogic;
+using System.Windows;
+using UserInterface.Views;
 
-namespace BusinessLogic.MVVM
+namespace UserInterface.MVVM
 {
     public class LoginViewModel : BaseViewModel
     {
@@ -114,8 +117,9 @@ namespace BusinessLogic.MVVM
 
             DbHelper.db.Accounts.Add(registeredAccount);
             //DbHelper.db.SaveChanges();
-
-            GainAdditionalInformation = true;
+            App.MyLoginWindow.LoginBorder.Visibility = Visibility.Hidden;
+            App.MyLoginWindow.SurviesBorder.Visibility = Visibility.Visible;
+            App.MyLoginWindow.SurviesFrame.Navigate(App.SurveyWindow_1);
         }
         #endregion
     }

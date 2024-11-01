@@ -2,7 +2,7 @@
 using DataAccess.Models;
 using System.Windows.Input;
 
-namespace BusinessLogic.MVVM.Commands.AuthenticationCommands
+namespace UserInterface.MVVM.Commands.AuthenticationCommands
 {
     public class LoginCommand : ICommand
     {

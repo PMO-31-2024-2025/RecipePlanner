@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace BusinessLogic.MVVM
+namespace UserInterface.MVVM
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {

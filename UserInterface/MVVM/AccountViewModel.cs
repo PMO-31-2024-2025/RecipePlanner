@@ -1,6 +1,7 @@
 ﻿using DataAccess;
+using BusinessLogic;
 
-namespace BusinessLogic.MVVM
+namespace UserInterface.MVVM
 {
     public class AccountViewModel : BaseViewModel
     {

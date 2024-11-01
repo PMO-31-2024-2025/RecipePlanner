@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UserInterface.Views"
-      xmlns:viewModel="clr-namespace:BusinessLogic.MVVM;assembly=BusinessLogic"
+      xmlns:viewModel="clr-namespace:UserInterface.MVVM"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1000"
       Title="LoginWindow">
@@ -22,10 +22,6 @@
                 in App.xaml.cs file-->
                 <TextBox x:Name="IsLoginSuccessfulTextBox"
                          Text="{Binding IsLoginSuccessful, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Visibility="Collapsed"/>
-
-                <TextBox x:Name="StartGainingAdditionalInformation"
-                         Text="{Binding GainAdditionalInformation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Visibility="Collapsed"/>
 
                 <TextBlock Text="Login"
