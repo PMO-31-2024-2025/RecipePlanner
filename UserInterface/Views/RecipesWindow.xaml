@@ -55,7 +55,8 @@
             <!--Add New Recipe-->
             <Grid Grid.Column="2" Margin="20">
                 <Button Style="{StaticResource NiceButton}"
-                        FontSize="20" Content="Add new"/>
+                        FontSize="20" Content="Add new"
+                        Command="{Binding AddRecipeCommand}"/>
             </Grid>
         </Grid>
         
@@ -68,8 +69,14 @@
                                 BorderThickness="1"
                                 Margin="3"
                                 Padding="3"
-                                Width="870"
-                                MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                                Width="870">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDown">
+                                    <i:InvokeCommandAction 
+                                        Command="{Binding DataContext.SeeRecipeCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                        CommandParameter="{Binding}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="5*"/>
@@ -88,17 +95,18 @@
                                            FontSize="20"/>
 
                                 <Button Content="Edit"
-                                        x:Name="EditButton"
                                         Grid.Column="2"
                                         FontSize="20"
-                                        Click="EditButton_Click"/>
+                                        Command="{Binding DataContext.EditRecipeCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                        CommandParameter="{Binding}"/>
+
                                 <Button Content="Remove"
-                                        x:Name="RemoveButton"
                                         Grid.Column="3"
-                                        FontSize="20"/>
+                                        FontSize="20"
+                                        Command="{Binding DataContext.RemoveRecipeCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                        CommandParameter="{Binding}"/>
                             </Grid>
                         </Border>
-
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

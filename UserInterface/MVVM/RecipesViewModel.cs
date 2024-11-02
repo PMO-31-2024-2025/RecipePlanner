@@ -40,19 +40,27 @@ namespace UserInterface.MVVM
 
         #region Commands
         public FilterCommand FilterCommand { get; }
+        public SeeRecipeCommand SeeRecipeCommand { get; }
+        public AddRecipeCommand AddRecipeCommand { get; }
+        public EditRecipeCommand EditRecipeCommand { get; }
+        public RemoveRecipeCommand RemoveRecipeCommand { get; }
         #endregion
 
         #region Constructors
         public RecipesViewModel()
         {
             FilterCommand = new FilterCommand(this);
+            SeeRecipeCommand = new SeeRecipeCommand(this);
+            AddRecipeCommand = new AddRecipeCommand(this);
+            EditRecipeCommand = new EditRecipeCommand(this);
+            RemoveRecipeCommand = new RemoveRecipeCommand(this);
             
             Dishes = new ObservableCollection<Dish>();
             ShowDishes();
         }
         #endregion
 
-        #region Methods
+        #region MainWindow Methods
         public void ExecuteFilterCommand()
         {
             if (string.IsNullOrEmpty(SearchFilter) == false && char.IsDigit(SearchFilter[0]))
@@ -114,6 +122,37 @@ namespace UserInterface.MVVM
             {
                 Dishes.Add(dish);
             }
+        }
+        #endregion
+
+        #region See Recipe Methods
+        public void ExecuteSeeRecipeCommand(object dish)
+        {
+            MessageBox.Show($"See Recipe: {dish.ToString()}");
+            App.RightSideFrame.Navigate(App.MySeeRecipeWindow);
+        }
+        #endregion
+
+        #region Add Recipe Methods
+        public void ExecuteAddRecipeCommand()
+        {
+            MessageBox.Show($"Add Recipe");
+            App.RightSideFrame.Navigate(App.MyAddRecipeWindow);
+        }
+        #endregion
+
+        #region Edit Recipe Methods
+        public void ExecuteEditRecipeCommand(object dish)
+        {
+            MessageBox.Show($"Edit Recipe: {dish.ToString()}");
+            App.RightSideFrame.Navigate(App.MyAddRecipeWindow);
+        }
+        #endregion
+
+        #region Remove Recipe Methods
+        public void ExecuteRemoveRecipeCommand(object dish)
+        {
+            MessageBox.Show($"Remove Recipe: {dish.ToString()}");
         }
         #endregion
     }

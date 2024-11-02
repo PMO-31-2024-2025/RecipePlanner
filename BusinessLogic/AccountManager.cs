@@ -18,11 +18,11 @@ namespace BusinessLogic
         {
             get 
             {
-                if (_loginedAccount != null)
+                if (_loginedAccount == null)
                 {
-                    return _loginedAccount;
+                    throw new NotImplementedException("User didn't login");
                 }
-                throw new NotImplementedException("User didn't login");
+                return _loginedAccount;
             }
             set { _loginedAccount = value; }
         }
