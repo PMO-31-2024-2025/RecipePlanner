@@ -13,7 +13,8 @@ namespace UserInterface.MVVM
         #region Fields
         private string _searchFilter = "";
         private string _orderFilter = "";
-        private Dish _dishToEditOrDelete = DbHelper.db.Dishes.First(dish => dish.Id == 1);
+        private Dish _dishToEditOrDelete;
+        private string _newIngredient = "New Ingredient";
         #endregion
 
         #region Properties
@@ -51,6 +52,15 @@ namespace UserInterface.MVVM
                 ExecuteOrderCommand();
             }
         }
+        public string NewIngredient
+        {
+            get { return _newIngredient; }
+            set
+            {
+                _newIngredient = value;
+                OnPropertyChanged(nameof(NewIngredient));
+            }
+        }
         #endregion
 
         #region Commands
@@ -59,6 +69,9 @@ namespace UserInterface.MVVM
         public AddRecipeCommand AddRecipeCommand { get; }
         public EditRecipeCommand EditRecipeCommand { get; }
         public RemoveRecipeCommand RemoveRecipeCommand { get; }
+        public SaveNewDishCommand UpdateOrAddDishCommand { get; }
+        public AddIngredientCommand AddIngredientCommand { get; }
+        public RemoveIngredient RemoveIngedientCommand { get; }
         #endregion
 
         #region Constructors
@@ -69,7 +82,10 @@ namespace UserInterface.MVVM
             AddRecipeCommand = new AddRecipeCommand(this);
             EditRecipeCommand = new EditRecipeCommand(this);
             RemoveRecipeCommand = new RemoveRecipeCommand(this);
-            
+            UpdateOrAddDishCommand = new SaveNewDishCommand(this);
+            AddIngredientCommand = new AddIngredientCommand(this);
+            RemoveIngedientCommand = new RemoveIngredient(this);
+
             Dishes = new ObservableCollection<Dish>();
             IngredientsOfDishToEditOrDelete = new ObservableCollection<string>();
             ShowDishes();
@@ -79,7 +95,15 @@ namespace UserInterface.MVVM
         #region MainWindow Methods
         public void ExecuteFilterCommand()
         {
-            if (string.IsNullOrEmpty(SearchFilter) == false && char.IsDigit(SearchFilter[0]))
+            bool isValue = true;
+            foreach (char letter in SearchFilter)
+            {
+                if (char.IsLetter(letter))
+                {
+                    isValue = false;
+                }
+            }
+            if (string.IsNullOrEmpty(SearchFilter) == false && isValue)
             {
                 ShowDishes((dish) =>
                 {
@@ -139,6 +163,41 @@ namespace UserInterface.MVVM
                 Dishes.Add(dish);
             }
         }
+        private void RefillIngredientsOfDishToEditOrDelete(List<string> ingredients)
+        {
+            IngredientsOfDishToEditOrDelete.Clear();
+            foreach (string ingredient in ingredients)
+            {
+                IngredientsOfDishToEditOrDelete.Add(ingredient);
+            }
+        }
+
+        public void SaveNewDish(Dish dish)
+        {
+            // Saving Ingredients
+            string modifiedIngredients = "";
+            for (int i = 0; i < IngredientsOfDishToEditOrDelete.Count-1; i++)
+            {
+                modifiedIngredients += $"{IngredientsOfDishToEditOrDelete[i]},";
+            }
+            modifiedIngredients += IngredientsOfDishToEditOrDelete.Last();
+            Dish dishToSave = dish;
+            dishToSave.Ingredients = modifiedIngredients;
+
+            // Saving the dish
+            Dish? dishFromDb = DbHelper.db.Dishes.FirstOrDefault(d => d.Id == dish.Id);
+            if (dishFromDb == null)
+            {
+                dishToSave.AccountEmail = AccountManager.LoginedAccount.Email;
+                DbHelper.db.Dishes.Add(dishToSave);
+
+            }
+            else
+            {
+                DbHelper.db.Dishes.Update(dish);
+            }
+            DbHelper.db.SaveChanges();
+        }
         #endregion
 
         #region See Recipe Methods
@@ -147,14 +206,9 @@ namespace UserInterface.MVVM
             App.RightSideFrame.Navigate(App.MySeeRecipeWindow);
             App.MySeeRecipeWindow.DataContext = this;
             DishToEditOrDelete = (Dish)dish;
-            
 
-            IngredientsOfDishToEditOrDelete.Clear();
-            foreach (string ingredient in DishToEditOrDelete.Ingredients.Split(","))
-            {
-                IngredientsOfDishToEditOrDelete.Add(ingredient);
-            }
-
+            List<string> newIngredients = DishToEditOrDelete.Ingredients.Split(",").ToList();
+            RefillIngredientsOfDishToEditOrDelete(newIngredients);
         }
         #endregion
 
@@ -169,8 +223,12 @@ namespace UserInterface.MVVM
         #region Edit Recipe Methods
         public void ExecuteEditRecipeCommand(object dish)
         {
-            MessageBox.Show($"Edit Recipe: {dish.ToString()}");
             App.RightSideFrame.Navigate(App.MyAddEditRecipeWindow);
+            App.MyAddEditRecipeWindow.DataContext = this;
+            DishToEditOrDelete = (Dish)dish;
+
+            List<string> newIngredients = DishToEditOrDelete.Ingredients.Split(",").ToList();
+            RefillIngredientsOfDishToEditOrDelete(newIngredients);
         }
         #endregion
 

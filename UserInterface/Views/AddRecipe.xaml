@@ -4,11 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UserInterface.Views"
+      xmlns:viewModel="clr-namespace:UserInterface.MVVM"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Style="{StaticResource PageResource}"
       Title="AddRecipe">
 
+    <Page.DataContext>
+        <viewModel:RecipesViewModel/>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.3*"/>
@@ -43,13 +48,14 @@
                     
                     <ListView VerticalAlignment="Center" 
                               Margin="10" Grid.Row="0"
-                              x:Name="IngredientListView"
-                              BorderThickness="0">
+                              BorderThickness="0"
+                              ItemsSource="{Binding IngredientsOfDishToEditOrDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedItem="{Binding NewIngredient, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock FontSize="20"
                                            FontWeight="SemiBold"
-                                           Text="{Binding IngredientName}"
+                                           Text="{Binding}"
                                            HorizontalAlignment="Center"/>
 
                             </DataTemplate>
@@ -61,24 +67,22 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Text="New Ingridient" 
+                        <TextBox Text="{Binding NewIngredient, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                  Grid.Column="0" Padding="0, 10, 0, 0"
                                  Height="50"
-                                 FontSize="16"
-                                 x:Name="IngredientTextBox"/>
+                                 FontSize="16"/>
                         
                         <Button Content="Add"
                                 Grid.Column="1"
                                 FontSize="18"
                                 Margin="5, 0"
-                                x:Name="IngridientAddButton"
-                                Click="IngredientAddButton_Click"/>
+                                Command="{Binding AddIngredientCommand}"/>
+                        
                         <Button Content="Remove"
                                 Grid.Column="2"
                                 FontSize="18"
                                 Margin="5, 0"
-                                x:Name="IngredientRemoveButton"
-                                Click="IngredientRemoveButton_Click"/>
+                                Command="{Binding RemoveIngedientCommand}"/>
                     </Grid>
                 </Grid>
                 <!--Top Right-->
@@ -87,8 +91,8 @@
                     <Button Content="Add Recipe"
                             Margin="15" FontSize="20"
                             Height="100"
-                            x:Name="AddRecipeButton"
-                            Click="AddRecipeButton_Click"/>
+                            Command="{Binding UpdateOrAddDishCommand}"
+                            CommandParameter="{Binding DishToEditOrDelete}"/>
                 </Grid>
             </Grid>
         </Border>
@@ -96,7 +100,7 @@
 
         <!--Bottom-->
         <Border Grid.Row="1" Margin="10" Background="White" CornerRadius="40">
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" DataContext="{Binding DishToEditOrDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
@@ -108,7 +112,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBox Text="Title"
+                    <TextBox Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              Width="200"
                              x:Name="RecipeTitle"
                              FontSize="20" FontWeight="Bold"
@@ -117,14 +121,16 @@
 
                     <TextBox Grid.Row="1" FontSize="18"
                              FontWeight="SemiBold"
-                             Text="Here is the recipe"
-                             x:Name="RecipeTextBox"/>
+                             Text="{Binding Recipe, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             VerticalScrollBarVisibility="Visible"
+                             TextWrapping="Wrap"/>
 
                 </Grid>
 
                 <!--Bottom right-->
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
@@ -163,33 +169,47 @@
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Text="0"
-                             BorderThickness="0"
-                             x:Name="ProteingTextBox"/>
+                             Text="{Binding Protein, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             BorderThickness="0"/>
 
                     <TextBox Grid.Column="1" Grid.Row="1"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Text="0"
-                             BorderThickness="0"
-                             x:Name="CarbsTextBox"/>
+                             Text="{Binding Carbs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             BorderThickness="0"/>
 
                     <TextBox Grid.Column="1" Grid.Row="2"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Text="0"
-                             BorderThickness="0"
-                             x:Name="FatTextBox"/>
+                             Text="{Binding Fat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             BorderThickness="0"/>
 
                     <TextBox Grid.Column="1" Grid.Row="3"
+                             FontSize="20" Grid.ColumnSpan="2"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Text="{Binding Calories, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             BorderThickness="0"/>
+
+                    <TextBlock Grid.Column="2" Grid.Row="0"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Text="0"
-                             BorderThickness="0"
-                             x:Name="CaloriesTextBox"/>
+                             Text="grams"/>
+
+                    <TextBlock Grid.Column="2" Grid.Row="1"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Text="grams"/>
+
+                    <TextBlock Grid.Column="2" Grid.Row="2"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Text="grams"/>
                 </Grid>
             </Grid>
         </Border>

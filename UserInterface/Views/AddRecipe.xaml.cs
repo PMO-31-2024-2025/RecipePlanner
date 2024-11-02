@@ -16,7 +16,7 @@ namespace UserInterface.Views
         {
             InitializeComponent();
 
-            IngredientListView.ItemsSource = Ingredients;
+            //IngredientListView.ItemsSource = Ingredients;
         }
         private void AddRecipeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -29,14 +29,14 @@ namespace UserInterface.Views
 
             Dish dishToAdd = new Dish()
             {
-                AccountEmail = LoginedAccount.Email,
-                Title = RecipeTitle.Text,
-                Recipe = RecipeTextBox.Text,
-                Ingredients = ingredients,
-                Calories = int.Parse(CaloriesTextBox.Text),
-                Protein = int.Parse(ProteingTextBox.Text),
-                Carbs = int.Parse(CarbsTextBox.Text),
-                Fat = int.Parse(FatTextBox.Text),
+                //AccountEmail = LoginedAccount.Email,
+                //Title = RecipeTitle.Text,
+                //Recipe = RecipeTextBox.Text,
+                //Ingredients = ingredients,
+                //Calories = int.Parse(CaloriesTextBox.Text),
+                //Protein = int.Parse(ProteingTextBox.Text),
+                //Carbs = int.Parse(CarbsTextBox.Text),
+                //Fat = int.Parse(FatTextBox.Text),
             };
 
             DbHelper.db.Add(dishToAdd);
@@ -46,19 +46,19 @@ namespace UserInterface.Views
 
         private void IngredientAddButton_Click(object sender, RoutedEventArgs e)
         {
-            Ingredients.Add(IngredientTextBox.Text);
+            //Ingredients.Add(IngredientTextBox.Text);
         }
 
         private void IngredientRemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            string? selectedIngreditent = IngredientListView.SelectedItem as string;
+            //string? selectedIngreditent = IngredientListView.SelectedItem as string;
 
-            if (selectedIngreditent == null)
-            {
-                MessageBox.Show("No ingredient was selected", "Select Ingredient", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
-            Ingredients.Remove(selectedIngreditent);
+            //if (selectedIngreditent == null)
+            //{
+            //    MessageBox.Show("No ingredient was selected", "Select Ingredient", MessageBoxButton.OK, MessageBoxImage.Information);
+            //    return;
+            //}
+            //Ingredients.Remove(selectedIngreditent);
         }
     }
 }
