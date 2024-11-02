@@ -35,7 +35,7 @@ namespace UserInterface
         public static FoodPlansWindow? MyFoodPlansWindow;
 
         // Secondary windows
-        public static AddRecipe MyAddEditRecipeWindow;
+        public static UpdateRecipePage MyAddEditRecipeWindow;
         public static SeeRecipePage MySeeRecipeWindow;
         public void Application_Startup(object sender, StartupEventArgs e)
         {

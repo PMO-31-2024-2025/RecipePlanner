@@ -7,12 +7,12 @@ using System.Windows.Controls;
 
 namespace UserInterface.Views
 {
-    public partial class AddRecipe : Page
+    public partial class UpdateRecipePage : Page
     {
         public ObservableCollection<string> Ingredients = new ObservableCollection<string>();
         
         Account LoginedAccount;
-        public AddRecipe()
+        public UpdateRecipePage()
         {
             InitializeComponent();
 

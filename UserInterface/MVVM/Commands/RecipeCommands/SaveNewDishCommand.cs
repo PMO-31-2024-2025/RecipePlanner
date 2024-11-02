@@ -1,4 +1,5 @@
-﻿using DataAccess.Models;
+﻿using BusinessLogic;
+using DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,9 @@ namespace UserInterface.MVVM.Commands.RecipeCommands
 
         public void Execute(object? parameter)
         {
-            MessageBox.Show($"{VM.DishToEditOrDelete.Title} has been updated successfully", "Success", 
+            MessageBox.Show($"{VM.DishToEditOrDelete.Title} has been updated successfully", "Success",
                 MessageBoxButton.OK, MessageBoxImage.Information);
-            VM.SaveNewDish((Dish)parameter!);
+            VM.SaveNewDish();
             App.RightSideFrame.Navigate(App.MyRecipesWindow);
         }
     }

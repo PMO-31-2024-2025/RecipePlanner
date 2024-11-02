@@ -69,7 +69,7 @@ namespace UserInterface.MVVM
         public AddRecipeCommand AddRecipeCommand { get; }
         public EditRecipeCommand EditRecipeCommand { get; }
         public RemoveRecipeCommand RemoveRecipeCommand { get; }
-        public SaveNewDishCommand UpdateOrAddDishCommand { get; }
+        public SaveNewDishCommand UpdateDishCommand { get; }
         public AddIngredientCommand AddIngredientCommand { get; }
         public RemoveIngredient RemoveIngedientCommand { get; }
         #endregion
@@ -82,7 +82,7 @@ namespace UserInterface.MVVM
             AddRecipeCommand = new AddRecipeCommand(this);
             EditRecipeCommand = new EditRecipeCommand(this);
             RemoveRecipeCommand = new RemoveRecipeCommand(this);
-            UpdateOrAddDishCommand = new SaveNewDishCommand(this);
+            UpdateDishCommand = new SaveNewDishCommand(this);
             AddIngredientCommand = new AddIngredientCommand(this);
             RemoveIngedientCommand = new RemoveIngredient(this);
 
@@ -172,7 +172,7 @@ namespace UserInterface.MVVM
             }
         }
 
-        public void SaveNewDish(Dish dish)
+        public void SaveNewDish()
         {
             // Saving Ingredients
             string modifiedIngredients = "";
@@ -181,20 +181,19 @@ namespace UserInterface.MVVM
                 modifiedIngredients += $"{IngredientsOfDishToEditOrDelete[i]},";
             }
             modifiedIngredients += IngredientsOfDishToEditOrDelete.Last();
-            Dish dishToSave = dish;
-            dishToSave.Ingredients = modifiedIngredients;
+            DishToEditOrDelete.Ingredients = modifiedIngredients;
 
             // Saving the dish
-            Dish? dishFromDb = DbHelper.db.Dishes.FirstOrDefault(d => d.Id == dish.Id);
+            Dish? dishFromDb = DbHelper.db.Dishes.FirstOrDefault(d => d.Id == DishToEditOrDelete.Id);
             if (dishFromDb == null)
             {
-                dishToSave.AccountEmail = AccountManager.LoginedAccount.Email;
-                DbHelper.db.Dishes.Add(dishToSave);
+                DishToEditOrDelete.AccountEmail = AccountManager.LoginedAccount.Email;
+                DbHelper.db.Dishes.Add(DishToEditOrDelete);
 
             }
             else
             {
-                DbHelper.db.Dishes.Update(dish);
+                DbHelper.db.Dishes.Update(DishToEditOrDelete);
             }
             DbHelper.db.SaveChanges();
         }
@@ -215,8 +214,7 @@ namespace UserInterface.MVVM
         #region Add Recipe Methods
         public void ExecuteAddRecipeCommand()
         {
-            MessageBox.Show($"Add Recipe");
-            App.RightSideFrame.Navigate(App.MyAddEditRecipeWindow);
+            MessageBox.Show("Add new dish recipe");
         }
         #endregion
 
@@ -235,7 +233,9 @@ namespace UserInterface.MVVM
         #region Remove Recipe Methods
         public void ExecuteRemoveRecipeCommand(object dish)
         {
-            MessageBox.Show($"Remove Recipe: {dish.ToString()}");
+            Dishes.Remove((Dish)dish);
+            DbHelper.db.Dishes.Remove((Dish)dish);
+            DbHelper.db.SaveChanges();
         }
         #endregion
     }

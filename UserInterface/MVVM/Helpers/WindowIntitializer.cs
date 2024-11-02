@@ -20,7 +20,7 @@ namespace UserInterface.MVVM.Helpers
         public static AccountWindow InitAccountPage() => new AccountWindow();
         public static StatisticsWindow InitStatisticsPage() => new StatisticsWindow();
         public static RecipesWindow InitRecipePage() => new RecipesWindow();
-        public static AddRecipe InitAddRecipePage() => new AddRecipe();
+        public static UpdateRecipePage InitAddRecipePage() => new UpdateRecipePage();
         public static SeeRecipePage InitSeeRecipePage() => new SeeRecipePage();
         public static SettingsWindow InitSettingPage() => new SettingsWindow();
         public static FoodPlansWindow InitFoodPlansPage() => new FoodPlansWindow();
