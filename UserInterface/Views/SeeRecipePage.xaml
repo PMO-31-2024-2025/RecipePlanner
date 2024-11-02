@@ -38,31 +38,14 @@
                     </Grid.RowDefinitions>
 
                     <ListView VerticalAlignment="Center" 
-                          Margin="10" Grid.Row="0">
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 1"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 2"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 3"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 4"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 5"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 6"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 7"/>
-                        </ListViewItem>
-                        <ListViewItem FontSize="20" FontWeight="SemiBold">
-                            <TextBlock Text="Ingridient 8"/>
-                        </ListViewItem>
+                          Margin="10" Grid.Row="0"
+                              ItemsSource="{Binding IngredientsOfDishToEditOrDelete}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock FontSize="20" FontWeight="SemiBold"
+                                           Text="{Binding}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
             </Grid>
@@ -71,7 +54,7 @@
 
         <!--Bottom-->
         <Border Grid.Row="1" Margin="10" Background="White" CornerRadius="40">
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" DataContext="{Binding DishToEditOrDelete}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
@@ -83,14 +66,16 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Recipe" 
+                    <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" 
                                FontSize="20" FontWeight="Bold"
                                HorizontalAlignment="Center"/>
 
                     <TextBox Grid.Row="1" FontSize="18"
                              FontWeight="SemiBold"
-                             Text="Here is the recipe"
-                             IsEnabled="False"/>
+                             Text="{Binding Recipe}"
+                             IsEnabled="False"
+                             TextWrapping="Wrap"
+                             VerticalScrollBarVisibility="Visible"/>
                 </Grid>
 
                 <!--Bottom right-->
@@ -134,7 +119,7 @@
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Text="50 grams"
+                             Text="{Binding Protein, StringFormat='{}{0} grams'}"
                              BorderThickness="0"
                              IsEnabled="False"/>
 
@@ -142,7 +127,7 @@
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Text="120 grams"
+                             Text="{Binding Carbs, StringFormat='{}{0} grams'}"
                              BorderThickness="0"
                              IsEnabled="False"/>
 
@@ -150,7 +135,7 @@
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Text="5 grams"
+                             Text="{Binding Fat, StringFormat='{}{0} grams'}"
                              BorderThickness="0"
                              IsEnabled="False"/>
 
@@ -158,7 +143,7 @@
                              FontSize="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Text="900"
+                             Text="{Binding Calories}"
                              BorderThickness="0"
                              IsEnabled="False"/>
                 </Grid>

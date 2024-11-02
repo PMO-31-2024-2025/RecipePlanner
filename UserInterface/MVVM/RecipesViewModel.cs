@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using DataAccess;
 using DataAccess.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -12,10 +13,24 @@ namespace UserInterface.MVVM
         #region Fields
         private string _searchFilter = "";
         private string _orderFilter = "";
+        private Dish _dishToEditOrDelete = DbHelper.db.Dishes.First(dish => dish.Id == 1);
         #endregion
 
         #region Properties
         public ObservableCollection<Dish> Dishes { get; set; }
+        public Dish DishToEditOrDelete
+        { 
+            get 
+            {
+                return _dishToEditOrDelete;
+            }
+            set
+            {
+                _dishToEditOrDelete = value;
+                OnPropertyChanged(nameof(DishToEditOrDelete));
+            } 
+        }
+        public ObservableCollection<string> IngredientsOfDishToEditOrDelete { get; set; }
         public string SearchFilter 
         {
             get { return _searchFilter; } 
@@ -56,6 +71,7 @@ namespace UserInterface.MVVM
             RemoveRecipeCommand = new RemoveRecipeCommand(this);
             
             Dishes = new ObservableCollection<Dish>();
+            IngredientsOfDishToEditOrDelete = new ObservableCollection<string>();
             ShowDishes();
         }
         #endregion
@@ -128,8 +144,17 @@ namespace UserInterface.MVVM
         #region See Recipe Methods
         public void ExecuteSeeRecipeCommand(object dish)
         {
-            MessageBox.Show($"See Recipe: {dish.ToString()}");
             App.RightSideFrame.Navigate(App.MySeeRecipeWindow);
+            App.MySeeRecipeWindow.DataContext = this;
+            DishToEditOrDelete = (Dish)dish;
+            
+
+            IngredientsOfDishToEditOrDelete.Clear();
+            foreach (string ingredient in DishToEditOrDelete.Ingredients.Split(","))
+            {
+                IngredientsOfDishToEditOrDelete.Add(ingredient);
+            }
+
         }
         #endregion
 
@@ -137,7 +162,7 @@ namespace UserInterface.MVVM
         public void ExecuteAddRecipeCommand()
         {
             MessageBox.Show($"Add Recipe");
-            App.RightSideFrame.Navigate(App.MyAddRecipeWindow);
+            App.RightSideFrame.Navigate(App.MyAddEditRecipeWindow);
         }
         #endregion
 
@@ -145,7 +170,7 @@ namespace UserInterface.MVVM
         public void ExecuteEditRecipeCommand(object dish)
         {
             MessageBox.Show($"Edit Recipe: {dish.ToString()}");
-            App.RightSideFrame.Navigate(App.MyAddRecipeWindow);
+            App.RightSideFrame.Navigate(App.MyAddEditRecipeWindow);
         }
         #endregion
 

@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using DataAccess;
+using DataAccess.Models;
 using System.Windows;
 using System.Windows.Controls;
 using UserInterface.MVVM.Helpers;
@@ -34,9 +35,8 @@ namespace UserInterface
         public static FoodPlansWindow? MyFoodPlansWindow;
 
         // Secondary windows
-        public static AddRecipe MyAddRecipeWindow = WindowIntitializer.InitAddRecipePage();
-        public static SeeRecipePage MySeeRecipeWindow = WindowIntitializer.InitSeeRecipePage();
-
+        public static AddRecipe MyAddEditRecipeWindow;
+        public static SeeRecipePage MySeeRecipeWindow;
         public void Application_Startup(object sender, StartupEventArgs e)
         {
             MyLoginWindow = WindowIntitializer.InitLoginWindow();

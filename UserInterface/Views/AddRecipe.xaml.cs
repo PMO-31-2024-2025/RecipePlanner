@@ -9,7 +9,7 @@ namespace UserInterface.Views
 {
     public partial class AddRecipe : Page
     {
-        public ObservableCollection<Ingredient> Ingredients = new ObservableCollection<Ingredient>();
+        public ObservableCollection<string> Ingredients = new ObservableCollection<string>();
         
         Account LoginedAccount;
         public AddRecipe()
@@ -21,9 +21,9 @@ namespace UserInterface.Views
         private void AddRecipeButton_Click(object sender, RoutedEventArgs e)
         {
             string ingredients = "";
-            foreach (Ingredient ingredient in Ingredients)
+            foreach (string ingredient in Ingredients)
             {
-                ingredients += $"{ingredient.IngredientName},";
+                ingredients += $"{ingredient},";
             }
             ingredients = ingredients.Substring(0, ingredients.Length - 1);
 
@@ -46,12 +46,12 @@ namespace UserInterface.Views
 
         private void IngredientAddButton_Click(object sender, RoutedEventArgs e)
         {
-            Ingredients.Add(new Ingredient() { IngredientName = IngredientTextBox.Text });
+            Ingredients.Add(IngredientTextBox.Text);
         }
 
         private void IngredientRemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            Ingredient? selectedIngreditent = IngredientListView.SelectedItem as Ingredient;
+            string? selectedIngreditent = IngredientListView.SelectedItem as string;
 
             if (selectedIngreditent == null)
             {

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using UserInterface.MVVM.Helpers;
 using UserInterface.Views;
 
 namespace UserInterface
@@ -16,8 +17,10 @@ namespace UserInterface
             App.MySettingsWindow = new SettingsWindow();
             App.MyStatisticsWindow = new StatisticsWindow();
             App.MyFoodPlansWindow = new FoodPlansWindow();
+            App.MyAddEditRecipeWindow = WindowIntitializer.InitAddRecipePage();
+            App.MySeeRecipeWindow = WindowIntitializer.InitSeeRecipePage();
 
-            App.RightSideFrame.Navigate(App.MyAccountWindow);
+        App.RightSideFrame.Navigate(App.MyAccountWindow);
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
