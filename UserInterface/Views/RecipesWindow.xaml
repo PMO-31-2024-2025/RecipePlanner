@@ -4,9 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UserInterface.Views"
+             xmlns:viewModel="clr-namespace:UserInterface.MVVM"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
+    <Page.DataContext>
+        <viewModel:RecipesViewModel/>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -23,8 +29,9 @@
             
             <!--Filtering ComboBox-->
             <Grid Grid.Column="0">
-                <ComboBox Style="{StaticResource RecipeCombobox}"
-                          SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBox Style="{StaticResource RecipeCombobox}" 
+                          SelectedItem="{Binding OrderFilter, 
+                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     <ComboBoxItem Content="Filter by" IsSelected="True" 
                                   IsEnabled="False"/>
                     <ComboBoxItem Content="Protein"/>
@@ -35,22 +42,26 @@
             
             <!--Search line-->
             <Grid Grid.Column="1">
-                <TextBox Style="{StaticResource RecipeTextBox}"
-                         x:Name="SearchTextbox"
-                         TextChanged="SearchTextbox_TextChanged"/>
+                <TextBox Text="{Binding SearchFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource RecipeTextBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction Command="{Binding FilterCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
             </Grid>
             
             <!--Add New Recipe-->
             <Grid Grid.Column="2" Margin="20">
-                <Button Content="Add new" Style="{StaticResource NiceButton}"
-                        FontSize="20"
-                        Click="Button_Click"/>
+                <Button Style="{StaticResource NiceButton}"
+                        FontSize="20" Content="Add new"/>
             </Grid>
         </Grid>
         
         <!--Recipes-->
         <Grid Grid.Row="1">
-            <ListView x:Name="RecipeListView">
+            <ListView ItemsSource="{Binding Dishes}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" 

@@ -13,26 +13,6 @@ namespace UserInterface.Views
             InitializeComponent();
         }
 
-        private void ShowDishes(Func<Dish, bool>? filter = null, Func<Dish, int>? orderFilter = null)
-        {
-            if (filter != null && orderFilter != null)
-            {
-                RecipeListView.ItemsSource = AccountManager.LoginedAccount.Dishes!.Where(filter).OrderBy(orderFilter);
-            }
-            else if (filter != null && orderFilter == null)
-            {
-                RecipeListView.ItemsSource = AccountManager.LoginedAccount.Dishes!.Where(filter);
-            }
-            else if (filter == null && orderFilter != null)
-            {
-                RecipeListView.ItemsSource = AccountManager.LoginedAccount.Dishes!.OrderBy(orderFilter);
-            }
-            else
-            {
-                RecipeListView.ItemsSource = AccountManager.LoginedAccount.Dishes;
-            }
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             App.RightSideFrame.Navigate(App.MyAddRecipeWindow);
@@ -56,37 +36,14 @@ namespace UserInterface.Views
             switch (content)
             {
                 case "Protein":
-                    ShowDishes(null, dish => dish.Protein);
+                    //ShowDishes(null, dish => dish.Protein);
                     break;
                 case "Carbs":
-                    ShowDishes(null, dish => dish.Carbs);
+                    //ShowDishes(null, dish => dish.Carbs);
                     break;
                 case "Fat":
-                    ShowDishes(null, dish => dish.Fat);
+                    //ShowDishes(null, dish => dish.Fat);
                     break;
-            }
-        }
-
-        private void SearchTextbox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string text = SearchTextbox.Text.ToString();
-            if (string.IsNullOrEmpty(text) == false && char.IsDigit(text[0]))
-            {
-                ShowDishes((dish) => 
-                {
-                    int givenCaloriesCount = int.Parse(text);
-                    int topBound = givenCaloriesCount + 250;
-                    int bottomBound = givenCaloriesCount - 250;
-                    return dish.Calories > bottomBound && dish.Calories < topBound;
-                });
-            }
-            else if (string.IsNullOrEmpty(text) == false)
-            {
-                ShowDishes(dish => dish.Title.StartsWith(text));
-            }
-            else
-            {
-                ShowDishes();
             }
         }
     }

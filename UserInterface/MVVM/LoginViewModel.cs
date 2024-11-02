@@ -13,8 +13,8 @@ namespace UserInterface.MVVM
     public class LoginViewModel : BaseViewModel
     {
         #region Fields
-        private string _email = "UserName";
-        private string _password = "Password";
+        private string _email = "oleh.chyzhov@gmail.com";
+        private string _password = "Oleg2005";
         private string _errorMessage;
         #endregion
 

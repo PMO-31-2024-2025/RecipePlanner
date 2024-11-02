@@ -27,7 +27,7 @@ namespace UserInterface.Views
 
         private void ChangeEmailButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
