@@ -3,7 +3,6 @@ using DataAccess;
 using DataAccess.Models;
 using System.Windows;
 using System.Windows.Controls;
-using UserInterface.MVVM.Helpers;
 using UserInterface.Views;
 
 namespace UserInterface
@@ -35,19 +34,20 @@ namespace UserInterface
         public static FoodPlansWindow? MyFoodPlansWindow;
 
         // Secondary windows
-        public static UpdateRecipePage MyAddEditRecipeWindow;
+        public static UpdateRecipePage MyEditRecipeWindow;
+        public static AddrecipePage MyAddRecipeWindow;
         public static SeeRecipePage MySeeRecipeWindow;
         public void Application_Startup(object sender, StartupEventArgs e)
         {
-            MyLoginWindow = WindowIntitializer.InitLoginWindow();
+            MyLoginWindow = new LoginWindow();
             MyLoginWindow.Show();
 
-            SurveyWindow_1 = WindowIntitializer.InitFirstSurveyPage();
-            SurveyWindow_2 = WindowIntitializer.InitSecondSurveyPage();
-            SurveyWindow_3 = WindowIntitializer.InitThirdSurveyPage();
-            SurveyWindow_4 = WindowIntitializer.InitFourthSurveyPage();
-            SurveyWindow_5 = WindowIntitializer.InitFiveSurveyPage();
-            SurveyWindow_6 = WindowIntitializer.InitCongratulationPage();
+            SurveyWindow_1 = new FirstSurveyWindow();
+            SurveyWindow_2 = new SecondSurveyWindow();
+            SurveyWindow_3 = new ThirdSurveyWindow();
+            SurveyWindow_4 = new FourthSurveyWindow();
+            SurveyWindow_5 = new FiveSurveyWindow();
+            SurveyWindow_6 = new CongratulationWindow();
         }
     }
 }

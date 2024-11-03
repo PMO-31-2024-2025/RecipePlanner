@@ -88,7 +88,7 @@
                 <!--Top Right-->
                 <Grid Grid.Column="2">
 
-                    <Button Content="Add Recipe"
+                    <Button Content="Update Recipe"
                             Margin="15" FontSize="20"
                             Height="100"
                             Command="{Binding UpdateDishCommand}"/>

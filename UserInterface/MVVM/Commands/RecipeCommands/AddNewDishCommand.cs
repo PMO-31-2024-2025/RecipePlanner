@@ -1,6 +1,4 @@
-﻿using BusinessLogic;
-using DataAccess.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,10 +8,10 @@ using System.Windows.Input;
 
 namespace UserInterface.MVVM.Commands.RecipeCommands
 {
-    public class SaveNewDishCommand : ICommand
+    public class AddNewDishCommand : ICommand
     {
-        private RecipesViewModel VM;
-        public SaveNewDishCommand(RecipesViewModel vm)
+        public RecipesViewModel VM;
+        public AddNewDishCommand(RecipesViewModel vm)
         {
             VM = vm;
         }
@@ -26,9 +24,9 @@ namespace UserInterface.MVVM.Commands.RecipeCommands
 
         public void Execute(object? parameter)
         {
-            MessageBox.Show($"{VM.DishToEditOrDelete.Title} has been updated successfully", "Success",
-                MessageBoxButton.OK, MessageBoxImage.Information);
-            VM.SaveNewDish(VM.DishToEditOrDelete);
+            VM.SaveNewDish(VM.NewDish);
+            VM.ShowDishes();
+            MessageBox.Show("Recipe Added Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             App.RightSideFrame.Navigate(App.MyRecipesWindow);
         }
     }
