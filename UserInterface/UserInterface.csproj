@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\SignikaNegative-Regular.ttf" />
     <None Remove="Images\Accounts\MainPictures\Test.png" />
     <None Remove="Images\Accounts\Streak.png" />
     <None Remove="Images\MainButtons\Account.ico" />
@@ -24,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\SignikaNegative-Regular.ttf" />
     <Resource Include="Images\Accounts\MainPictures\Test.png" />
     <Resource Include="Images\Accounts\Streak.png" />
     <Resource Include="Images\Logo\Logo.ico">
