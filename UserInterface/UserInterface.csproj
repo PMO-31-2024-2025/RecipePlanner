@@ -63,4 +63,9 @@
     <Resource Include="Images\MainButtons\Statistics.ico" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\Statistics\MainPictures\" />
+    <Folder Include="MVVM\Commands\StatisticsCommand\" />
+  </ItemGroup>
+
 </Project>

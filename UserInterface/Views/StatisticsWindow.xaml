@@ -4,58 +4,96 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UserInterface.Views"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:viewModel="clr-namespace:UserInterface.MVVM"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Style="{StaticResource PageResource}">
-             
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <Page.DataContext>
+        <viewModel:StatisticsViewModel/>
+    </Page.DataContext>
+    
+    <Border Margin="5" Background="#FAF9F6" CornerRadius="50">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!--Top-->
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <!--Title-->
+                <Grid Grid.Row="0">
+                    <TextBlock Text="Inforgraphics" FontSize="25"
+                               Margin="20, 0" FontWeight="SemiBold"/>
+                </Grid>
+                
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!--SubTitle & Button-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Weight Statistic: email@gmail.com"
+                                       Margin="20, 5" FontWeight="SemiBold"/>
 
-        <Border Grid.Row="0" Background="White" Width="650" Height="50">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
-            </Border.Effect>
-            <Grid Margin="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0" IsEditable="True" Text="Year" FontWeight="Bold">
-                    <ComboBoxItem>2024</ComboBoxItem>
-                </ComboBox>
-                <ComboBox Grid.Column="1" IsEditable="True" Text="Month" FontWeight="Bold">
-                    <ComboBoxItem>January</ComboBoxItem>
-                    <ComboBoxItem>February</ComboBoxItem>
-                    <ComboBoxItem>December</ComboBoxItem>
-                </ComboBox>
-                <ComboBox Grid.Column="2" IsEditable="True" Text="Day" FontWeight="Bold">
-                    <ComboBoxItem>26</ComboBoxItem>
-                </ComboBox>
+                            <Line X1="0" X2="1000" Stroke="Black"
+                                  StrokeThickness="2"/>
+                        </StackPanel>
+                        
+                        <Button Content="Show"
+                                Grid.Column="1"
+                                FontSize="16" 
+                                Width="100"/>
 
-                <ComboBox Grid.Column="4" IsEditable="True" Text="Year" FontWeight="Bold">
-                    <ComboBoxItem>2024</ComboBoxItem>
-                </ComboBox>
-                <ComboBox Grid.Column="5" IsEditable="True" Text="Month" FontWeight="Bold"></ComboBox>
-                <ComboBox Grid.Column="6" IsEditable="True" Text="Day" FontWeight="Bold"></ComboBox>
+
+                    </Grid>
+                    
+                    <!--Date Pickers-->
+                    <Grid Grid.Row="1" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <DatePicker Grid.Column="0" FontSize="18"
+                                    HorizontalAlignment="Center"/>
+
+                        <TextBlock Text="From - To" Grid.Column="1"
+                                   FontSize="20" FontWeight="SemiBold"/>
+
+                        <DatePicker Grid.Column="2" FontSize="18"
+                                    HorizontalAlignment="Center"/>
+                    </Grid>
+                </Grid>
             </Grid>
-        </Border>
-
-        
-        <!--<TextBlock HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Text="Statistics Window"
-            FontSize="40"/>-->
-    </Grid>
+            
+            <!--Bottom-->
+            <Grid Grid.Row="1">
+                <lvc:CartesianChart Series="{Binding Series, UpdateSourceTrigger=PropertyChanged}">
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Date"/>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Weight"/>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
+            </Grid>
+        </Grid>
+    </Border>
 </Page>
