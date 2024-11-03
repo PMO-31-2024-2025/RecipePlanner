@@ -4,11 +4,17 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UserInterface.Views"
+      xmlns:viewModel="clr-namespace:UserInterface.MVVM"
+      xmlns:liveCharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SeeRecipePage"
       Style="{StaticResource PageResource}">
 
+    <Page.DataContext>
+        <viewModel:RecipesViewModel/>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.3*"/>
@@ -47,6 +53,11 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    <TextBlock Text="{Binding DishToEditOrDelete.Calories, StringFormat='{}{0} cal'}"
+                               Grid.Row="1"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               HorizontalAlignment="Center"/>
                 </Grid>
             </Grid>
         </Border>
@@ -54,10 +65,10 @@
 
         <!--Bottom-->
         <Border Grid.Row="1" Margin="10" Background="White" CornerRadius="40">
-            <Grid Grid.Row="1" DataContext="{Binding DishToEditOrDelete}">
+            <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.6*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Bottom left-->
@@ -66,13 +77,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" 
+                    <TextBlock Text="{Binding DishToEditOrDelete.Title, UpdateSourceTrigger=PropertyChanged}" 
                                FontSize="20" FontWeight="Bold"
                                HorizontalAlignment="Center"/>
 
                     <TextBox Grid.Row="1" FontSize="18"
                              FontWeight="SemiBold"
-                             Text="{Binding Recipe}"
+                             Text="{Binding DishToEditOrDelete.Recipe}"
                              IsEnabled="False"
                              TextWrapping="Wrap"
                              VerticalScrollBarVisibility="Visible"/>
@@ -80,72 +91,26 @@
 
                 <!--Bottom right-->
                 <Grid Grid.Column="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                    <liveCharts:PieChart LegendLocation="Right">
+                        <liveCharts:PieChart.Series>
+                            <liveCharts:PieSeries Title="Protein" 
+                            Values="{Binding chartProtein}" DataLabels="True"
+                            LabelPoint="{Binding LabelFormatter}"
+                            Foreground="#011627"/>
 
-                    <TextBlock Grid.Column="0" Grid.Row="0"
-                           FontSize="20"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Text="Protein"/>
+                            <liveCharts:PieSeries Title="Carbs" 
+                            Values="{Binding chartCarbs}" DataLabels="True"
+                            LabelPoint="{Binding LabelFormatter}"
+                            Foreground="#011627"/>
 
-                    <TextBlock Grid.Column="0" Grid.Row="1"
-                           FontSize="20"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Text="Carbs"/>
+                            <liveCharts:PieSeries Title="Fat" 
+                            Values="{Binding chartFat}" DataLabels="True"
+                            LabelPoint="{Binding LabelFormatter}"
+                            Foreground="#011627"/>
 
-                    <TextBlock Grid.Column="0" Grid.Row="2"
-                           FontSize="20"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Text="Fat"/>
 
-                    <TextBlock Grid.Column="0" Grid.Row="3"
-                           FontSize="20"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Text="Calories"/>
-
-                    <TextBox Grid.Column="1" Grid.Row="0"
-                             FontSize="20"
-                             HorizontalAlignment="Center"
-                             VerticalAlignment="Center"
-                             Text="{Binding Protein, StringFormat='{}{0} grams'}"
-                             BorderThickness="0"
-                             IsEnabled="False"/>
-
-                    <TextBox Grid.Column="1" Grid.Row="1"
-                             FontSize="20"
-                             HorizontalAlignment="Center"
-                             VerticalAlignment="Center"
-                             Text="{Binding Carbs, StringFormat='{}{0} grams'}"
-                             BorderThickness="0"
-                             IsEnabled="False"/>
-
-                    <TextBox Grid.Column="1" Grid.Row="2"
-                             FontSize="20"
-                             HorizontalAlignment="Center"
-                             VerticalAlignment="Center"
-                             Text="{Binding Fat, StringFormat='{}{0} grams'}"
-                             BorderThickness="0"
-                             IsEnabled="False"/>
-
-                    <TextBox Grid.Column="1" Grid.Row="3"
-                             FontSize="20"
-                             HorizontalAlignment="Center"
-                             VerticalAlignment="Center"
-                             Text="{Binding Calories}"
-                             BorderThickness="0"
-                             IsEnabled="False"/>
+                        </liveCharts:PieChart.Series>
+                    </liveCharts:PieChart>
                 </Grid>
             </Grid>
         </Border>

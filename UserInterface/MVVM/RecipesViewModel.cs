@@ -1,6 +1,7 @@
 ﻿using BusinessLogic;
 using DataAccess;
 using DataAccess.Models;
+using LiveCharts;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,7 +9,7 @@ using UserInterface.MVVM.Commands.RecipeCommands;
 
 namespace UserInterface.MVVM
 {
-    public class RecipesViewModel : BaseViewModel 
+    public class RecipesViewModel : BaseViewModel
     {
         #region Fields
         private string _searchFilter = "";
@@ -19,6 +20,9 @@ namespace UserInterface.MVVM
         #endregion
 
         #region Properties
+        public ChartValues<int> chartProtein { get; set; }
+        public ChartValues<int> chartCarbs { get; set; }
+        public ChartValues<int> chartFat { get; set; }
         public ObservableCollection<Dish> Dishes { get; set; }
         public ObservableCollection<string> IngredientsOfDishToEditOrDelete { get; set; }
 
@@ -35,8 +39,8 @@ namespace UserInterface.MVVM
             }
         }
         public Dish DishToEditOrDelete
-        { 
-            get 
+        {
+            get
             {
                 return _dishToEditOrDelete;
             }
@@ -44,18 +48,18 @@ namespace UserInterface.MVVM
             {
                 _dishToEditOrDelete = value;
                 OnPropertyChanged(nameof(DishToEditOrDelete));
-            } 
+            }
         }
-        
-        public string SearchFilter 
+
+        public string SearchFilter
         {
-            get { return _searchFilter; } 
+            get { return _searchFilter; }
             set
             {
                 _searchFilter = value;
                 OnPropertyChanged(nameof(SearchFilter));
                 FilterCommand.FireEvent();
-            } 
+            }
         }
         public string OrderFilter
         {
@@ -102,6 +106,10 @@ namespace UserInterface.MVVM
             AddIngredientCommand = new AddIngredientCommand(this);
             RemoveIngedientCommand = new RemoveIngredient(this);
             AddNewDishCommand = new AddNewDishCommand(this);
+
+            chartProtein = new ChartValues<int>();
+            chartCarbs = new ChartValues<int>();
+            chartFat = new ChartValues<int>();
 
             Dishes = new ObservableCollection<Dish>();
             IngredientsOfDishToEditOrDelete = new ObservableCollection<string>();
@@ -194,7 +202,7 @@ namespace UserInterface.MVVM
             Dish dishToSave = dish;
             // Saving Ingredients
             string modifiedIngredients = "";
-            for (int i = 0; i < IngredientsOfDishToEditOrDelete.Count-1; i++)
+            for (int i = 0; i < IngredientsOfDishToEditOrDelete.Count - 1; i++)
             {
                 modifiedIngredients += $"{IngredientsOfDishToEditOrDelete[i]},";
             }
@@ -224,8 +232,33 @@ namespace UserInterface.MVVM
             App.MySeeRecipeWindow.DataContext = this;
             DishToEditOrDelete = (Dish)dish;
 
+            RefillCharts(DishToEditOrDelete);
             List<string> newIngredients = DishToEditOrDelete.Ingredients.Split(",").ToList();
             RefillIngredientsOfDishToEditOrDelete(newIngredients);
+        }
+
+        private void RefillCharts(Dish dish)
+        {
+            chartProtein.Clear();
+            chartCarbs.Clear();
+            chartFat.Clear();
+            chartProtein.Add(dish.Protein);
+            chartCarbs.Add(dish.Carbs);
+            chartFat.Add(dish.Fat);
+        }
+        public Func<ChartPoint, string> LabelFormatter
+        {
+            get
+            {
+                return FormatLabel;
+            }
+        }
+        private string FormatLabel(ChartPoint chartPoint)
+        {
+            double value = chartPoint.Y; // The numeric value of this slice
+            double percentage = chartPoint.Participation * 100;
+
+            return $"{value}g ({percentage:F1}%)";
         }
         #endregion
 
