@@ -94,19 +94,22 @@
                     <liveCharts:PieChart LegendLocation="Right">
                         <liveCharts:PieChart.Series>
                             <liveCharts:PieSeries Title="Protein" 
-                            Values="{Binding chartProtein}" DataLabels="True"
-                            LabelPoint="{Binding LabelFormatter}"
-                            Foreground="#011627"/>
+                                                  Values="{Binding chartProtein}" DataLabels="True"
+                                                  LabelPoint="{Binding LabelFormatter}"
+                                                  Foreground="#FAF9F6"
+                                                  Fill="#89C4F4"/>
 
                             <liveCharts:PieSeries Title="Carbs" 
-                            Values="{Binding chartCarbs}" DataLabels="True"
-                            LabelPoint="{Binding LabelFormatter}"
-                            Foreground="#011627"/>
+                                                  Values="{Binding chartCarbs}" DataLabels="True"
+                                                  LabelPoint="{Binding LabelFormatter}"
+                                                  Foreground="#FAF9F6"
+                                                  Fill="#E84855"/>
 
                             <liveCharts:PieSeries Title="Fat" 
-                            Values="{Binding chartFat}" DataLabels="True"
-                            LabelPoint="{Binding LabelFormatter}"
-                            Foreground="#011627"/>
+                                                  Values="{Binding chartFat}" DataLabels="True"
+                                                  LabelPoint="{Binding LabelFormatter}"
+                                                  Foreground="#FAF9F6"
+                                                  Fill="#011627"/>
 
 
                         </liveCharts:PieChart.Series>
