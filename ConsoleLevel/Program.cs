@@ -142,10 +142,15 @@ class Program
 
         //DbHelper.db.SaveChanges();
 
+        foreach (var item in DbHelper.db.StatisticEntities.Where(entity => entity.AccountEmail == "oleh.chyzhov@gmail.com"))
+        {
+            DbHelper.db.StatisticEntities.Remove(item);
+        }
+
         DbHelper.db.StatisticEntities.Add(new StatisticEntity()
         {
             AccountEmail = "oleh.chyzhov@gmail.com",
-            Date = DateTime.Now.AddDays(7),
+            Date = DateTime.Now,
             Weight = 70,
         });
         DbHelper.db.StatisticEntities.Add(new StatisticEntity()
@@ -157,26 +162,62 @@ class Program
         DbHelper.db.StatisticEntities.Add(new StatisticEntity()
         {
             AccountEmail = "oleh.chyzhov@gmail.com",
-            Date = DateTime.Now.AddDays(7),
-            Weight = 75,
-        });
-        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
-        {
-            AccountEmail = "oleh.chyzhov@gmail.com",
-            Date = DateTime.Now.AddDays(7),
+            Date = DateTime.Now.AddDays(14),
             Weight = 73,
         });
         DbHelper.db.StatisticEntities.Add(new StatisticEntity()
         {
             AccountEmail = "oleh.chyzhov@gmail.com",
-            Date = DateTime.Now.AddDays(7),
+            Date = DateTime.Now.AddDays(21),
+            Weight = 73,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(28),
+            Weight = 74,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(35),
             Weight = 76,
         });
         DbHelper.db.StatisticEntities.Add(new StatisticEntity()
         {
             AccountEmail = "oleh.chyzhov@gmail.com",
-            Date = DateTime.Now.AddDays(7),
+            Date = DateTime.Now.AddDays(42),
             Weight = 78,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(49),
+            Weight = 80,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(56),
+            Weight = 79,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(61),
+            Weight = 83,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(68),
+            Weight = 84,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(75),
+            Weight = 86,
         });
 
         DbHelper.db.SaveChanges();
