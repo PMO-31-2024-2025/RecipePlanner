@@ -59,9 +59,9 @@
                             <TextBlock Text="{Binding ZoomingMode, UpdateSourceTrigger=PropertyChanged, StringFormat='ZoomingMode: {0}'}"
                                        Margin="20, 5" FontWeight="SemiBold"/>
 
-                            <Button Content="Entities"
-                                FontSize="16" 
-                                Width="100"/>
+                            <Button Content="Entities" FontSize="16" 
+                                    Width="100"
+                                    Command="{Binding ManageEntitiesCommand}"/>
 
                             <Button Content="Reset"
                                     FontSize="16" 

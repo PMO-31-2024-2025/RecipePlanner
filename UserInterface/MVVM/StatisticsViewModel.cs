@@ -4,10 +4,12 @@ using DataAccess.Models;
 using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 using UserInterface.MVVM.Commands.StatisticsCommands;
+using UserInterface.Views;
 
 namespace UserInterface.MVVM
 {
@@ -23,6 +25,11 @@ namespace UserInterface.MVVM
         private double? _yMaxValue = double.NaN;
 
         private SeriesCollection _series = new SeriesCollection();
+
+        // Manage Entities Page
+        private StatisticEntity? _selectedEntity;
+        private string _date = DateTime.Now.ToString();
+        private string _weight = "0";
         #endregion
 
         #region Properties
@@ -93,16 +100,52 @@ namespace UserInterface.MVVM
                 OnPropertyChanged(nameof(Series));
             } 
         }
+        // Manage Entities Page
+        public ObservableCollection<StatisticEntity> Entities { get; set; }
+
+        public StatisticEntity? SelectedEntity
+        {
+            get { return _selectedEntity; }
+            set
+            {
+                _selectedEntity = value;
+                OnPropertyChanged(nameof(SelectedEntity));
+            }
+        }
+        public string Date
+        {
+            get { return _date; }
+            set
+            {
+                _date = value;
+                OnPropertyChanged(nameof(Date));
+            }
+        }
+        public string Weight
+        {
+            get { return _weight; }
+            set
+            {
+                _weight = value;
+                OnPropertyChanged(nameof(Weight));
+            }
+        }
         #endregion
 
         #region Commands
         public ResetZoomingModeCommand ResetZoomingModeCommand { get; }
         public ToggleZoomingModeCommand ToggleZoomingModeCommand { get; }
+        public ManageEntitiesCommand ManageEntitiesCommand { get; }
+
+        // Manage Entities Page
+        public AddNewEntityCommand AddNewEntityCommand { get; }
+        public RemoveSelectedEntityCommand RemoveSelectedEntityCommand { get; }
         #endregion
 
         #region Constructor
         public StatisticsViewModel()
         {
+            // Statistics Page
             XFormatter = (val) =>
             {
                 try { return new DateTime((long)val).ToString("dd/MMM/yyyy"); }
@@ -116,9 +159,17 @@ namespace UserInterface.MVVM
 
             ResetZoomingModeCommand = new ResetZoomingModeCommand(this);
             ToggleZoomingModeCommand = new ToggleZoomingModeCommand(this);
+            ManageEntitiesCommand = new ManageEntitiesCommand(this);
 
             ChartValues<DateTimePoint> weightStatistics = GetTimeData();
             AddNewSerie(Colors.Blue, "Weights", weightStatistics);
+
+            // Manage Entities Page
+            Entities = new ObservableCollection<StatisticEntity>();
+            PopulateEntities();
+
+            AddNewEntityCommand = new AddNewEntityCommand(this);
+            RemoveSelectedEntityCommand = new RemoveSelectedEntityCommand(this);
         }
         #endregion
 
@@ -140,10 +191,16 @@ namespace UserInterface.MVVM
                 Fill = brush
             });
         }
+        private void ResetLiveChart()
+        {
+            Series.Clear();
+            ChartValues<DateTimePoint> weightStatistics = GetTimeData();
+            AddNewSerie(Colors.Blue, "Weights", weightStatistics);
+        }
         private ChartValues<DateTimePoint> GetTimeData()
         {
             ChartValues<DateTimePoint> valuesPoints = new ChartValues<DateTimePoint>();
-            foreach (StatisticEntity entity in AccountManager.LoginedAccount.StatisticEntities!)
+            foreach (StatisticEntity entity in AccountManager.LoginedAccount.StatisticEntities!.OrderBy(entity => entity.Date))
             {
                 valuesPoints.Add(new DateTimePoint(entity.Date, entity.Weight));
             }
@@ -174,6 +231,49 @@ namespace UserInterface.MVVM
             YMin = double.NaN;
             YMax = double.NaN;
         }
+
+        public void ExecuteManageEntitiesCommand()
+        {
+            App.MyManageEntitesPage.DataContext = this;
+            App.RightSideFrame.Navigate(App.MyManageEntitesPage);
+        }
+
+        // Manage Entities Page
+        public void PopulateEntities()
+        {
+            Entities.Clear();
+            foreach (StatisticEntity entity in AccountManager.LoginedAccount.StatisticEntities!.OrderBy(entity => entity.Date))
+            {
+                Entities.Add(entity);
+            }
+        }
+
+        public void ExecuteRemoveSelectedEntityCommand()
+        {
+            try
+            {
+                StatisticEntity entity = DbHelper.db.StatisticEntities.First(entity => entity.Id == SelectedEntity!.Id);
+                DbHelper.db.Remove(entity);
+                DbHelper.db.SaveChanges();
+                PopulateEntities();
+                ResetLiveChart();
+            }
+            catch { }
+        }
+        public void ExecuteAddNewEntityCommand()
+        {
+            StatisticEntity entity = new StatisticEntity()
+            {
+                AccountEmail = AccountManager.LoginedAccount.Email,
+                Date = DateTime.Parse(Date),
+                Weight = int.Parse(Weight)
+            };
+            DbHelper.db.StatisticEntities.Add(entity);
+            DbHelper.db.SaveChanges();
+            PopulateEntities();
+            ResetLiveChart();
+        }
         #endregion
+
     }
 }

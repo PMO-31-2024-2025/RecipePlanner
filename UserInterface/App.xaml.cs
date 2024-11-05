@@ -37,6 +37,7 @@ namespace UserInterface
         public static UpdateRecipePage MyEditRecipeWindow;
         public static AddrecipePage MyAddRecipeWindow;
         public static SeeRecipePage MySeeRecipeWindow;
+        public static ManageEntitiesPage MyManageEntitesPage;
         public void Application_Startup(object sender, StartupEventArgs e)
         {
             MyLoginWindow = new LoginWindow();

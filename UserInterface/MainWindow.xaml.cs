@@ -19,6 +19,7 @@ namespace UserInterface
             App.MyEditRecipeWindow = new UpdateRecipePage();
             App.MyAddRecipeWindow = new AddrecipePage();
             App.MySeeRecipeWindow = new SeeRecipePage();
+            App.MyManageEntitesPage = new ManageEntitiesPage();
 
         App.RightSideFrame.Navigate(App.MyAccountWindow);
         }
