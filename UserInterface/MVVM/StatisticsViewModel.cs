@@ -9,7 +9,6 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 using UserInterface.MVVM.Commands.StatisticsCommands;
-using UserInterface.Views;
 
 namespace UserInterface.MVVM
 {
@@ -170,7 +169,11 @@ namespace UserInterface.MVVM
             // Statistics Page
             XFormatter = (val) =>
             {
-                try { return new DateTime((long)val).ToString("dd/MMM/yyyy"); }
+                try 
+                { 
+                    DateTime dateTime = new DateTime((long)val);
+                    return DateOnly.FromDateTime(dateTime).ToString();
+                }
                 catch { return "None"; }
             };
             YFormatter = (val) =>
