@@ -25,10 +25,12 @@ namespace UserInterface.MVVM
         private double? _yMaxValue = double.NaN;
 
         private SeriesCollection _series = new SeriesCollection();
+        private DateTime? _fromDateTime;
+        private DateTime? _toDateTime;
 
         // Manage Entities Page
         private StatisticEntity? _selectedEntity;
-        private string _date = DateTime.Now.ToString();
+        private string _date;
         private string _weight = "0";
         #endregion
 
@@ -100,6 +102,25 @@ namespace UserInterface.MVVM
                 OnPropertyChanged(nameof(Series));
             } 
         }
+
+        public DateTime? FromDateTime
+        {
+            get { return _fromDateTime; }
+            set
+            {
+                _fromDateTime = value;
+                OnPropertyChanged(nameof(FromDateTime));
+            }
+        }
+        public DateTime? ToDateTime
+        {
+            get { return _toDateTime; }
+            set
+            {
+                _toDateTime = value;
+                OnPropertyChanged(nameof(ToDateTime));
+            }
+        }
         // Manage Entities Page
         public ObservableCollection<StatisticEntity> Entities { get; set; }
 
@@ -136,6 +157,7 @@ namespace UserInterface.MVVM
         public ResetZoomingModeCommand ResetZoomingModeCommand { get; }
         public ToggleZoomingModeCommand ToggleZoomingModeCommand { get; }
         public ManageEntitiesCommand ManageEntitiesCommand { get; }
+        public DatePickerChangedCommand DatePickerChangedCommand { get; }
 
         // Manage Entities Page
         public AddNewEntityCommand AddNewEntityCommand { get; }
@@ -160,6 +182,7 @@ namespace UserInterface.MVVM
             ResetZoomingModeCommand = new ResetZoomingModeCommand(this);
             ToggleZoomingModeCommand = new ToggleZoomingModeCommand(this);
             ManageEntitiesCommand = new ManageEntitiesCommand(this);
+            DatePickerChangedCommand = new DatePickerChangedCommand(this);
 
             ChartValues<DateTimePoint> weightStatistics = GetTimeData();
             AddNewSerie(Colors.Blue, "Weights", weightStatistics);
@@ -191,16 +214,34 @@ namespace UserInterface.MVVM
                 Fill = brush
             });
         }
-        private void ResetLiveChart()
+        private void ResetLiveChart(DateTime? From = null, DateTime? To = null)
         {
             Series.Clear();
-            ChartValues<DateTimePoint> weightStatistics = GetTimeData();
+            ChartValues<DateTimePoint> weightStatistics;
+            if (From == null && To == null || From != null && To == null || From == null && To != null)
+            {
+                weightStatistics = GetTimeData();
+            }
+            else
+            {
+                weightStatistics = GetTimeData(From, To);
+            }
             AddNewSerie(Colors.Blue, "Weights", weightStatistics);
         }
-        private ChartValues<DateTimePoint> GetTimeData()
+        private ChartValues<DateTimePoint> GetTimeData(DateTime? From = null, DateTime? To = null)
         {
             ChartValues<DateTimePoint> valuesPoints = new ChartValues<DateTimePoint>();
-            foreach (StatisticEntity entity in AccountManager.LoginedAccount.StatisticEntities!.OrderBy(entity => entity.Date))
+            List<StatisticEntity> Entities;
+            if (From == null && To == null || From != null && To == null || From == null && To != null)
+            {
+                Entities = AccountManager.LoginedAccount.StatisticEntities!.OrderBy(entity => entity.Date).ToList();
+            }
+            else
+            {
+                Entities = AccountManager.LoginedAccount.StatisticEntities!.OrderBy(entity => entity.Date)
+                    .Where(entity => entity.Date > From && entity.Date < To).ToList();
+            }
+            foreach (StatisticEntity entity in Entities)
             {
                 valuesPoints.Add(new DateTimePoint(entity.Date, entity.Weight));
             }
@@ -230,12 +271,19 @@ namespace UserInterface.MVVM
             XMax = double.NaN;
             YMin = double.NaN;
             YMax = double.NaN;
+            FromDateTime = null;
+            ToDateTime = null;
         }
 
         public void ExecuteManageEntitiesCommand()
         {
             App.MyManageEntitesPage.DataContext = this;
             App.RightSideFrame.Navigate(App.MyManageEntitesPage);
+        }
+
+        public void ExecuteDatePickerChangedCommand()
+        {
+            ResetLiveChart(FromDateTime, ToDateTime);
         }
 
         // Manage Entities Page
