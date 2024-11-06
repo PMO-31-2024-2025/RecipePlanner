@@ -36,5 +36,9 @@ namespace BusinessLogic
         {
             return LoginedAccount == null ? false : true;
         }
+        public static void ResetCurrentUserWeight(int weight)
+        {
+            LoginedAccount.AccountInfo.Weight = weight;
+        }
     }
 }

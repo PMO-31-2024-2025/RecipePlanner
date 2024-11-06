@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UserInterface.Views"
              xmlns:viewModel="clr-namespace:UserInterface.MVVM"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Style="{StaticResource PageResource}">
@@ -216,7 +217,14 @@
         <!--Right Bottom-->
         <Border Grid.Column="1" Grid.Row="1" Margin="10, 10, 0, 0" Style="{StaticResource PagePartStyle}">
             <Grid>
-
+                <lvc:CartesianChart Series="{Binding Series, UpdateSourceTrigger=PropertyChanged}">
+                    <lvc:CartesianChart.AxisX>
+                    <lvc:Axis LabelFormatter="{Binding XFormatter}"/>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis LabelFormatter="{Binding YFormatter}"/>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
             </Grid>
         </Border>
     </Grid>

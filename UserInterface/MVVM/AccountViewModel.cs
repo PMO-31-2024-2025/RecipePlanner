@@ -1,5 +1,11 @@
 ﻿using DataAccess;
 using BusinessLogic;
+using LiveCharts;
+using LiveCharts.Wpf;
+using System.Windows.Media;
+using System.Windows;
+using LiveCharts.Defaults;
+using DataAccess.Models;
 
 namespace UserInterface.MVVM
 {
@@ -13,8 +19,12 @@ namespace UserInterface.MVVM
         private int _desiredWeight = AccountManager.LoginedAccount.AccountInfo.DesiredWeight;
         private int _currentWeight = AccountManager.LoginedAccount.AccountInfo.Weight;
         private int _height = AccountManager.LoginedAccount.AccountInfo.Height;
+
+        private SeriesCollection _series = new SeriesCollection();
         #endregion
         #region Properties
+        public Func<double, string> XFormatter { get; set; }
+        public Func<double, string> YFormatter { get; set; }
         public string Email 
         {
             get
@@ -99,6 +109,53 @@ namespace UserInterface.MVVM
                 OnPropertyChanged(nameof(Height));
             }
         }
-        #endregion 
+        public SeriesCollection Series
+        {
+            get { return _series; }
+            set
+            {
+                _series = value;
+                OnPropertyChanged(nameof(Series));
+            }
+        }
+        #endregion
+
+        public AccountViewModel()
+        {
+            XFormatter = (val) =>
+            {
+                try
+                {
+                    DateTime dateTime = new DateTime((long)val);
+                    return DateOnly.FromDateTime(dateTime).ToString();
+                }
+                catch { return "None"; }
+            };
+            YFormatter = (val) =>
+            {
+                try { return $"{val} kg"; }
+                catch { return "None"; }
+            };
+
+            ChartValues<DateTimePoint> values = new ChartValues<DateTimePoint>();
+            foreach (StatisticEntity entity in AccountManager.LoginedAccount.StatisticEntities!.OrderBy(ent => ent.Date))
+            {
+                values.Add(new DateTimePoint(entity.Date, entity.Weight));
+            }
+            LinearGradientBrush brush = new LinearGradientBrush()
+            {
+                StartPoint = new Point(0, 0),
+                EndPoint = new Point(0, 1),
+            };
+            brush.GradientStops.Add(new GradientStop(Colors.Blue, 0));
+            brush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
+
+            Series.Add(new LineSeries()
+            {
+                Title = "Weights",
+                Values = values,
+                Fill = brush
+            });
+        }
     }
 }

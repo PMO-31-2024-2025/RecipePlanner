@@ -325,6 +325,5 @@ namespace UserInterface.MVVM
             ResetLiveChart();
         }
         #endregion
-
     }
 }
