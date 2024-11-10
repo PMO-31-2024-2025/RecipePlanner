@@ -92,8 +92,6 @@
                                   Style="{StaticResource RecipeCombobox}"
                                   Margin="10" Width="150"
                                   SelectedItem="{Binding Gender, Mode=TwoWay, Converter={StaticResource SToSCoverter}}">
-                            <ComboBoxItem Content="Select" IsSelected="True"
-                                          IsEnabled="False"/>
                             <ComboBoxItem Content="Male"/>
                             <ComboBoxItem Content="Female"/>
                         </ComboBox>
@@ -138,8 +136,6 @@
                                   Style="{StaticResource RecipeCombobox}"
                                   Margin="10" Width="100"
                                   SelectedItem="{Binding Goal, Mode=TwoWay, Converter={StaticResource STOGConverter}}">
-                            <ComboBoxItem Content="Select" IsSelected="True"
-                                          IsEnabled="False"/>
                             <ComboBoxItem Content="Gain"/>
                             <ComboBoxItem Content="Loose"/>
                             <ComboBoxItem Content="Maintain"/>
