@@ -44,12 +44,6 @@
                         FontSize="18"
                         x:Name="VeryActiveButton"
                         Click="Button_Click"/>
-
-                <Button Background="LightGray" 
-                        Width="70" Height="30" 
-                        Content="Next" Margin="40"
-                        FontSize="18"
-                        x:Name="NextButton" Click="NextButton_Click"/>
             </StackPanel>
         </Border>
     </Grid>

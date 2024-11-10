@@ -41,12 +41,6 @@
                         Content="Maintain the weight"
                         FontSize="18"
                         x:Name="MaintainWeightButton" Click="MaintainWeightButton_Click"/>
-
-                <Button Background="LightGray"
-                        Width="80" Height="35" 
-                        Content="Next" Margin="40"
-                        FontSize="18"
-                        x:Name="NextButton" Click="NextButton_Click"/>
             </StackPanel>
             
         </Border>

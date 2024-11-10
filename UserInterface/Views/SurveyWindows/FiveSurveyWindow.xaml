@@ -24,19 +24,23 @@
                          Background="LightGoldenrodYellow"
                          Margin="0 10 0 0"
                          Height="30" FontSize="18"
-                         x:Name="HeightTextBox"
+                         x:Name="HeightTextBox" TextChanged="HeightTextBox_TextChanged"
                          />
+                
                 <TextBlock Text="What is your weight?"
                            HorizontalAlignment="Center"
                            FontWeight="Bold"
                            FontSize="24"
                            Margin="0 10 0 0"></TextBlock>
+                
                 <TextBox Width="100"
                          Background="LightGoldenrodYellow"
                          Margin="0 10 0 0"
                          Height="30"
                          FontSize="18"
-                         x:Name="CurrentWeightTextBox"/>
+                         x:Name="WeightTextBox"  
+                         TextChanged="WeightTextBox_TextChanged"/>
+                
                 <TextBlock Text="What is your desired weight?"
                            HorizontalAlignment="Center"
                            FontWeight="Bold"
@@ -47,14 +51,7 @@
                          Margin="0 10 0 0"
                          Height="30"
                          FontSize="18"
-                         x:Name="DesiredWeightTextBox"/>
-
-                <Button Content="Next" Width="80"
-                        Height="40"
-                        Margin="40"
-                        FontSize="24" 
-                        x:Name="NextButtonClick"
-                        Click="NextButton_Click"/>
+                         x:Name="DesiredWeightTextBox" TextChanged="DesiredWeightTextBox_TextChanged"/>
             </StackPanel>
         </Border>
     </Grid>

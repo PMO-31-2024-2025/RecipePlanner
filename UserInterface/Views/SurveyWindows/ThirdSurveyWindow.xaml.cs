@@ -20,6 +20,7 @@ namespace UserInterface.Views
     /// </summary>
     public partial class ThirdSurveyWindow : Page
     {
+        public string ActivityLevel { get; set; }
         public ThirdSurveyWindow()
         {
             InitializeComponent();
@@ -29,20 +30,24 @@ namespace UserInterface.Views
             Button PressedButton = (Button)sender;
             if (PressedButton == NotVeryActiveButton)
             {
+                ActivityLevel = "Not Very Active";
+                NotVeryActiveButton.Background = System.Windows.Media.Brushes.DarkGray;
+                App.SurviesFrame.Navigate(App.SurveyWindow_4);
+
 
             }
             else if (PressedButton == ActiveButton)
             {
-
+                ActivityLevel = "Active";
+                ActiveButton.Background = System.Windows.Media.Brushes.DarkGray;
+                App.SurviesFrame.Navigate(App.SurveyWindow_4);
             }
             else if (PressedButton == VeryActiveButton)
             {
-
+                ActivityLevel = "Very Active";
+                VeryActiveButton.Background = System.Windows.Media.Brushes.DarkGray;
+                App.SurviesFrame.Navigate(App.SurveyWindow_4);
             }
-        }
-        private void NextButton_Click(object sender, RoutedEventArgs e)
-        {
-            App.SurviesFrame.Navigate(App.SurveyWindow_4);
         }
     }
 }

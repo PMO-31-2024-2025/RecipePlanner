@@ -50,12 +50,6 @@
                         Content="I don't know" FontSize="18"
                         x:Name="NoIdeaButton"
                         Click="Button_Click"/>
-
-                <Button Background="LightGray"
-                        Width="80" Height="35" 
-                        Content="Next" Margin="40"
-                        FontSize="18"
-                        x:Name="NextButton" Click="NextButton_Click"/>
             </StackPanel>
         </Border>
     </Grid>

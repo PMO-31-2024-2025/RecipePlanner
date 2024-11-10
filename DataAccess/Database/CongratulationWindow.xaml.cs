@@ -4,6 +4,7 @@ using DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,9 +14,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 
 namespace UserInterface.Views
 {
@@ -69,17 +70,18 @@ namespace UserInterface.Views
 
             double stepCaloriesBurned = StepsPerDay * 0.05;
             double totalCalories = (bmr * activityMultiplier) + stepCaloriesBurned;
+            double weightDifference = _info.DesiredWeight - _info.Weight;
 
             switch (_info.Goal)
             {
                 case WeightGoal.Gain:
-                    if (_info.DesiredWeight > _info.Weight)
+                    if (weightDifference > 0)
                     {
                         totalCalories += 500;
                     }
                     break;
                 case WeightGoal.Lose:
-                    if (_info.DesiredWeight < _info.Weight)
+                    if (weightDifference < 0)
                     {
                         totalCalories -= 500;
                     }

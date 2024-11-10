@@ -10,6 +10,7 @@ namespace UserInterface.Views
         {
             InitializeComponent();
             App.SurviesFrame = SurviesFrame;
+            App.SurviesFrame.Navigate(App.SurveyWindow_1);
         }
 
         private void TextBox_MouseEnter(object sender, MouseEventArgs e)
@@ -17,5 +18,6 @@ namespace UserInterface.Views
             TextBox textBox = (TextBox)sender;
             if (textBox.Text == "Email" || textBox.Text == "Password") textBox.Text = "";
         }
+        
     }
 }
