@@ -55,7 +55,7 @@ namespace UserInterface.MVVM
             set
             {
                 AccountManager.LoginedAccount.AccountInfo.Age = value;
-                OnPropertyChanged(nameof(Age));
+                OnPropertyChanged(nameof(Age));                
             }
         }
         public Sex Gender
