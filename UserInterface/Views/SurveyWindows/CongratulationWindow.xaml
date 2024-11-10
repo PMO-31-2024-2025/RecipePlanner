@@ -19,21 +19,22 @@
                            HorizontalAlignment="Center" 
                            FontWeight="Bold"
                            FontSize="32"
-                           Margin="0 100 0 0"></TextBlock>
+                           Margin="0 100 0 0"/>
                 <TextBlock Text="Your daily calorie intake"
                            HorizontalAlignment="Center"
                            FontSize="18"
-                           Margin="10"
-                           ></TextBlock>
+                           Margin="10"/>
                 <TextBlock x:Name="CaloriesTextBlock"
                            FontWeight="Bold" 
                            HorizontalAlignment="Center"
-                           FontSize="24" Width="72"
-                           ></TextBlock>
+                           FontSize="24" Width="72"/>
                 <TextBlock Text="calories" 
                            HorizontalAlignment="Center"
                            FontSize="18"
-                           Margin="0 5 0 0"></TextBlock>
+                           Margin="0 5 0 0"/>
+
+                <Button Content="Next" Width="100" Height="40" 
+                        FontSize="20" Click="Button_Click"/>
             </StackPanel>
         </Border>
     </Grid>

@@ -98,17 +98,18 @@ namespace UserInterface.MVVM
             try
             {
                 DbHelper.db.Accounts.Add(registeredAccount);
-                //DbHelper.db.SaveChanges();
+                DbHelper.db.SaveChanges();
+                AccountManager.LoginedAccount = AccountManager.UpdateLoginedAccount(registeredAccount.Email);
+
+                App.MyLoginWindow.LoginBorder.Visibility = Visibility.Hidden;
+                App.MyLoginWindow.SurviesBorder.Visibility = Visibility.Visible;
+                App.MyLoginWindow.SurviesFrame.Navigate(App.SurveyWindow_1);
             }
             catch (Exception e)
             {
                 MessageBox.Show("Account already exists", "Register Failure", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
-            App.MyLoginWindow.LoginBorder.Visibility = Visibility.Hidden;
-            App.MyLoginWindow.SurviesBorder.Visibility = Visibility.Visible;
-            App.MyLoginWindow.SurviesFrame.Navigate(App.SurveyWindow_1);
         }
         #endregion
     }

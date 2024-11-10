@@ -24,82 +24,16 @@ namespace UserInterface.Views
     /// </summary>
     public partial class CongratulationWindow : Page
     {
-        public static AccountInfo? _info = null;
-        public int StepsPerDay { get; set; }
-        public string ActivityLevel { get; set; }
-
         public CongratulationWindow()
-
         {
             InitializeComponent();
-            _info = new AccountInfo();
-            CalculateIntakeCalories();
         }
 
-        public int CalculateIntakeCalories()
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            double bmr;
-
-            if (_info.Sex == Sex.Male)
-            {
-                bmr = (10 * _info.Weight) + (6.25 * _info.Height) - (5 * _info.Age) + 5;
-            }
-            else
-            {
-                bmr = (10 * _info.Weight) + (6.25 * _info.Height) - (5 * _info.Age) - 161;
-            }
-
-            double activityMultiplier;
-
-            switch (ActivityLevel)
-            {
-                case "Not Very Active":
-                    activityMultiplier = 1.2;
-                    break;
-                case "Active":
-                    activityMultiplier = 1.375;
-                    break;
-                case "Very Active":
-                    activityMultiplier = 1.55;
-                    break;
-                default:
-                    activityMultiplier = 1.2;
-                    break;
-            }
-
-            double stepCaloriesBurned = StepsPerDay * 0.05;
-            double totalCalories = (bmr * activityMultiplier) + stepCaloriesBurned;
-
-            switch (_info.Goal)
-            {
-                case WeightGoal.Gain:
-                    if (_info.DesiredWeight > _info.Weight)
-                    {
-                        totalCalories += 500;
-                    }
-                    break;
-                case WeightGoal.Lose:
-                    if (_info.DesiredWeight < _info.Weight)
-                    {
-                        totalCalories -= 500;
-                    }
-                    break;
-                case WeightGoal.Maintain:
-                    break;
-            }
-
-            _info.DailyCalories = (int)Math.Round(totalCalories);
-            CaloriesTextBlock.Text = _info.DailyCalories.ToString();
-
-            //DbHelper.db.Add(_info);
-            //DbHelper.db.SaveChanges();
-
-            App.MyLoginWindow.SurviesFrame.Navigate(App.SurveyWindow_1);
-            App.MyLoginWindow.SurviesBorder.Visibility = Visibility.Hidden;
             App.MyLoginWindow.LoginBorder.Visibility = Visibility.Visible;
-
-            return _info.DailyCalories;
+            App.MyLoginWindow.SurviesBorder.Visibility = Visibility.Collapsed;
+            App.MyLoginWindow.SurviesFrame.Navigate(App.SurveyWindow_1);
         }
-
     }
 }

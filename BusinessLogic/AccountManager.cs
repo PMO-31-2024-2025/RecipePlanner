@@ -11,7 +11,6 @@ namespace BusinessLogic
 {
     public static class AccountManager
     {
-        public static AccountInfo? _info = null; // Used in application to initialize in survey windows
         private static Account? _loginedAccount = null;
 
         public static Account LoginedAccount
@@ -35,10 +34,6 @@ namespace BusinessLogic
         public static bool IsLogined()
         {
             return LoginedAccount == null ? false : true;
-        }
-        public static void ResetCurrentUserWeight(int weight)
-        {
-            LoginedAccount.AccountInfo.Weight = weight;
         }
     }
 }

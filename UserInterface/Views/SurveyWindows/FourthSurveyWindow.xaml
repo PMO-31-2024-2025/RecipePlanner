@@ -24,15 +24,14 @@
                 <TextBox x:Name="AgeTextBox"
                          Width="100" 
                          Background="LightGoldenrodYellow"
-                         Margin=" 0 10 0 0"
-                         TextChanged="AgeTextBox_TextChanged"/>
+                         Margin=" 0 10 0 0"/>
 
 
                 <TextBlock Text="What is your gender?" 
                            HorizontalAlignment="Center"
                            FontWeight="Bold" 
-                           Margin ="0 10 0 0"></TextBlock>
-                
+                           Margin ="0 10 0 0"/>
+
                 <RadioButton Content="Male" HorizontalAlignment="Center" 
                              Margin="0 15 105 0"
                              x:Name="MaleRadioButton"
@@ -42,6 +41,10 @@
                              Margin="0 -15 -85 0"
                              x:Name="FemaleRadioButton"
                              Click="FemaleRadioButton_Click"/>
+
+                <Button Click="Button_Click"
+                        Height="20" Width="100" Content="Next"
+                        Margin="20"/>
             </StackPanel>
         </Border>
     </Grid>

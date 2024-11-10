@@ -1,4 +1,5 @@
-﻿using DataAccess;
+﻿using BusinessLogic;
+using DataAccess;
 using DataAccess.Models;
 using SQLitePCL;
 using System;
@@ -23,83 +24,39 @@ namespace UserInterface.Views
     /// </summary>
     public partial class FiveSurveyWindow : Page
     {
-        public static AccountInfo? _info = null;
         public FiveSurveyWindow()
         {
             InitializeComponent();
-            _info = new AccountInfo();
         }
 
-        private void HeightTextBox_MouseEnter(object sender, MouseEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (int.TryParse(HeightTextBox.Text, out int height))
+            try
             {
-                _info.Height = height;
-            }
-            else if (!string.IsNullOrWhiteSpace(HeightTextBox.Text))
-            {
-                MessageBox.Show("Please enter a valid height.");
-            }
-        }
+                DietCreator.Height = int.Parse(HeightTextBox.Text);
+                DietCreator.CurrentWeight = int.Parse(CurrentWeightTextBox.Text);
+                DietCreator.DesiredWeight = int.Parse(DesiredWeightTextBox.Text);
 
-
-        private void CurrentWeightTextBox_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (int.TryParse(CurrentWeightTextBox.Text, out int currentWeight))
-            {
-                _info.Weight = currentWeight;
-            }
-            else if (!string.IsNullOrWhiteSpace(CurrentWeightTextBox.Text))
-            {
-                MessageBox.Show("Please enter a valid current weight.");
-            }
-        }
-
-
-        //private void TextBoxDesiredWeight_MouseEnter(object sender, MouseEventArgs e)
-        //{
-        //    if (int.TryParse(DesiredWeightTextBox.Text, out int desiredWeight))
-        //    {
-        //        _info.DesiredWeight = desiredWeight;
-
-        //    }
-        //    else if (!string.IsNullOrWhiteSpace(DesiredWeightTextBox.Text))
-        //    {
-        //        MessageBox.Show("Please enter a valid desired weight.");
-        //    }
-        //}
-
-        //App.SurviesFrame.Navigate(App.SurveyWindow_6);
-
-        //private void DesiredWeightTextBox_MouseEnter(object sender, MouseEventArgs e)
-        //{
-        //    if (int.TryParse(DesiredWeightTextBox.Text, out int desiredWeight))
-        //    {
-        //        _info.DesiredWeight = desiredWeight;
-
-        //        App.SurviesFrame.Navigate(App.SurveyWindow_6);
-        //        //this.NavigationService.Navigate(App.SurveyWindow_6);  
-        //    }
-        //    else if (!string.IsNullOrWhiteSpace(DesiredWeightTextBox.Text))
-        //    {
-        //        MessageBox.Show("Please enter a valid desired weight.");
-        //    }
-
-        //    App.SurviesFrame.Navigate(App.SurveyWindow_6);
-        //}
-
-        private void DesiredWeightTextBox_Д(object sender, MouseEventArgs e)
-        {
-            if (int.TryParse(DesiredWeightTextBox.Text, out int desiredWeight))
-            {
-                _info.DesiredWeight = desiredWeight;
+                int calories = (int)DietCreator.CalculateCalories();
                 App.SurviesFrame.Navigate(App.SurveyWindow_6);
-            }
-            else if (!string.IsNullOrWhiteSpace(DesiredWeightTextBox.Text))
-            {
-                MessageBox.Show("Please enter a valid desired weight.");
-            }
-        }
+                App.SurveyWindow_6.CaloriesTextBlock.Text = calories.ToString();
 
+
+                AccountInfo info = new AccountInfo()
+                {
+                    AccountEmail = AccountManager.LoginedAccount.Email,
+                    Age = DietCreator.Age,
+                    DailyCalories = calories,
+                    DesiredWeight = DietCreator.DesiredWeight,
+                    Goal = DietCreator.WeightGoal,
+                    Height = DietCreator.Height,
+                    Sex = DietCreator.Gender,
+                    Weight = DietCreator.CurrentWeight,
+                };
+                DbHelper.db.AccountInformations.Add(info);
+                DbHelper.db.SaveChanges();
+            }
+            catch { MessageBox.Show("Enter valid values", "Errors", MessageBoxButton.OK, MessageBoxImage.Error); }
+        }
     }
 }

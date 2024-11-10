@@ -23,17 +23,14 @@ namespace UserInterface.Views
     /// </summary>
     public partial class FirstSurveyWindow : Page
     {
-        public static AccountInfo? _info = null;
-
         public FirstSurveyWindow()
         {
             InitializeComponent();
-            _info = new AccountInfo();
         }
 
         private void LoseWeightButton_Click(object sender, RoutedEventArgs e)
         {
-            _info.Goal = WeightGoal.Lose;
+            DietCreator.WeightGoal = WeightGoal.Lose;
             LoseWeightButton.Background = System.Windows.Media.Brushes.DarkGray;
             App.SurviesFrame.Navigate(App.SurveyWindow_2);
         }
@@ -41,14 +38,14 @@ namespace UserInterface.Views
 
         private void GainWeightButton_Click(object sender, RoutedEventArgs e)
         {
-            _info.Goal = WeightGoal.Gain;
+            DietCreator.WeightGoal = WeightGoal.Gain;
             GainWeightButton.Background = System.Windows.Media.Brushes.DarkGray;
             App.SurviesFrame.Navigate(App.SurveyWindow_2);
         }
 
         private void MaintainWeightButton_Click(object sender, RoutedEventArgs e)
         {
-            _info.Goal = WeightGoal.Maintain;
+            DietCreator.WeightGoal = WeightGoal.Maintain;
             MaintainWeightButton.Background = System.Windows.Media.Brushes.DarkGray;
             App.SurviesFrame.Navigate(App.SurveyWindow_2);
         } 

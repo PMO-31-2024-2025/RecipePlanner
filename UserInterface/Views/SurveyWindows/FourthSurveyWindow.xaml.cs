@@ -1,4 +1,5 @@
-﻿using DataAccess;
+﻿using BusinessLogic;
+using DataAccess;
 using DataAccess.Models;
 using System;
 using System.Collections.Generic;
@@ -22,38 +23,30 @@ namespace UserInterface.Views
     /// </summary>
     public partial class FourthSurveyWindow : Page
     {
-        public static AccountInfo? _info = null;
         public FourthSurveyWindow()
         {
             InitializeComponent();
-            _info = new AccountInfo();
         }
-
-        private void AgeTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (int.TryParse(AgeTextBox.Text, out int age))
-            {
-                _info.Age = age;
-            }
-            else if (!string.IsNullOrWhiteSpace(AgeTextBox.Text))
-            {
-                MessageBox.Show("Please enter a valid age.");
-            }
-        }
-
-
-
 
         private void MaleRadioButton_Click(object sender, RoutedEventArgs e)
         {
-            _info.Sex = Sex.Male;
-            App.SurviesFrame.Navigate(App.SurveyWindow_5);
+            DietCreator.Gender = Sex.Male;
         }
 
         private void FemaleRadioButton_Click(object sender, RoutedEventArgs e)
         {
-            _info.Sex = Sex.Female;
-            App.SurviesFrame.Navigate(App.SurveyWindow_5);
+            DietCreator.Gender = Sex.Female;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DietCreator.Age = int.Parse(AgeTextBox.Text);
+                App.SurviesFrame.Navigate(App.SurveyWindow_5);
+            }
+            catch { MessageBox.Show("Enter valid age", "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
+
         }
     }
 

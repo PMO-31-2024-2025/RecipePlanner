@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,6 @@ namespace UserInterface.Views
     /// </summary>
     public partial class ThirdSurveyWindow : Page
     {
-        public string ActivityLevel { get; set; }
         public ThirdSurveyWindow()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace UserInterface.Views
             Button PressedButton = (Button)sender;
             if (PressedButton == NotVeryActiveButton)
             {
-                ActivityLevel = "Not Very Active";
+                DietCreator.ActivityLevel = DataAccess.ActivityLevel.Inactive;
                 NotVeryActiveButton.Background = System.Windows.Media.Brushes.DarkGray;
                 App.SurviesFrame.Navigate(App.SurveyWindow_4);
 
@@ -38,13 +38,13 @@ namespace UserInterface.Views
             }
             else if (PressedButton == ActiveButton)
             {
-                ActivityLevel = "Active";
+                DietCreator.ActivityLevel = DataAccess.ActivityLevel.Medium;
                 ActiveButton.Background = System.Windows.Media.Brushes.DarkGray;
                 App.SurviesFrame.Navigate(App.SurveyWindow_4);
             }
             else if (PressedButton == VeryActiveButton)
             {
-                ActivityLevel = "Very Active";
+                DietCreator.ActivityLevel = DataAccess.ActivityLevel.Active;
                 VeryActiveButton.Background = System.Windows.Media.Brushes.DarkGray;
                 App.SurviesFrame.Navigate(App.SurveyWindow_4);
             }
