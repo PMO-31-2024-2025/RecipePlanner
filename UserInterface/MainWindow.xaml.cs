@@ -1,11 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using UserInterface.MVVM;
 using UserInterface.Views;
 
 namespace UserInterface
 {
     public partial class MainWindow : Window
     {
+        private SharedViewModel SharedVM = new SharedViewModel();
         public MainWindow()
         {
             InitializeComponent();
@@ -20,7 +22,10 @@ namespace UserInterface
             App.MySeeRecipeWindow = new SeeRecipePage();
             App.MyManageEntitesPage = new ManageEntitiesPage();
 
-        App.RightSideFrame.Navigate(App.MyAccountWindow);
+            App.MyAccountWindow.DataContext = SharedVM.AccountVM; // Bad idea
+            App.MySettingsWindow.DataContext = SharedVM.AccountVM; // Bad idea
+
+            App.RightSideFrame.Navigate(App.MyAccountWindow);
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -29,6 +34,7 @@ namespace UserInterface
             {
                 case "AccountButton":
                     RightSideFrame.Navigate(App.MyAccountWindow);
+                    SharedVM.AccountVM.DisplayStatistics();
                     break;
                 case "StatisticsButton":
                     RightSideFrame.Navigate(App.MyStatisticsWindow);

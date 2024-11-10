@@ -197,31 +197,46 @@ namespace UserInterface.MVVM
             }
         }
 
-        public void SaveNewDish(Dish dish)
+        public bool SaveNewDish(Dish dish)
         {
-            Dish dishToSave = dish;
-            // Saving Ingredients
+            try
+            {
+                Dish dishToSave = dish;
+                // Saving Ingredients
+                dishToSave.Ingredients = BuildIngredientsString();
+
+                // Saving the dish
+                Dish? dishFromDb = DbHelper.db.Dishes.FirstOrDefault(d => d.Id == dishToSave.Id);
+                if (dishFromDb == null)
+                {
+                    dishToSave.AccountEmail = AccountManager.LoginedAccount.Email;
+                    DbHelper.db.Dishes.Add(dishToSave);
+
+                }
+                else
+                {
+                    DbHelper.db.Dishes.Update(dishToSave);
+                }
+                DbHelper.db.SaveChanges();
+                return true;
+            }
+            catch 
+            { 
+                MessageBox.Show("Input valid values", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+        }
+
+        public string BuildIngredientsString()
+        {
             string modifiedIngredients = "";
             for (int i = 0; i < IngredientsOfDishToEditOrDelete.Count - 1; i++)
             {
                 modifiedIngredients += $"{IngredientsOfDishToEditOrDelete[i]},";
             }
             modifiedIngredients += IngredientsOfDishToEditOrDelete.Last();
-            dishToSave.Ingredients = modifiedIngredients;
-
-            // Saving the dish
-            Dish? dishFromDb = DbHelper.db.Dishes.FirstOrDefault(d => d.Id == dishToSave.Id);
-            if (dishFromDb == null)
-            {
-                dishToSave.AccountEmail = AccountManager.LoginedAccount.Email;
-                DbHelper.db.Dishes.Add(dishToSave);
-
-            }
-            else
-            {
-                DbHelper.db.Dishes.Update(dishToSave);
-            }
-            DbHelper.db.SaveChanges();
+            return modifiedIngredients;
         }
         #endregion
 

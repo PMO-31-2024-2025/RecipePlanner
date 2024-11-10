@@ -174,6 +174,14 @@ namespace UserInterface.MVVM
                 catch { return "None"; }
             };
 
+            DisplayStatistics();
+
+        }
+        #endregion
+
+        #region Methods
+        public void DisplayStatistics()
+        {
             ChartValues<DateTimePoint> values = new ChartValues<DateTimePoint>();
             foreach (StatisticEntity entity in AccountManager.LoginedAccount.StatisticEntities!.OrderBy(ent => ent.Date))
             {
@@ -187,35 +195,29 @@ namespace UserInterface.MVVM
             brush.GradientStops.Add(new GradientStop(Colors.Blue, 0));
             brush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
 
-            try
+            Series.Clear();
+            Series.Add(new LineSeries()
             {
-                Series.Add(new LineSeries()
-                {
-                    Title = "Weights",
-                    Values = values,
-                    Fill = brush
-                });
-            }
-            catch {}
-
+                Title = "Weights",
+                Values = values,
+                Fill = brush
+            });
         }
-        #endregion
-
-        #region Methods
         public void ChangeAccount()
         {
             DbHelper.db.Accounts.Update(AccountManager.LoginedAccount);
             DbHelper.db.SaveChanges();
-            MessageBox.Show("Account Updated Successfully. In order to see changes relogin", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Account Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         public void ChangeAccountInfo()
         {
             DbHelper.db.AccountInformations.Update(AccountManager.LoginedAccount.AccountInfo);
             DbHelper.db.SaveChanges();
-            MessageBox.Show("Account Updated Successfully. In order to see changes relogin", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Account Updated Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         public void ChangeImage()
         {
+            return;
             OpenFileDialog openDialog = new OpenFileDialog();
             openDialog.Filter = "Image files|*.jpg;*.png";
             openDialog.FilterIndex = 1;

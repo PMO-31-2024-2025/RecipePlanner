@@ -26,10 +26,12 @@ namespace UserInterface.MVVM.Commands.RecipeCommands
 
         public void Execute(object? parameter)
         {
-            MessageBox.Show($"{VM.DishToEditOrDelete.Title} has been updated successfully", "Success",
-                MessageBoxButton.OK, MessageBoxImage.Information);
-            VM.SaveNewDish(VM.DishToEditOrDelete);
-            App.RightSideFrame.Navigate(App.MyRecipesWindow);
+            bool res = VM.SaveNewDish(VM.DishToEditOrDelete);
+            if (res == true)
+            {
+                MessageBox.Show($"{VM.DishToEditOrDelete.Title} has been updated successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                App.RightSideFrame.Navigate(App.MyRecipesWindow);
+            }
         }
     }
 }

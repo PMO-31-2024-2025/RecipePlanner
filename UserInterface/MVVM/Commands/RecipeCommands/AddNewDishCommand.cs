@@ -24,10 +24,13 @@ namespace UserInterface.MVVM.Commands.RecipeCommands
 
         public void Execute(object? parameter)
         {
-            VM.SaveNewDish(VM.NewDish);
-            VM.ShowDishes();
-            MessageBox.Show("Recipe Added Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            App.RightSideFrame.Navigate(App.MyRecipesWindow);
+            bool res = VM.SaveNewDish(VM.NewDish);
+            if (res == true)
+            {
+                VM.ShowDishes();
+                MessageBox.Show("Recipe Added Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                App.RightSideFrame.Navigate(App.MyRecipesWindow);
+            }
         }
     }
 }

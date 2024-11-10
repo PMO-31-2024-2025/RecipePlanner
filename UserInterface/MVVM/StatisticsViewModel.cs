@@ -315,17 +315,22 @@ namespace UserInterface.MVVM
         }
         public void ExecuteAddNewEntityCommand()
         {
-            StatisticEntity entity = new StatisticEntity()
+            try
             {
-                AccountEmail = AccountManager.LoginedAccount.Email,
-                Date = DateTime.Parse(Date),
-                Weight = int.Parse(Weight)
-            };
-            DbHelper.db.StatisticEntities.Add(entity);
-            DbHelper.db.SaveChanges();
-            PopulateEntities();
-            ResetLiveChart();
-            ResetCurrentWeight();
+                StatisticEntity entity = new StatisticEntity()
+                {
+                    AccountEmail = AccountManager.LoginedAccount.Email,
+                    Date = DateTime.Parse(Date),
+                    Weight = int.Parse(Weight)
+                };
+                DbHelper.db.StatisticEntities.Add(entity);
+                DbHelper.db.SaveChanges();
+                PopulateEntities();
+                ResetLiveChart();
+                ResetCurrentWeight();
+            }
+            catch { MessageBox.Show("Error. Insert valid values", "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
+            
         }
 
         public void ResetCurrentWeight()
