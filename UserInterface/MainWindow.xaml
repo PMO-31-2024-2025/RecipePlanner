@@ -22,8 +22,6 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <!--Main buttons-->
             <Button x:Name="AccountButton" 
@@ -57,17 +55,6 @@
                 <StackPanel Orientation="Horizontal">
                     <Image 
                         Source="pack://application:,,,/Images/MainButtons/Recipe-Book.ico"
-                        Style="{StaticResource ButtonsImageStyle}"/>
-                </StackPanel>
-            </Button>
-
-            <Button x:Name="FoodPlansButton" 
-                    Click="Button_Click" 
-                    Grid.Row="3"
-                    Style="{StaticResource MainButtonStyle}">
-                <StackPanel Orientation="Horizontal">
-                    <Image 
-                        Source="pack://application:,,,/Images/MainButtons/Food-Plans.ico"
                         Style="{StaticResource ButtonsImageStyle}"/>
                 </StackPanel>
             </Button>

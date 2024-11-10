@@ -106,6 +106,13 @@
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="Padding" Value="5"/>
         </Style>
-        
+
+        <Style TargetType="Button" x:Key="RoundedButton">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"></Setter>
+                </Style>
+            </Style.Resources>
+        </Style>
     </Application.Resources>
 </Application>

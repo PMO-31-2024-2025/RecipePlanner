@@ -84,60 +84,140 @@ class Program
     }
     public static void Main(string[] args)
     {
-        DbHelper.db.Add(new Dish()
+        //DbHelper.db.Add(new Dish()
+        //{
+        //    Title = "Spaghetti Carbonara",
+        //    Calories = 900,
+        //    Protein = 8,
+        //    Carbs = 45,
+        //    Fat = 7,
+        //    Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+        //    Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+        //    AccountEmail = "oleh.chyzhov@gmail.com"
+        //});
+        //DbHelper.db.Add(new Dish()
+        //{
+        //    Title = "Paella",
+        //    Calories = 1000,
+        //    Protein = 56,
+        //    Carbs = 23,
+        //    Fat = 7,
+        //    Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+        //    Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+        //    AccountEmail = "oleh.chyzhov@gmail.com"
+        //});
+        //DbHelper.db.Add(new Dish()
+        //{
+        //    Title = "Sushi",
+        //    Calories = 430,
+        //    Protein = 24,
+        //    Carbs = 5,
+        //    Fat = 7,
+        //    Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+        //    Ingredients = "Fish,Rice,Salmon,Salt,Water",
+        //    AccountEmail = "oleh.chyzhov@gmail.com"
+        //});
+        //DbHelper.db.Add(new Dish()
+        //{
+        //    Title = "Tacos al Pastor",
+        //    Calories = 532,
+        //    Protein = 12,
+        //    Carbs = 63,
+        //    Fat = 10,
+        //    Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+        //    Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+        //    AccountEmail = "oleh.chyzhov@gmail.com"
+        //});
+        //DbHelper.db.Add(new Dish()
+        //{
+        //    Title = "Falafel",
+        //    Calories = 156,
+        //    Protein = 12,
+        //    Carbs = 21,
+        //    Fat = 4,
+        //    Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
+        //    Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
+        //    AccountEmail = "oleh.chyzhov@gmail.com"
+        //});
+
+        //DbHelper.db.SaveChanges();
+
+        foreach (var item in DbHelper.db.StatisticEntities.Where(entity => entity.AccountEmail == "oleh.chyzhov@gmail.com"))
         {
-            Title = "Spaghetti Carbonara",
-            Calories = 900,
-            Protein = 8,
-            Carbs = 45,
-            Fat = 7,
-            Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
-            AccountEmail = "oleh.chyzhov@gmail.com"
+            DbHelper.db.StatisticEntities.Remove(item);
+        }
+
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now,
+            Weight = 70,
         });
-        DbHelper.db.Add(new Dish()
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
         {
-            Title = "Paella",
-            Calories = 1000,
-            Protein = 56,
-            Carbs = 23,
-            Fat = 7,
-            Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
-            AccountEmail = "oleh.chyzhov@gmail.com"
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(7),
+            Weight = 72,
         });
-        DbHelper.db.Add(new Dish()
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
         {
-            Title = "Sushi",
-            Calories = 430,
-            Protein = 24,
-            Carbs = 5,
-            Fat = 7,
-            Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Fish,Rice,Salmon,Salt,Water",
-            AccountEmail = "oleh.chyzhov@gmail.com"
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(14),
+            Weight = 73,
         });
-        DbHelper.db.Add(new Dish()
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
         {
-            Title = "Tacos al Pastor",
-            Calories = 532,
-            Protein = 12,
-            Carbs = 63,
-            Fat = 10,
-            Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
-            AccountEmail = "oleh.chyzhov@gmail.com"
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(21),
+            Weight = 73,
         });
-        DbHelper.db.Add(new Dish()
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
         {
-            Title = "Falafel",
-            Calories = 156,
-            Protein = 12,
-            Carbs = 21,
-            Fat = 4,
-            Recipe = "Pour hot water over the oatmeal and let it brew for 5-10 minutes. Slice the banana and add to the oatmeal. Add the almonds and stir.",
-            Ingredients = "Oatmeal,Banana,Apple,Almonds,Water",
-            AccountEmail = "oleh.chyzhov@gmail.com"
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(28),
+            Weight = 74,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(35),
+            Weight = 76,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(42),
+            Weight = 78,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(49),
+            Weight = 80,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(56),
+            Weight = 79,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(61),
+            Weight = 83,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(68),
+            Weight = 84,
+        });
+        DbHelper.db.StatisticEntities.Add(new StatisticEntity()
+        {
+            AccountEmail = "oleh.chyzhov@gmail.com",
+            Date = DateTime.Now.AddDays(75),
+            Weight = 86,
         });
 
         DbHelper.db.SaveChanges();

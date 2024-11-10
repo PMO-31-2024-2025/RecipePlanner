@@ -1,11 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using UserInterface.MVVM;
 using UserInterface.Views;
 
 namespace UserInterface
 {
     public partial class MainWindow : Window
     {
+        private SharedViewModel SharedVM = new SharedViewModel();
         public MainWindow()
         {
             InitializeComponent();
@@ -15,7 +17,13 @@ namespace UserInterface
             App.MyRecipesWindow = new RecipesWindow();
             App.MySettingsWindow = new SettingsWindow();
             App.MyStatisticsWindow = new StatisticsWindow();
-            App.MyFoodPlansWindow = new FoodPlansWindow();
+            App.MyEditRecipeWindow = new UpdateRecipePage();
+            App.MyAddRecipeWindow = new AddrecipePage();
+            App.MySeeRecipeWindow = new SeeRecipePage();
+            App.MyManageEntitesPage = new ManageEntitiesPage();
+
+            App.MyAccountWindow.DataContext = SharedVM.AccountVM; // Bad idea
+            App.MySettingsWindow.DataContext = SharedVM.AccountVM; // Bad idea
 
             App.RightSideFrame.Navigate(App.MyAccountWindow);
         }
@@ -26,12 +34,10 @@ namespace UserInterface
             {
                 case "AccountButton":
                     RightSideFrame.Navigate(App.MyAccountWindow);
+                    SharedVM.AccountVM.DisplayStatistics();
                     break;
                 case "StatisticsButton":
                     RightSideFrame.Navigate(App.MyStatisticsWindow);
-                    break;
-                case "FoodPlansButton":
-                    RightSideFrame.Navigate(App.MyFoodPlansWindow);
                     break;
                 case "RecipesButton":
                     RightSideFrame.Navigate(App.MyRecipesWindow);

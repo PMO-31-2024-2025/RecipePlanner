@@ -1,5 +1,7 @@
 ﻿using BusinessLogic;
+using DataAccess;
 using DataAccess.Models;
+using LiveCharts;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,24 +9,57 @@ using UserInterface.MVVM.Commands.RecipeCommands;
 
 namespace UserInterface.MVVM
 {
-    public class RecipesViewModel : BaseViewModel 
+    public class RecipesViewModel : BaseViewModel
     {
         #region Fields
         private string _searchFilter = "";
         private string _orderFilter = "";
+        private Dish _dishToEditOrDelete;
+        private Dish _newDish;
+        private string _newIngredient = "New Ingredient";
         #endregion
 
         #region Properties
+        public ChartValues<int> chartProtein { get; set; }
+        public ChartValues<int> chartCarbs { get; set; }
+        public ChartValues<int> chartFat { get; set; }
         public ObservableCollection<Dish> Dishes { get; set; }
-        public string SearchFilter 
+        public ObservableCollection<string> IngredientsOfDishToEditOrDelete { get; set; }
+
+        public Dish NewDish
         {
-            get { return _searchFilter; } 
+            get
+            {
+                return _newDish;
+            }
+            set
+            {
+                _newDish = value;
+                OnPropertyChanged(nameof(NewDish));
+            }
+        }
+        public Dish DishToEditOrDelete
+        {
+            get
+            {
+                return _dishToEditOrDelete;
+            }
+            set
+            {
+                _dishToEditOrDelete = value;
+                OnPropertyChanged(nameof(DishToEditOrDelete));
+            }
+        }
+
+        public string SearchFilter
+        {
+            get { return _searchFilter; }
             set
             {
                 _searchFilter = value;
                 OnPropertyChanged(nameof(SearchFilter));
                 FilterCommand.FireEvent();
-            } 
+            }
         }
         public string OrderFilter
         {
@@ -36,6 +71,15 @@ namespace UserInterface.MVVM
                 ExecuteOrderCommand();
             }
         }
+        public string NewIngredient
+        {
+            get { return _newIngredient; }
+            set
+            {
+                _newIngredient = value;
+                OnPropertyChanged(nameof(NewIngredient));
+            }
+        }
         #endregion
 
         #region Commands
@@ -44,6 +88,10 @@ namespace UserInterface.MVVM
         public AddRecipeCommand AddRecipeCommand { get; }
         public EditRecipeCommand EditRecipeCommand { get; }
         public RemoveRecipeCommand RemoveRecipeCommand { get; }
+        public SaveNewDishCommand UpdateDishCommand { get; }
+        public AddIngredientCommand AddIngredientCommand { get; }
+        public RemoveIngredient RemoveIngedientCommand { get; }
+        public AddNewDishCommand AddNewDishCommand { get; }
         #endregion
 
         #region Constructors
@@ -54,8 +102,17 @@ namespace UserInterface.MVVM
             AddRecipeCommand = new AddRecipeCommand(this);
             EditRecipeCommand = new EditRecipeCommand(this);
             RemoveRecipeCommand = new RemoveRecipeCommand(this);
-            
+            UpdateDishCommand = new SaveNewDishCommand(this);
+            AddIngredientCommand = new AddIngredientCommand(this);
+            RemoveIngedientCommand = new RemoveIngredient(this);
+            AddNewDishCommand = new AddNewDishCommand(this);
+
+            chartProtein = new ChartValues<int>();
+            chartCarbs = new ChartValues<int>();
+            chartFat = new ChartValues<int>();
+
             Dishes = new ObservableCollection<Dish>();
+            IngredientsOfDishToEditOrDelete = new ObservableCollection<string>();
             ShowDishes();
         }
         #endregion
@@ -63,7 +120,15 @@ namespace UserInterface.MVVM
         #region MainWindow Methods
         public void ExecuteFilterCommand()
         {
-            if (string.IsNullOrEmpty(SearchFilter) == false && char.IsDigit(SearchFilter[0]))
+            bool isValue = true;
+            foreach (char letter in SearchFilter)
+            {
+                if (char.IsLetter(letter))
+                {
+                    isValue = false;
+                }
+            }
+            if (string.IsNullOrEmpty(SearchFilter) == false && isValue)
             {
                 ShowDishes((dish) =>
                 {
@@ -100,7 +165,7 @@ namespace UserInterface.MVVM
             }
             RefillDishes(dishesCopy);
         }
-        private void ShowDishes(Func<Dish, bool>? filter = null)
+        public void ShowDishes(Func<Dish, bool>? filter = null)
         {
             List<Dish> dishes;
 
@@ -123,20 +188,101 @@ namespace UserInterface.MVVM
                 Dishes.Add(dish);
             }
         }
+        private void RefillIngredientsOfDishToEditOrDelete(List<string> ingredients)
+        {
+            IngredientsOfDishToEditOrDelete.Clear();
+            foreach (string ingredient in ingredients)
+            {
+                IngredientsOfDishToEditOrDelete.Add(ingredient);
+            }
+        }
+
+        public bool SaveNewDish(Dish dish)
+        {
+            try
+            {
+                Dish dishToSave = dish;
+                // Saving Ingredients
+                dishToSave.Ingredients = BuildIngredientsString();
+
+                // Saving the dish
+                Dish? dishFromDb = DbHelper.db.Dishes.FirstOrDefault(d => d.Id == dishToSave.Id);
+                if (dishFromDb == null)
+                {
+                    dishToSave.AccountEmail = AccountManager.LoginedAccount.Email;
+                    DbHelper.db.Dishes.Add(dishToSave);
+
+                }
+                else
+                {
+                    DbHelper.db.Dishes.Update(dishToSave);
+                }
+                DbHelper.db.SaveChanges();
+                return true;
+            }
+            catch 
+            { 
+                MessageBox.Show("Input valid values", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+        }
+
+        public string BuildIngredientsString()
+        {
+            string modifiedIngredients = "";
+            for (int i = 0; i < IngredientsOfDishToEditOrDelete.Count - 1; i++)
+            {
+                modifiedIngredients += $"{IngredientsOfDishToEditOrDelete[i]},";
+            }
+            modifiedIngredients += IngredientsOfDishToEditOrDelete.Last();
+            return modifiedIngredients;
+        }
         #endregion
 
         #region See Recipe Methods
         public void ExecuteSeeRecipeCommand(object dish)
         {
-            MessageBox.Show($"See Recipe: {dish.ToString()}");
             App.RightSideFrame.Navigate(App.MySeeRecipeWindow);
+            App.MySeeRecipeWindow.DataContext = this;
+            DishToEditOrDelete = (Dish)dish;
+
+            RefillCharts(DishToEditOrDelete);
+            List<string> newIngredients = DishToEditOrDelete.Ingredients.Split(",").ToList();
+            RefillIngredientsOfDishToEditOrDelete(newIngredients);
+        }
+
+        private void RefillCharts(Dish dish)
+        {
+            chartProtein.Clear();
+            chartCarbs.Clear();
+            chartFat.Clear();
+            chartProtein.Add(dish.Protein);
+            chartCarbs.Add(dish.Carbs);
+            chartFat.Add(dish.Fat);
+        }
+        public Func<ChartPoint, string> LabelFormatter
+        {
+            get
+            {
+                return FormatLabel;
+            }
+        }
+        private string FormatLabel(ChartPoint chartPoint)
+        {
+            double value = chartPoint.Y; // The numeric value of this slice
+            double percentage = chartPoint.Participation * 100;
+
+            return $"{value}g ({percentage:F1}%)";
         }
         #endregion
 
         #region Add Recipe Methods
         public void ExecuteAddRecipeCommand()
         {
-            MessageBox.Show($"Add Recipe");
+            App.MyAddRecipeWindow.DataContext = this;
+            NewDish = new Dish();
+            IngredientsOfDishToEditOrDelete.Clear();
             App.RightSideFrame.Navigate(App.MyAddRecipeWindow);
         }
         #endregion
@@ -144,15 +290,21 @@ namespace UserInterface.MVVM
         #region Edit Recipe Methods
         public void ExecuteEditRecipeCommand(object dish)
         {
-            MessageBox.Show($"Edit Recipe: {dish.ToString()}");
-            App.RightSideFrame.Navigate(App.MyAddRecipeWindow);
+            App.RightSideFrame.Navigate(App.MyEditRecipeWindow);
+            App.MyEditRecipeWindow.DataContext = this;
+            DishToEditOrDelete = (Dish)dish;
+
+            List<string> newIngredients = DishToEditOrDelete.Ingredients.Split(",").ToList();
+            RefillIngredientsOfDishToEditOrDelete(newIngredients);
         }
         #endregion
 
         #region Remove Recipe Methods
         public void ExecuteRemoveRecipeCommand(object dish)
         {
-            MessageBox.Show($"Remove Recipe: {dish.ToString()}");
+            Dishes.Remove((Dish)dish);
+            DbHelper.db.Dishes.Remove((Dish)dish);
+            DbHelper.db.SaveChanges();
         }
         #endregion
     }

@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore.Internal;
 using BusinessLogic;
 using System.Windows;
 using UserInterface.Views;
-using UserInterface.MVVM.Helpers;
 
 namespace UserInterface.MVVM
 {
@@ -79,7 +78,7 @@ namespace UserInterface.MVVM
         public void ExecuteLoginCommand()
         {
             AccountManager.LoginedAccount = AccountManager.UpdateLoginedAccount(Email);
-            App.MyMainWindow = WindowIntitializer.InitMainWindow();
+            App.MyMainWindow = new MainWindow();
             App.MyMainWindow.Show();
             App.MyLoginWindow.Close();
         }
