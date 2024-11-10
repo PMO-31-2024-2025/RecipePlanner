@@ -12,7 +12,6 @@
   <ItemGroup>
     <None Remove="Fonts\SignikaNegative-Regular.ttf" />
     <None Remove="Images\Accounts\MainPictures\Test.png" />
-    <None Remove="Images\Accounts\Streak.png" />
     <None Remove="Images\MainButtons\Account.ico" />
     <None Remove="Images\MainButtons\food-plans.ico" />
     <None Remove="Images\MainButtons\recipe-book.ico" />
@@ -27,7 +26,6 @@
   <ItemGroup>
     <Resource Include="Fonts\SignikaNegative-Regular.ttf" />
     <Resource Include="Images\Accounts\MainPictures\Test.png" />
-    <Resource Include="Images\Accounts\Streak.png" />
     <Resource Include="Images\Logo\Logo.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -63,10 +61,6 @@
     </Resource>
     <Resource Include="Images\MainButtons\Settings.ico" />
     <Resource Include="Images\MainButtons\Statistics.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Images\Statistics\MainPictures\" />
   </ItemGroup>
 
 </Project>

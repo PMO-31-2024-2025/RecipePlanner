@@ -3,6 +3,7 @@ using DataAccess;
 using DataAccess.Models;
 using LiveCharts;
 using LiveCharts.Defaults;
+using LiveCharts.Helpers;
 using LiveCharts.Wpf;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -169,7 +170,7 @@ namespace UserInterface.MVVM
             // Statistics Page
             XFormatter = (val) =>
             {
-                try 
+                try
                 { 
                     DateTime dateTime = new DateTime((long)val);
                     return DateOnly.FromDateTime(dateTime).ToString();
@@ -308,6 +309,7 @@ namespace UserInterface.MVVM
                 DbHelper.db.SaveChanges();
                 PopulateEntities();
                 ResetLiveChart();
+                ResetCurrentWeight();
             }
             catch { }
         }
@@ -323,6 +325,15 @@ namespace UserInterface.MVVM
             DbHelper.db.SaveChanges();
             PopulateEntities();
             ResetLiveChart();
+            ResetCurrentWeight();
+        }
+
+        public void ResetCurrentWeight()
+        {
+            int maxWeight = AccountManager.LoginedAccount.StatisticEntities!.OrderByDescending(ent => ent.Weight).First().Weight;
+            AccountManager.LoginedAccount.AccountInfo.Weight = maxWeight;
+            DbHelper.db.AccountInformations.Update(AccountManager.LoginedAccount.AccountInfo);
+            DbHelper.db.SaveChanges();
         }
         #endregion
     }

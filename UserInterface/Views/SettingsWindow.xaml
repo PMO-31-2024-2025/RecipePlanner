@@ -4,163 +4,160 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UserInterface.Views"
+      xmlns:viewModel="clr-namespace:UserInterface.MVVM"
+      xmlns:converter="clr-namespace:UserInterface.MVVM.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Style="{StaticResource PageResource}">
 
-    <Grid>
-        <Border Background="White" CornerRadius="40" Margin="10,10,10,10">
+    <Page.DataContext>
+        <viewModel:AccountViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <converter:StringToSexConverter x:Key="SToSCoverter"/>
+        <converter:StringToGoalCoverter x:Key="STOGConverter"/>
+
+        <Style TargetType="TextBox" x:Key="SettingTextbox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Width" Value="170"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        
+        <Style TargetType="Button" x:Key="SettingButton">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+        
+        <Style TargetType="TextBlock" x:Key="SettingTextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+
+    <Border>
+        <Grid>
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                <!-- Header -->
-                <TextBlock Text="Settings" 
-                            Grid.Row="0"
-                            FontWeight="Bold"
-                            FontSize="28"
-                            Margin="38,18,630,0"/>
+                <Border Background="White" CornerRadius="40" Margin="10"
+                        Grid.Column="0">
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                <!-- Change Email -->
-                <Grid Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <TextBlock Text="Email" 
-                                Grid.Row="0"
-                                FontSize="20" Margin="38,0,682,30" 
-                                FontStyle="Italic" Grid.RowSpan="2"/>
-
-                    <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="11*"/>
-                            <ColumnDefinition Width="28*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Column ="0"
-                                 x:Name="ChangeEmailTextBox"
-                                 FontSize="16"
-                                 MouseEnter="TextBoxChangeEmail_MouseEnter" Margin="37,0,22,5"/>
 
-                        <Button Grid.Column ="1"
-                                 x:Name="ChangeEmailButton" 
-                                 Content="Change"
-                                 FontSize="16"
-                                 Width="100"
-                                 HorizontalAlignment="Left"
-                                 Click="ChangeEmailButton_Click" Margin="10,0,0,5"
-                                 Style="{DynamicResource RoundedButton}">
-                            <Button.Effect>
-                                <DropShadowEffect BlurRadius="15" ShadowDepth="0"></DropShadowEffect>
-                            </Button.Effect>
-                        </Button>
-                    </Grid>
-                </Grid>
+                        <TextBlock Text="Email" Grid.Row="0"
+                                   Style="{StaticResource SettingTextBlock}"/>
 
-                <!-- Change Password -->
-                <Grid Grid.Row="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                        <TextBlock Text="Password" Grid.Row="1"
+                                   Style="{StaticResource SettingTextBlock}"/>
 
-                    <TextBlock Text="Password" 
-                                Grid.Row="0"
-                                FontSize="20" Margin="40,2,651,3"
-                                FontStyle="Italic"/>
+                        <TextBlock Text="Age" Grid.Row="2"
+                                   Style="{StaticResource SettingTextBlock}"/>
 
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="11*"/>
-                            <ColumnDefinition Width="28*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBox Grid.Column ="0"
-                                 x:Name="ChangePasswordTextBox"
-                                 FontSize="16"
-                                 MouseEnter="TextBoxChangePassword_MouseEnter" Margin="37,0,22,5"/>
+                        <TextBlock Text="Gender" Grid.Row="3"
+                                   Style="{StaticResource SettingTextBlock}"/>
 
-                        <Button
-                                x:Name="ChangePasswordButton" 
-                                Content="Change"
-                                FontSize="16"
-                                Width="100"
-                                HorizontalAlignment="Left"
-                                Click="ChangePasswordButton_Click" Margin="10,0,0,5" Grid.Column="1"
-                                Style="{DynamicResource RoundedButton}">
-                            <Button.Effect>
-                                <DropShadowEffect BlurRadius="15" ShadowDepth="0"/>
-                            </Button.Effect>
-                        </Button>
-                    </Grid>
-                </Grid>
-
-                <CheckBox Content="Receive notifications"
-                          HorizontalAlignment="Left"
-                          Margin="38,31,0,0"
-                          Grid.Row="3"
-                          FontSize="18"
-                          VerticalAlignment="Top"/>
-
-                <CheckBox Content="Receive the newsletter"
-                          HorizontalAlignment="Left"
-                          Margin="38,14,0,0"
-                          Grid.Row="4"
-                          FontSize="18"
-                          VerticalAlignment="Top"/>
-
-                <!-- Select Language -->
-                <Grid Grid.Row="5">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" MinWidth="181"/>
-                            <ColumnDefinition Width="Auto" MinWidth="54"/>
-                            <ColumnDefinition Width="57"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="1" Grid.Row="0" Style="{StaticResource SettingTextbox}"
+                                 Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="12"/>
                         
-                        <TextBlock Grid.Column="0"
-                                   Text="Select language" 
-                                   FontSize="18" 
-                                   Margin="39,13,19,0"
-                                   VerticalAlignment="Top" Height="24" Grid.ColumnSpan="2"/>
+                        <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource SettingTextbox}"
+                                 Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        
+                        <TextBox Grid.Column="1" Grid.Row="2" Style="{StaticResource SettingTextbox}"
+                                 Text="{Binding Age, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <Button Grid.Column="1"
-                                x:Name="ChangeSelectUkButton" 
-                                Content="UK" 
-                                Click="ChangeSelectUkButton_Click"
-                                Background="LightGray"
-                                Margin="4,10,0,30" RenderTransformOrigin="0.559,0.086"/>
+                        <!--TODO: Add string-sex converter-->
+                        <ComboBox Grid.Column="1" Grid.Row="3"
+                                  Style="{StaticResource RecipeCombobox}"
+                                  Margin="10" Width="150"
+                                  SelectedItem="{Binding Gender, Mode=TwoWay, Converter={StaticResource SToSCoverter}}">
+                            <ComboBoxItem Content="Select" IsSelected="True"
+                                          IsEnabled="False"/>
+                            <ComboBoxItem Content="Male"/>
+                            <ComboBoxItem Content="Female"/>
+                        </ComboBox>
 
-                        <Button Grid.Column="2"
-                                x:Name="ChangeSelectEngButton" 
-                                Content="ENG"
-                                Click="ChangeSelectEngButton_Click"
-                                Background="LightCyan"
-                                Margin="0,10,10,30" RenderTransformOrigin="0.5,0.5"/>
+                        <Button Grid.Column="2" Grid.Row="0" Content="Save" Style="{StaticResource SettingButton}" Command="{Binding UpdateAccountCommand}"/>
+                        <Button Grid.Column="2" Grid.Row="1" Content="Save" Style="{StaticResource SettingButton}" Command="{Binding UpdateAccountCommand}"/>
+                        <Button Grid.Column="2" Grid.Row="2" Content="Save" Style="{StaticResource SettingButton}" Command="{Binding UpdateAccountInfoCommand}"/>
+                        <Button Grid.Column="2" Grid.Row="3" Content="Save" Style="{StaticResource SettingButton}" Command="{Binding UpdateAccountInfoCommand}"/>
                     </Grid>
-                </Grid>
+                </Border>
 
-                <Button Grid.Row="6"
-                        Width="148"
-                        FontSize="16"
-                        Content="Delete account"
-                        x:Name="DeleteAccountButton"
-                        Click="DeleteAccountButton_Click" Margin="316,5,316,15" RenderTransformOrigin="0.509,0.305"
-                        Style="{DynamicResource RoundedButton}">
-                    <Button.Effect>
-                        <DropShadowEffect BlurRadius="15" ShadowDepth="0"/>
-                    </Button.Effect>
-                </Button>
+                <Border Background="White" CornerRadius="40" Margin="10"
+                        Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Goal" Grid.Row="0"
+                                   Style="{StaticResource SettingTextBlock}"/>
+
+                        <TextBlock Text="Desired Weight" Grid.Row="1"
+                                   Style="{StaticResource SettingTextBlock}"/>
+
+                        <TextBlock Text="Height" Grid.Row="2"
+                                   Style="{StaticResource SettingTextBlock}"/>
+                        
+                        <TextBlock Text="Image" Grid.Row="3" Grid.ColumnSpan="2"
+                                   Style="{StaticResource SettingTextBlock}"/>
+
+                        <!--Add string-weight converter-->
+                        <ComboBox Grid.Column="1" Grid.Row="0"
+                                  Style="{StaticResource RecipeCombobox}"
+                                  Margin="10" Width="100"
+                                  SelectedItem="{Binding Goal, Mode=TwoWay, Converter={StaticResource STOGConverter}}">
+                            <ComboBoxItem Content="Select" IsSelected="True"
+                                          IsEnabled="False"/>
+                            <ComboBoxItem Content="Gain"/>
+                            <ComboBoxItem Content="Loose"/>
+                            <ComboBoxItem Content="Maintain"/>
+                        </ComboBox>
+
+                        <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource SettingTextbox}"
+                                 Width="100" Text="{Binding DesiredWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        
+                        <TextBox Grid.Column="1" Grid.Row="2" Style="{StaticResource SettingTextbox}"
+                                 Width="100" Text="{Binding Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Button Grid.Column="2" Grid.Row="0" Content="Save" Style="{StaticResource SettingButton}" Command="{Binding UpdateAccountInfoCommand}"/>
+                        <Button Grid.Column="2" Grid.Row="1" Content="Save" Style="{StaticResource SettingButton}" Command="{Binding UpdateAccountInfoCommand}"/>
+                        <Button Grid.Column="2" Grid.Row="2" Content="Save" Style="{StaticResource SettingButton}" Command="{Binding UpdateAccountInfoCommand}"/>
+                        <Button Grid.Column="2" Grid.Row="3" Content="Upload" Style="{StaticResource SettingButton}" Command="{Binding ChangeImageCommand}"/>
+                    </Grid>
+                </Border>
             </Grid>
-        </Border>
-    </Grid>
+        </Grid>
+    </Border>
 </Page>

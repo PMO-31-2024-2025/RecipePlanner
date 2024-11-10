@@ -41,7 +41,7 @@
                 <Ellipse Grid.Column="0" Grid.Row="0"
                          Style="{StaticResource AccountImage}">
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="pack://application:,,,/Images/Accounts/MainPictures/Test.png"/>
+                        <ImageBrush ImageSource="{Binding ImagePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </Ellipse.Fill>
                 </Ellipse>
 
@@ -77,11 +77,11 @@
                         
                         <TextBlock Style="{StaticResource NiceTextBlock}"
                                    Grid.Column="1" Grid.Row="0"
-                                   Text="{Binding Age}" FontSize="16"/>
+                                   Text="{Binding Age, Mode=TwoWay}" FontSize="16"/>
 
                         <TextBlock Style="{StaticResource NiceTextBlock}"
                                    Grid.Column="1" Grid.Row="1"
-                                   Text="{Binding Gender}" FontSize="16"/>
+                                   Text="{Binding Gender, Mode=TwoWay}" FontSize="16"/>
                     </Grid>
                 </Grid>
 
@@ -104,7 +104,7 @@
 
                     <TextBlock Style="{StaticResource NiceTextBlock}"
                                Grid.Column="1" Grid.Row="0" 
-                               Text="{Binding Email}"
+                               Text="{Binding Email, Mode=TwoWay}"
                                HorizontalAlignment="Center"/>
 
                     <Line Margin="0" Grid.ColumnSpan="2" Grid.Row="1"
@@ -163,7 +163,7 @@
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
                     
-                    <TextBlock Text="{Binding Goal, StringFormat='{}{0} Weight'}"
+                    <TextBlock Text="{Binding Goal, Mode=TwoWay, StringFormat='{}{0} Weight'}"
                                Grid.Column="1" Grid.Row="0"
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
@@ -173,7 +173,7 @@
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="{Binding DesiredWeight, StringFormat='{}{0} kg'}"
+                    <TextBlock Text="{Binding DesiredWeight, Mode=TwoWay, StringFormat='{}{0} kg'}"
                                Grid.Column="1" Grid.Row="1"
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
@@ -183,7 +183,7 @@
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="{Binding CurrentWeight, StringFormat='{}{0} kg'}"
+                    <TextBlock Text="{Binding CurrentWeight, Mode=TwoWay, StringFormat='{}{0} kg'}"
                                Grid.Column="1" Grid.Row="2"
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
@@ -193,7 +193,7 @@
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="{Binding Height, StringFormat='{}{0} cm'}"
+                    <TextBlock Text="{Binding Height, Mode=TwoWay, StringFormat='{}{0} cm'}"
                                Grid.Column="1" Grid.Row="3"
                                Style="{StaticResource NiceTextBlock}"
                                HorizontalAlignment="Center"/>

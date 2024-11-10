@@ -31,7 +31,6 @@ namespace UserInterface
         public static RecipesWindow? MyRecipesWindow;
         public static SettingsWindow? MySettingsWindow;
         public static StatisticsWindow? MyStatisticsWindow;
-        public static FoodPlansWindow? MyFoodPlansWindow;
 
         // Secondary windows
         public static UpdateRecipePage MyEditRecipeWindow;

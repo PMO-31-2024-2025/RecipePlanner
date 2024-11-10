@@ -6,22 +6,19 @@ using System.Windows.Media;
 using System.Windows;
 using LiveCharts.Defaults;
 using DataAccess.Models;
+using UserInterface.MVVM.Commands.AccountCommands;
+using Microsoft.Win32;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace UserInterface.MVVM
 {
     public class AccountViewModel : BaseViewModel
     {
         #region Fields
-        private string _email = AccountManager.LoginedAccount.Email;
-        private int _age = AccountManager.LoginedAccount.AccountInfo.Age;
-        private Sex _gender = AccountManager.LoginedAccount.AccountInfo.Sex;
-        private WeightGoal _goal = AccountManager.LoginedAccount.AccountInfo.Goal;
-        private int _desiredWeight = AccountManager.LoginedAccount.AccountInfo.DesiredWeight;
-        private int _currentWeight = AccountManager.LoginedAccount.AccountInfo.Weight;
-        private int _height = AccountManager.LoginedAccount.AccountInfo.Height;
-
         private SeriesCollection _series = new SeriesCollection();
         #endregion
+
         #region Properties
         public Func<double, string> XFormatter { get; set; }
         public Func<double, string> YFormatter { get; set; }
@@ -29,23 +26,35 @@ namespace UserInterface.MVVM
         {
             get
             {
-                return _email;
+                return AccountManager.LoginedAccount.Email;
             }
             set
             {
-                _email = value;
+                AccountManager.LoginedAccount.Email = value;
                 OnPropertyChanged(nameof(Email));
             } 
+        }
+        public string Password
+        {
+            get
+            {
+                return AccountManager.LoginedAccount.Password;
+            }
+            set
+            {
+                AccountManager.LoginedAccount.Password = value;
+                OnPropertyChanged(nameof(Password));
+            }
         }
         public int Age
         {
             get
             {
-                return _age;
+                return AccountManager.LoginedAccount.AccountInfo.Age;
             }
             set
             {
-                _age = value;
+                AccountManager.LoginedAccount.AccountInfo.Age = value;
                 OnPropertyChanged(nameof(Age));
             }
         }
@@ -53,11 +62,11 @@ namespace UserInterface.MVVM
         {
             get
             {
-                return _gender;
+                return AccountManager.LoginedAccount.AccountInfo.Sex;
             }
             set
             {
-                _gender = value;
+                AccountManager.LoginedAccount.AccountInfo.Sex = value;
                 OnPropertyChanged(nameof(Gender));
             }
         }
@@ -65,11 +74,11 @@ namespace UserInterface.MVVM
         {
             get
             {
-                return _goal;
+                return AccountManager.LoginedAccount.AccountInfo.Goal;
             }
             set
             {
-                _goal = value;
+                AccountManager.LoginedAccount.AccountInfo.Goal = value;
                 OnPropertyChanged(nameof(Goal));
             }
         }
@@ -77,11 +86,11 @@ namespace UserInterface.MVVM
         {
             get
             {
-                return _desiredWeight;
+                return AccountManager.LoginedAccount.AccountInfo.DesiredWeight;
             }
             set
             {
-                _desiredWeight = value;
+                AccountManager.LoginedAccount.AccountInfo.DesiredWeight = value;
                 OnPropertyChanged(nameof(DesiredWeight));
             }
         }
@@ -89,11 +98,11 @@ namespace UserInterface.MVVM
         {
             get
             {
-                return _currentWeight;
+                return AccountManager.LoginedAccount.AccountInfo.Weight;
             }
             set
             {
-                _currentWeight = value;
+                AccountManager.LoginedAccount.AccountInfo.Weight = value;
                 OnPropertyChanged(nameof(CurrentWeight));
             }
         }
@@ -101,12 +110,29 @@ namespace UserInterface.MVVM
         {
             get
             {
-                return _height;
+                return AccountManager.LoginedAccount.AccountInfo.Height;
             }
             set
             {
-                _height = value;
+                AccountManager.LoginedAccount.AccountInfo.Height = value;
                 OnPropertyChanged(nameof(Height));
+            }
+        }
+        public string ImagePath
+        {
+            get
+            {
+                if (AccountManager.LoginedAccount.AccountInfo.ImageUrl != null)
+                {
+                    return AccountManager.LoginedAccount.AccountInfo.ImageUrl;
+                }
+
+                return "pack://application:,,,/Images/Accounts/MainPictures/Test.png";
+            }
+            set
+            {
+                AccountManager.LoginedAccount.AccountInfo.ImageUrl = value;
+                OnPropertyChanged(nameof(ImagePath));
             }
         }
         public SeriesCollection Series
@@ -120,8 +146,19 @@ namespace UserInterface.MVVM
         }
         #endregion
 
+        #region Commands
+        public UpdateAccountCommand UpdateAccountCommand { get; }
+        public UpdateAccountInfoCommand UpdateAccountInfoCommand { get; }
+        public ChangeImageCommand ChangeImageCommand { get; }
+        #endregion
+
+        #region Constructor
         public AccountViewModel()
         {
+            UpdateAccountCommand = new UpdateAccountCommand(this);
+            UpdateAccountInfoCommand = new UpdateAccountInfoCommand(this);
+            ChangeImageCommand = new ChangeImageCommand(this);
+
             XFormatter = (val) =>
             {
                 try
@@ -150,12 +187,46 @@ namespace UserInterface.MVVM
             brush.GradientStops.Add(new GradientStop(Colors.Blue, 0));
             brush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
 
-            Series.Add(new LineSeries()
+            try
             {
-                Title = "Weights",
-                Values = values,
-                Fill = brush
-            });
+                Series.Add(new LineSeries()
+                {
+                    Title = "Weights",
+                    Values = values,
+                    Fill = brush
+                });
+            }
+            catch {}
+
         }
+        #endregion
+
+        #region Methods
+        public void ChangeAccount()
+        {
+            DbHelper.db.Accounts.Update(AccountManager.LoginedAccount);
+            DbHelper.db.SaveChanges();
+            MessageBox.Show("Account Updated Successfully. In order to see changes relogin", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        public void ChangeAccountInfo()
+        {
+            DbHelper.db.AccountInformations.Update(AccountManager.LoginedAccount.AccountInfo);
+            DbHelper.db.SaveChanges();
+            MessageBox.Show("Account Updated Successfully. In order to see changes relogin", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        public void ChangeImage()
+        {
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Image files|*.jpg;*.png";
+            openDialog.FilterIndex = 1;
+            if (openDialog.ShowDialog() == true)
+            {
+                string destination = $"../../../Images/Accounts/MainPictures/{AccountManager.LoginedAccount.Email}.png";
+                File.Copy(openDialog.FileName, destination, true);
+                ImagePath = $"pack://application:,,,/Images/Accounts/MainPictures/{AccountManager.LoginedAccount.Email}.png";
+                ChangeAccountInfo();
+            }
+        }
+        #endregion
     }
 }

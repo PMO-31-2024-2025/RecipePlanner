@@ -15,7 +15,6 @@ namespace UserInterface
             App.MyRecipesWindow = new RecipesWindow();
             App.MySettingsWindow = new SettingsWindow();
             App.MyStatisticsWindow = new StatisticsWindow();
-            App.MyFoodPlansWindow = new FoodPlansWindow();
             App.MyEditRecipeWindow = new UpdateRecipePage();
             App.MyAddRecipeWindow = new AddrecipePage();
             App.MySeeRecipeWindow = new SeeRecipePage();
@@ -33,9 +32,6 @@ namespace UserInterface
                     break;
                 case "StatisticsButton":
                     RightSideFrame.Navigate(App.MyStatisticsWindow);
-                    break;
-                case "FoodPlansButton":
-                    RightSideFrame.Navigate(App.MyFoodPlansWindow);
                     break;
                 case "RecipesButton":
                     RightSideFrame.Navigate(App.MyRecipesWindow);
