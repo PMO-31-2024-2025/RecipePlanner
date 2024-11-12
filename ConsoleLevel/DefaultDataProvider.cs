@@ -1,13 +1,10 @@
-﻿using DataAccess.Models;
-using DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleLevel
+﻿namespace ConsoleLevel
 {
+    using System;
+    using System.Linq;
+    using DataAccess;
+    using DataAccess.Models;
+
     public static class DefaultDataProvider
     {
         public static void FillAccountsTable()
@@ -44,6 +41,7 @@ namespace ConsoleLevel
             DbHelper.db.Add(new Account() { Email = "tanya.mazyr@gmail.com", Password = "tanya888" });
             DbHelper.db.SaveChanges();
         }
+
         public static void FillAccountsInfoTable()
         {
             DbHelper.db.Add(new AccountInfo() { Id = 1, Sex = Sex.Female, Age = 19, Weight = 69, Height = 163, DesiredWeight = 56, Goal = WeightGoal.Lose, DailyCalories = 1522, AccountEmail = "anastasiya.seliverstova@gmail.com" });
@@ -78,6 +76,7 @@ namespace ConsoleLevel
             DbHelper.db.Add(new AccountInfo() { Id = 30, Sex = Sex.Female, Age = 20, Weight = 52, Height = 163, DesiredWeight = 52, Goal = WeightGoal.Maintain, DailyCalories = 1280, AccountEmail = "yulia.holub@gmail.com" });
             DbHelper.db.SaveChanges();
         }
+
         public static void FillDishTable()
         {
             DbHelper.db.Add(new Dish()

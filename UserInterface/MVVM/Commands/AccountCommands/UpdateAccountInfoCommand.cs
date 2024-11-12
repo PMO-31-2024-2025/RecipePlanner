@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿// <copyright file="UpdateAccountInfoCommand.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace UserInterface.MVVM.Commands.AccountCommands
 {
+    using System;
+    using System.Windows.Input;
+
     public class UpdateAccountInfoCommand : ICommand
     {
         private AccountViewModel VM;

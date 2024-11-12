@@ -1,8 +1,12 @@
-﻿using DataAccess;
-using System.Windows.Input;
+﻿// <copyright file="RegisterCommand.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace UserInterface.MVVM.Commands.AuthenticationCommands
 {
+    using System.Windows.Input;
+    using DataAccess;
+
     public class RegisterCommand : ICommand
     {
         private LoginViewModel VM;

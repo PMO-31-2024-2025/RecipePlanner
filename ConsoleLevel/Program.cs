@@ -1,7 +1,12 @@
-﻿using DataAccess;
+﻿// <copyright file="Program.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using DataAccess;
 using DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
-class Program
+
+public class Program
 {
     public static void SimplePrint()
     {
@@ -41,6 +46,7 @@ class Program
             Console.WriteLine(item + "\n");
         }
     }
+
     public static void SmartPrint()
     {
         foreach (Account user in DbHelper.db.Accounts.Include("AccountInfo").Include("FoodPlans").Include("Dishes"))
@@ -82,6 +88,7 @@ class Program
             }
         }
     }
+
     public static void Main(string[] args)
     {
         //DbHelper.db.Add(new Dish()

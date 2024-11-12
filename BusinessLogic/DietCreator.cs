@@ -1,24 +1,28 @@
-﻿using DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="DietCreator.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace BusinessLogic
 {
+    using DataAccess;
+
     public static class DietCreator
     {
         public static WeightGoal WeightGoal { get; set; }
-        public static ActivityLevel ActivityLevel { get; set; }
-        public static Sex Gender { get; set; }
-        public static int  StepsPerDay { get; set; }
-        public static int Height { get; set; }
-        public static int CurrentWeight { get; set; }
-        public static int DesiredWeight { get; set; }
-        public static int Age { get; set; }
 
+        public static ActivityLevel ActivityLevel { get; set; }
+
+        public static Sex Gender { get; set; }
+
+        public static int StepsPerDay { get; set; }
+
+        public static int Height { get; set; }
+
+        public static int CurrentWeight { get; set; }
+
+        public static int DesiredWeight { get; set; }
+
+        public static int Age { get; set; }
 
         private static double CalculateRawDailyCalories()
         {
@@ -38,9 +42,11 @@ namespace BusinessLogic
                     activityMultiplier = 1.9;
                     break;
             }
+
             double dailyCalories = bmr * activityMultiplier;
             return dailyCalories;
         }
+
         public static double CalculateCalories()
         {
             double dailyCalories = CalculateRawDailyCalories();
@@ -58,6 +64,7 @@ namespace BusinessLogic
             {
                 dailyCalories += 200;
             }
+
             return dailyCalories;
         }
     }

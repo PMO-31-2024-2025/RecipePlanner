@@ -1,36 +1,40 @@
-﻿using DataAccess;
-using DataAccess.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BusinessLogic
+﻿namespace BusinessLogic
 {
+    using System;
+    using System.Linq;
+    using DataAccess;
+    using DataAccess.Models;
+    using Microsoft.EntityFrameworkCore;
+
     public static class AccountManager
     {
         private static Account? _loginedAccount = null;
 
         public static Account LoginedAccount
         {
-            get 
+            get
             {
                 if (_loginedAccount == null)
                 {
                     throw new NotImplementedException("User didn't login");
                 }
+
                 return _loginedAccount;
             }
-            set { _loginedAccount = value; }
+
+            set
+            {
+                _loginedAccount = value;
+            }
         }
+
         public static Account UpdateLoginedAccount(string email)
         {
             LoginedAccount = DbHelper.db.Accounts.Where(acc => acc.Email == email).Include("AccountInfo")
                 .Include("StatisticEntities").Include("Dishes").Include("FoodPlans").First();
             return LoginedAccount;
         }
+
         public static bool IsLogined()
         {
             return LoginedAccount == null ? false : true;

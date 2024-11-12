@@ -1,18 +1,25 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using UserInterface.MVVM;
-using UserInterface.Views;
-
-namespace UserInterface
+﻿namespace UserInterface
 {
+    using System.Windows;
+    using System.Windows.Controls;
+    using UserInterface.MVVM;
+    using UserInterface.Views;
+
+    /// <summary>
+    /// Main window.
+    /// </summary>
     public partial class MainWindow : Window
     {
-        private SharedViewModel SharedVM = new SharedViewModel();
+        private SharedViewModel sharedVM = new SharedViewModel();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// </summary>
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            App.RightSideFrame = RightSideFrame;
+            App.RightSideFrame = this.RightSideFrame;
             App.MyAccountWindow = new AccountWindow();
             App.MyRecipesWindow = new RecipesWindow();
             App.MySettingsWindow = new SettingsWindow();
@@ -22,28 +29,29 @@ namespace UserInterface
             App.MySeeRecipeWindow = new SeeRecipePage();
             App.MyManageEntitesPage = new ManageEntitiesPage();
 
-            App.MyAccountWindow.DataContext = SharedVM.AccountVM; // Bad idea
-            App.MySettingsWindow.DataContext = SharedVM.AccountVM; // Bad idea
+            App.MyAccountWindow.DataContext = this.sharedVM.AccountVM; // Bad idea
+            App.MySettingsWindow.DataContext = this.sharedVM.AccountVM; // Bad idea
 
             App.RightSideFrame.Navigate(App.MyAccountWindow);
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button pressedButton = (Button)sender;
             switch (pressedButton.Name)
             {
                 case "AccountButton":
-                    RightSideFrame.Navigate(App.MyAccountWindow);
-                    SharedVM.AccountVM.DisplayStatistics();
+                    this.RightSideFrame.Navigate(App.MyAccountWindow);
+                    this.sharedVM.AccountVM.DisplayStatistics();
                     break;
                 case "StatisticsButton":
-                    RightSideFrame.Navigate(App.MyStatisticsWindow);
+                    this.RightSideFrame.Navigate(App.MyStatisticsWindow);
                     break;
                 case "RecipesButton":
-                    RightSideFrame.Navigate(App.MyRecipesWindow);
+                    this.RightSideFrame.Navigate(App.MyRecipesWindow);
                     break;
                 case "SettingsButton":
-                    RightSideFrame.Navigate(App.MySettingsWindow);
+                    this.RightSideFrame.Navigate(App.MySettingsWindow);
                     break;
             }
         }

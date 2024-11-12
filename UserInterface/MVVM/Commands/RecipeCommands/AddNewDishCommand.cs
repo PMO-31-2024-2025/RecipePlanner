@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
+﻿// <copyright file="AddNewDishCommand.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace UserInterface.MVVM.Commands.RecipeCommands
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Input;
+
     public class AddNewDishCommand : ICommand
     {
         public RecipesViewModel VM;

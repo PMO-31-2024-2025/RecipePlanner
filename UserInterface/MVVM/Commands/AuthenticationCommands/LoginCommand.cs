@@ -1,9 +1,13 @@
-﻿using DataAccess;
-using DataAccess.Models;
-using System.Windows.Input;
+﻿// <copyright file="LoginCommand.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace UserInterface.MVVM.Commands.AuthenticationCommands
 {
+    using System.Windows.Input;
+    using DataAccess;
+    using DataAccess.Models;
+
     public class LoginCommand : ICommand
     {
         LoginViewModel VM;
