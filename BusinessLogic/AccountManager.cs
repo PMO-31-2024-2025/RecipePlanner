@@ -1,10 +1,10 @@
 ﻿namespace BusinessLogic
 {
-    using System;
-    using System.Linq;
     using DataAccess;
     using DataAccess.Models;
     using Microsoft.EntityFrameworkCore;
+    using System;
+    using System.Linq;
 
     public static class AccountManager
     {

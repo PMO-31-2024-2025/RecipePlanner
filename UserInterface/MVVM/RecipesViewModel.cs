@@ -4,12 +4,12 @@
 
 namespace UserInterface.MVVM
 {
-    using System.Collections.ObjectModel;
-    using System.Windows;
     using BusinessLogic;
     using DataAccess;
     using DataAccess.Models;
     using LiveCharts;
+    using System.Collections.ObjectModel;
+    using System.Windows;
     using UserInterface.MVVM.Commands.RecipeCommands;
 
     /// <summary>

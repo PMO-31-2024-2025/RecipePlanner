@@ -4,15 +4,15 @@
 
 namespace UserInterface.MVVM
 {
-    using System.Collections.ObjectModel;
-    using System.Windows;
-    using System.Windows.Media;
     using BusinessLogic;
     using DataAccess;
     using DataAccess.Models;
     using LiveCharts;
     using LiveCharts.Defaults;
     using LiveCharts.Wpf;
+    using System.Collections.ObjectModel;
+    using System.Windows;
+    using System.Windows.Media;
     using UserInterface.MVVM.Commands.StatisticsCommands;
 
     /// <summary>

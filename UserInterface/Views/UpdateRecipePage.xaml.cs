@@ -1,8 +1,5 @@
-﻿using BusinessLogic;
-using DataAccess;
-using DataAccess.Models;
+﻿using DataAccess.Models;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace UserInterface.Views
@@ -10,7 +7,7 @@ namespace UserInterface.Views
     public partial class UpdateRecipePage : Page
     {
         public ObservableCollection<string> Ingredients = new ObservableCollection<string>();
-        
+
         Account LoginedAccount;
         public UpdateRecipePage()
         {

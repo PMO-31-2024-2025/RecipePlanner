@@ -1,9 +1,9 @@
 ﻿namespace UserInterface.MVVM.Converters
 {
+    using DataAccess;
     using System;
     using System.Globalization;
     using System.Windows.Data;
-    using DataAccess;
 
     /// <summary>
     /// Converts string to WeightGoal.

@@ -1,9 +1,9 @@
 ﻿namespace ConsoleLevel
 {
-    using System;
-    using System.Linq;
     using DataAccess;
     using DataAccess.Models;
+    using System;
+    using System.Linq;
 
     public static class DefaultDataProvider
     {

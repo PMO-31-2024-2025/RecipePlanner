@@ -1,7 +1,4 @@
-﻿using BusinessLogic;
-using DataAccess;
-using DataAccess.Models;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using UserInterface.Views;
 

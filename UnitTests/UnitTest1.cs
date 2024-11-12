@@ -4,9 +4,6 @@
 
 namespace UnitTests
 {
-    using BusinessLogic;
-    using DataAccess;
-
     [TestClass]
     public class UnitTest1
     {

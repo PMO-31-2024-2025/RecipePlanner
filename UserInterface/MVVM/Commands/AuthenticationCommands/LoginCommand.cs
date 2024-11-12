@@ -4,9 +4,9 @@
 
 namespace UserInterface.MVVM.Commands.AuthenticationCommands
 {
-    using System.Windows.Input;
     using DataAccess;
     using DataAccess.Models;
+    using System.Windows.Input;
 
     public class LoginCommand : ICommand
     {

@@ -1,5 +1,4 @@
-﻿using BusinessLogic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace UserInterface.Views
@@ -20,7 +19,7 @@ namespace UserInterface.Views
         {
             App.MyLoginWindow = new LoginWindow();
             App.MyLoginWindow.Show();
-            
+
             App.MyMainWindow.Close();
         }
     }

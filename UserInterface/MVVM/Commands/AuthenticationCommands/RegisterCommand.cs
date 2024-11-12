@@ -4,8 +4,8 @@
 
 namespace UserInterface.MVVM.Commands.AuthenticationCommands
 {
-    using System.Windows.Input;
     using DataAccess;
+    using System.Windows.Input;
 
     public class RegisterCommand : ICommand
     {

@@ -18,6 +18,6 @@ namespace UserInterface.Views
             TextBox textBox = (TextBox)sender;
             if (textBox.Text == "Email" || textBox.Text == "Password") textBox.Text = "";
         }
-        
+
     }
 }
