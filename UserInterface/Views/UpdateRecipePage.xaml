@@ -30,10 +30,11 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Top left-->
-                <Button Background="White" BorderThickness="0" Grid.Column="0">
+                <Button Background="White" BorderThickness="0" Grid.Column="0"
+                        Command="{Binding ChangeImageCommand}">
                     <Ellipse Width="190" Height="190">
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="pack://application:,,,/Images/Accounts/MainPictures/Test.png"/>
+                            <ImageBrush ImageSource="{Binding DishToEditOrDelete.ImageUrl}"/>
                         </Ellipse.Fill>
                     </Ellipse>
                 </Button>

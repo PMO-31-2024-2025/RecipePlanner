@@ -4,6 +4,9 @@
 
 namespace UserInterface.MVVM
 {
+    using System.IO;
+    using System.Windows;
+    using System.Windows.Media;
     using BusinessLogic;
     using DataAccess;
     using DataAccess.Models;
@@ -11,9 +14,6 @@ namespace UserInterface.MVVM
     using LiveCharts.Defaults;
     using LiveCharts.Wpf;
     using Microsoft.Win32;
-    using System.IO;
-    using System.Windows;
-    using System.Windows.Media;
     using UserInterface.MVVM.Commands.AccountCommands;
 
     /// <summary>

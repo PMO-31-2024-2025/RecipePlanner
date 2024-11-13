@@ -8,7 +8,10 @@ namespace UserInterface.MVVM
     using DataAccess;
     using DataAccess.Models;
     using LiveCharts;
+    using Microsoft.Win32;
     using System.Collections.ObjectModel;
+    using System.IO;
+    using System.Security.Cryptography.X509Certificates;
     using System.Windows;
     using UserInterface.MVVM.Commands.RecipeCommands;
 
@@ -37,6 +40,7 @@ namespace UserInterface.MVVM
             this.AddIngredientCommand = new AddIngredientCommand(this);
             this.RemoveIngedientCommand = new RemoveIngredient(this);
             this.AddNewDishCommand = new AddNewDishCommand(this);
+            this.ChangeImageCommand = new ChangeDishImageCommand(this);
 
             this.ChartProtein = new ChartValues<int>();
             this.ChartCarbs = new ChartValues<int>();
@@ -185,6 +189,8 @@ namespace UserInterface.MVVM
         /// </summary>
         public AddNewDishCommand AddNewDishCommand { get; }
 
+        public ChangeDishImageCommand ChangeImageCommand { get; }
+
         /// <summary>
         /// Gets and formats text of chart that shows dish protein, carbs and fat.
         /// </summary>
@@ -284,6 +290,10 @@ namespace UserInterface.MVVM
             try
             {
                 Dish dishToSave = dish;
+                if (dishToSave.ImageUrl == null)
+                {
+                    dishToSave.ImageUrl = $"pack://application:,,,/Images/Accounts/MainPictures/test.png";
+                }
 
                 // Saving Ingredients
                 dishToSave.Ingredients = this.BuildIngredientsString();
@@ -375,6 +385,31 @@ namespace UserInterface.MVVM
             this.Dishes.Remove((Dish)dish);
             DbHelper.db.Dishes.Remove((Dish)dish);
             DbHelper.db.SaveChanges();
+            try
+            {
+                File.Delete(((Dish)dish).ImageUrl!);
+            }
+            catch
+            {
+            }
+        }
+
+        /// <summary>
+        /// Changes image of the dish.
+        /// </summary>
+        public void ExecuteChangeDishImageCommand()
+        {
+            string fileName = $"{AccountManager.LoginedAccount.Email.Substring(0, 5)}.{DishToEditOrDelete.Title.Replace(" ", string.Empty)}";
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Image files|*.jpg;*.png";
+            openDialog.FilterIndex = 1;
+            if (openDialog.ShowDialog() == true)
+            {
+                string destination = $"../../../Images/Dishes/MainPictures/{fileName}.png";
+                File.Copy(openDialog.FileName, destination, true);
+                this.DishToEditOrDelete.ImageUrl = $"pack://application:,,,/Images/Dishes/MainPictures/{fileName}.png";
+                this.NewDish.ImageUrl = $"pack://application:,,,/Images/Dishes/MainPictures/{fileName}.png";
+            }
         }
 
         private string FormatLabel(ChartPoint chartPoint)
