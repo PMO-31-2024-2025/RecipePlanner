@@ -19,6 +19,8 @@ namespace UserInterface.MVVM
     /// </summary>
     public class RecipesViewModel : BaseViewModel
     {
+        private LogWriter logWriter = new LogWriter("../../../Logs/recipes.log");
+
         private string searchFilter = string.Empty;
         private string orderFilter = string.Empty;
         private Dish dishToEditOrDelete = new Dish();
@@ -315,6 +317,7 @@ namespace UserInterface.MVVM
             catch
             {
                 MessageBox.Show("Input valid values", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.logWriter.Write("SaveNewDish: Invalid values");
                 return false;
             }
         }

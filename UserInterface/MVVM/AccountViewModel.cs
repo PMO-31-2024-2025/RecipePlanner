@@ -21,7 +21,7 @@ namespace UserInterface.MVVM
     /// </summary>
     public class AccountViewModel : BaseViewModel
     {
-        private LogWriter logWriter = new LogWriter($@"pack://application/Logs/AccountLogs.log");
+        private LogWriter logWriter = new LogWriter("../../../Logs/account.log");
 
         private SeriesCollection series = new SeriesCollection();
 

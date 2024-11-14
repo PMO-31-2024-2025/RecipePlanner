@@ -15,7 +15,7 @@ namespace UserInterface.MVVM
     /// </summary>
     public class LoginViewModel : BaseViewModel
     {
-        private LogWriter logWriter = new LogWriter($@"pack://application/Logs/LoginLogs.log");
+        private LogWriter logWriter = new LogWriter("../../../Logs/login.log");
 
         private string email = "oleh.chyzhov@gmail.com";
         private string password = "Oleg2005";

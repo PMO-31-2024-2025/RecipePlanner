@@ -20,6 +20,8 @@ namespace UserInterface.MVVM
     /// </summary>
     public class StatisticsViewModel : BaseViewModel
     {
+        private LogWriter logWriter = new LogWriter("../../../Logs/statistic.log");
+
         private string userEmail = AccountManager.LoginedAccount.Email;
 
         private ZoomingOptions zoomingMode = ZoomingOptions.None;
@@ -369,6 +371,7 @@ namespace UserInterface.MVVM
             }
             catch
             {
+                this.logWriter.Write("RemoveSelectedEntity: Remove Failure");
             }
         }
 
@@ -400,6 +403,7 @@ namespace UserInterface.MVVM
             catch
             {
                 MessageBox.Show("Error. Insert valid values", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.logWriter.Write("AddNewEntity: Invalid values");
             }
         }
 
