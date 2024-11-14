@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace UserInterface.Views
 {
@@ -12,12 +13,5 @@ namespace UserInterface.Views
             App.SurviesFrame = SurviesFrame;
             App.SurviesFrame.Navigate(App.SurveyWindow_1);
         }
-
-        private void TextBox_MouseEnter(object sender, MouseEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            if (textBox.Text == "Email" || textBox.Text == "Password") textBox.Text = "";
-        }
-
     }
 }

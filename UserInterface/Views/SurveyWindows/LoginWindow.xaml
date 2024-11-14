@@ -14,56 +14,123 @@
         <viewModel:LoginViewModel/>
     </Window.DataContext>
 
+    <Window.Resources>
+        <Style TargetType="Border" x:Key="LoginBorder">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Width" Value="1000"/>
+            <Setter Property="Height" Value="600"/>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="LoginTextBox">
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Width" Value="320"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="#011627"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="MainText">
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="Error">
+            <Setter Property="Width" Value="220"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="DarkRed"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="LoginButtons">
+            <Setter Property="Width" Value="220"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        
+        <Style TargetType="Border" x:Key="LoginTextBoxBorder">
+            <Setter Property="Width" Value="320"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="CornerRadius" Value="20"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <Border Background="White" Width="1000" Height="600" 
-                CornerRadius="50" x:Name="LoginBorder">
-            <StackPanel>
-                <TextBlock Text="Login"
-                           FontSize="25"
-                           HorizontalAlignment="Center" 
-                           FontWeight="Bold" 
-                           Margin="0 80 0 10"/>
-                
-                <TextBox Background="LightCyan" 
-                         x:Name="LoginTextBox"
-                         FontSize="18"
-                         FontStyle="Italic" 
-                         Width="220"
-                         Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                
-                <TextBox Background="LightCyan"
-                         x:Name="PasswordTextBox"
-                         FontStyle="Italic" 
-                         Width="220"
-                         FontSize="18"
-                         Margin="10" 
-                         Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Border Style="{StaticResource LoginBorder}" 
+                x:Name="LoginBorder"
+                HorizontalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                <TextBlock Width="220"
-                           FontSize="12"
-                           TextAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Foreground="DarkRed"
-                           Text="{Binding ErrorMessage, UpdateSourceTrigger=Explicit}"/>
+                <Grid Grid.Column="0" Background="#FAF9F6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                <Button Background="LightCyan"
-                        x:Name="LoginButton"
-                        Width="80" 
-                        Content="Login"
-                        FontSize="18"
-                        FontWeight="Bold"
-                        Command="{Binding LoginCommand}"/>
-                <TextBlock Text="or" HorizontalAlignment="Center" 
-                           FontWeight="Bold" Margin="5"
-                           FontSize="16"/>
-                <Button Content="Register" 
-                        Width="150" FontSize="18"
-                        Background="LightCyan"
-                        FontWeight="Bold"
-                        Command="{Binding RegisterCommand}"/>
-            </StackPanel>
+                    <Image Grid.Row="0" Width="70" Height="70" HorizontalAlignment="Left"
+                        Source="pack://application:,,,/Images/Accounts/MainPictures/test.png"/>
+
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <TextBlock Text="Login to Your Account"
+                                   Style="{StaticResource MainText}"/>
+                        
+                        <Border Style="{StaticResource LoginTextBoxBorder}" Margin="15">
+                            <TextBox Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Style="{StaticResource LoginTextBox}"/>
+                        </Border>
+
+                        <Border Style="{StaticResource LoginTextBoxBorder}">
+                            <TextBox Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Style="{StaticResource LoginTextBox}"/>
+                        </Border>
+
+                        <Button Style="{StaticResource LoginButtons}"
+                                Content="Log in" Margin="25"
+                                Command="{Binding LoginCommand}"/>
+
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Column="1" Background="#011627">
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <TextBlock Text="New Here?" Foreground="White"
+                                   Style="{StaticResource MainText}"/>
+
+                        <Border Style="{StaticResource LoginTextBoxBorder}" Margin="15"
+                                Width="300">
+                            <TextBox Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Style="{StaticResource LoginTextBox}"
+                                     Width="300" FontSize="23"/>
+                        </Border>
+
+                        <Border Style="{StaticResource LoginTextBoxBorder}"
+                                Width="300">
+                            <TextBox Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Style="{StaticResource LoginTextBox}"
+                                     Width="300" FontSize="25"/>
+                        </Border>
+
+                        <Button Style="{StaticResource LoginButtons}"
+                                Content="Register" Margin="25" Width="150"
+                                Command="{Binding RegisterCommand}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
         </Border>
-        <Border Background="White" Width="1000" Height="600" 
+        
+        <Border Style="{StaticResource LoginBorder}"
                 CornerRadius="50" x:Name="SurviesBorder" Visibility="Hidden">
             <Frame x:Name="SurviesFrame"/>
         </Border>
