@@ -89,9 +89,15 @@ namespace UserInterface.MVVM
         public void ExecuteLoginCommand()
         {
             AccountManager.LoginedAccount = AccountManager.UpdateLoginedAccount(this.Email);
-            App.MyMainWindow = new MainWindow();
-            App.MyMainWindow.Show();
-            App.MyLoginWindow.Close();
+            try
+            {
+                App.MyMainWindow = new MainWindow();
+                App.MyMainWindow.Show();
+                App.MyLoginWindow.Close();
+            }
+            catch
+            {
+            }
         }
 
         /// <summary>
@@ -116,9 +122,15 @@ namespace UserInterface.MVVM
                 DbHelper.db.SaveChanges();
                 AccountManager.LoginedAccount = AccountManager.UpdateLoginedAccount(registeredAccount.Email);
 
-                App.MyLoginWindow.LoginBorder.Visibility = Visibility.Hidden;
-                App.MyLoginWindow.SurviesBorder.Visibility = Visibility.Visible;
-                App.MyLoginWindow.SurviesFrame.Navigate(App.SurveyWindow_1);
+                try
+                {
+                    App.MyLoginWindow.LoginBorder.Visibility = Visibility.Hidden;
+                    App.MyLoginWindow.SurviesBorder.Visibility = Visibility.Visible;
+                    App.MyLoginWindow.SurviesFrame.Navigate(App.SurveyWindow_1);
+                }
+                catch
+                {
+                }
             }
             catch
             {

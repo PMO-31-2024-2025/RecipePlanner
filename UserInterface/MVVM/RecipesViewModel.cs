@@ -4,15 +4,14 @@
 
 namespace UserInterface.MVVM
 {
+    using System.Collections.ObjectModel;
+    using System.IO;
+    using System.Windows;
     using BusinessLogic;
     using DataAccess;
     using DataAccess.Models;
     using LiveCharts;
     using Microsoft.Win32;
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Security.Cryptography.X509Certificates;
-    using System.Windows;
     using UserInterface.MVVM.Commands.RecipeCommands;
 
     /// <summary>

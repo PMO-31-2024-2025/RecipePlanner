@@ -244,12 +244,18 @@ namespace UserInterface.MVVM
             brush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
 
             this.Series.Clear();
-            this.Series.Add(new LineSeries()
+            try
             {
-                Title = "Weights",
-                Values = values,
-                Fill = brush,
-            });
+                this.Series.Add(new LineSeries()
+                {
+                    Title = "Weights",
+                    Values = values,
+                    Fill = brush,
+                });
+            }
+            catch
+            {
+            }
         }
 
         /// <summary>

@@ -71,8 +71,14 @@ namespace UserInterface.MVVM
             this.ManageEntitiesCommand = new ManageEntitiesCommand(this);
             this.DatePickerChangedCommand = new DatePickerChangedCommand(this);
 
-            ChartValues<DateTimePoint> weightStatistics = this.GetTimeData();
-            this.AddNewSerie(Colors.Blue, "Weights", weightStatistics);
+            try
+            {
+                ChartValues<DateTimePoint> weightStatistics = this.GetTimeData();
+                this.AddNewSerie(Colors.Blue, "Weights", weightStatistics);
+            }
+            catch
+            {
+            }
 
             // Manage Entities Page
             this.Entities = new ObservableCollection<StatisticEntity>();
