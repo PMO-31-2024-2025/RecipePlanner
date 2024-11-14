@@ -15,6 +15,8 @@ namespace UserInterface.MVVM
     /// </summary>
     public class LoginViewModel : BaseViewModel
     {
+        private LogWriter logWriter = new LogWriter($@"pack://application/Logs/LoginLogs.log");
+
         private string email = "oleh.chyzhov@gmail.com";
         private string password = "Oleg2005";
         private string errorMessage = string.Empty;
@@ -97,6 +99,7 @@ namespace UserInterface.MVVM
             }
             catch
             {
+                this.logWriter.Write("Login Failure: Navigation failed");
             }
         }
 
@@ -108,6 +111,7 @@ namespace UserInterface.MVVM
             if (!this.Email.Contains("@gmail."))
             {
                 MessageBox.Show("Invalid Email", "Register Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.logWriter.Write("Registration Failure: Invalid email");
                 return;
             }
 
@@ -130,11 +134,13 @@ namespace UserInterface.MVVM
                 }
                 catch
                 {
+                    this.logWriter.Write("Registration Failure: Navigation failed");
                 }
             }
             catch
             {
                 MessageBox.Show("Account already exists", "Register Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.logWriter.Write("Registration Failure: Account already exists");
                 return;
             }
         }

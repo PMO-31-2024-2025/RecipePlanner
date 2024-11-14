@@ -79,4 +79,8 @@
     <Resource Include="Images\MainButtons\Statistics.ico" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
 </Project>

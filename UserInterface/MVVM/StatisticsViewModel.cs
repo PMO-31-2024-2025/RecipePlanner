@@ -387,9 +387,15 @@ namespace UserInterface.MVVM
                 };
                 DbHelper.db.StatisticEntities.Add(entity);
                 DbHelper.db.SaveChanges();
-                this.PopulateEntities();
-                this.ResetLiveChart();
-                this.ResetCurrentWeight();
+                try
+                {
+                    this.PopulateEntities();
+                    this.ResetLiveChart();
+                    this.ResetCurrentWeight();
+                }
+                catch
+                {
+                }
             }
             catch
             {

@@ -21,6 +21,8 @@ namespace UserInterface.MVVM
     /// </summary>
     public class AccountViewModel : BaseViewModel
     {
+        private LogWriter logWriter = new LogWriter($@"pack://application/Logs/AccountLogs.log");
+
         private SeriesCollection series = new SeriesCollection();
 
         /// <summary>
@@ -252,6 +254,7 @@ namespace UserInterface.MVVM
                     Values = values,
                     Fill = brush,
                 });
+                this.logWriter.Write("DisplayStatistics: Series add error");
             }
             catch
             {
