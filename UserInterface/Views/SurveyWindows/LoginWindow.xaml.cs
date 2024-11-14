@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace UserInterface.Views
 {
@@ -12,6 +13,12 @@ namespace UserInterface.Views
             InitializeComponent();
             App.SurviesFrame = SurviesFrame;
             App.SurviesFrame.Navigate(App.SurveyWindow_1);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            BeginStoryboard((Storyboard)this.Resources["NewHereStoryBoard"]);
+            BeginStoryboard((Storyboard)this.Resources["MainTextStoryboard"]);
         }
     }
 }

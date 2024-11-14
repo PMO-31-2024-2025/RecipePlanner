@@ -26,10 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\Logo\Logo.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Fonts\SignikaNegative-Regular.ttf" />
     <Resource Include="Images\Accounts\MainPictures\oleh.chyzhov@gmail.com.png" />
     <Resource Include="Images\Accounts\MainPictures\Test.png" />
