@@ -114,7 +114,7 @@
                     
                     <TextBox Grid.Row="0" Grid.Column="1" 
                             Style="{StaticResource ModernTextBox}"
-                            Text="{Binding Email, Mode=TwoWay}" IsEnabled="True"/>
+                            Text="{Binding Email, Mode=TwoWay}" IsEnabled="False"/>
                    
                     <Button Grid.Row="0" Grid.Column="2" Content="Save" 
                             Style="{StaticResource ModernButton}"
