@@ -105,64 +105,50 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Email -->
-                    <TextBlock Text="Email" Style="{StaticResource FieldLabel}" Grid.Row="0"/>
-                    
-                    <TextBox Grid.Row="0" Grid.Column="1" 
-                            Style="{StaticResource ModernTextBox}"
-                            Text="{Binding Email, Mode=TwoWay}" IsEnabled="False"/>
-                   
-                    <Button Grid.Row="0" Grid.Column="2" Content="Save" 
-                            Style="{StaticResource ModernButton}"
-                            Command="{Binding UpdateAccountCommand}"
-                            Margin="20,0,0,0"/>
-
                     <!-- Password -->
-                    <TextBlock Text="Password" Style="{StaticResource FieldLabel}" Grid.Row="2"/>
+                    <TextBlock Text="Password" Style="{StaticResource FieldLabel}" Grid.Row="0"/>
                     
-                    <TextBox Grid.Row="2" Grid.Column="1"
+                    <TextBox Grid.Row="0" Grid.Column="1"
                             Style="{StaticResource ModernTextBox}"
                             Text="{Binding Password, Mode=TwoWay}"/>
                   
-                    <Button Grid.Row="2" Grid.Column="2" Content="Save"
+                    <Button Grid.Row="0" Grid.Column="2" Content="Save"
                             Style="{StaticResource ModernButton}"
                             Command="{Binding UpdateAccountCommand}"
                             Margin="20,0,0,0"/>
 
                     <!-- Age -->
-                    <TextBlock Text="Age" Style="{StaticResource FieldLabel}" Grid.Row="4"/>
+                    <TextBlock Text="Age" Style="{StaticResource FieldLabel}" Grid.Row="2"/>
                     
-                    <TextBox Grid.Row="4" Grid.Column="1"
+                    <TextBox Grid.Row="2" Grid.Column="1"
                             Style="{StaticResource ModernTextBox}"
                             Text="{Binding Age, Mode=TwoWay}"/>
                     
-                    <Button Grid.Row="4" Grid.Column="2" Content="Save"
+                    <Button Grid.Row="2" Grid.Column="2" Content="Save"
                             Style="{StaticResource ModernButton}"
                             Command="{Binding UpdateAccountInfoCommand}"
                             Margin="20,0,0,0"/>
 
                     <!-- Gender -->
-                    <TextBlock Text="Gender" Style="{StaticResource FieldLabel}" Grid.Row="6"/>
+                    <TextBlock Text="Gender" Style="{StaticResource FieldLabel}" Grid.Row="4"/>
                     
-                    <ComboBox Grid.Row="6" Grid.Column="1"
+                    <ComboBox Grid.Row="4" Grid.Column="1"
                              Style="{StaticResource ModernComboBox}"
                              SelectedItem="{Binding Gender, Mode=TwoWay, Converter={StaticResource SToSCoverter}}">
                         <ComboBoxItem Content="Male"/>
                         <ComboBoxItem Content="Female"/>
                     </ComboBox>
                     
-                    <Button Grid.Row="6" Grid.Column="2" Content="Save"
+                    <Button Grid.Row="4" Grid.Column="2" Content="Save"
                             Style="{StaticResource ModernButton}"
                             Command="{Binding UpdateAccountInfoCommand}"
                             Margin="20,0,0,0"/>
 
                     <!-- Goal -->
-                    <TextBlock Text="Goal" Style="{StaticResource FieldLabel}" Grid.Row="8"/>
-                    <ComboBox Grid.Row="8" Grid.Column="1"
+                    <TextBlock Text="Goal" Style="{StaticResource FieldLabel}" Grid.Row="6"/>
+                    <ComboBox Grid.Row="6" Grid.Column="1"
                              Style="{StaticResource ModernComboBox}"
                              SelectedItem="{Binding Goal, Mode=TwoWay, Converter={StaticResource STOGConverter}}">
                         <ComboBoxItem Content="Gain"/>
@@ -170,39 +156,39 @@
                         <ComboBoxItem Content="Maintain"/>
                     </ComboBox>
                     
-                    <Button Grid.Row="8" Grid.Column="2" Content="Save"
+                    <Button Grid.Row="6" Grid.Column="2" Content="Save"
                             Style="{StaticResource ModernButton}"
                             Command="{Binding UpdateAccountInfoCommand}"
                             Margin="20,0,0,0"/>
 
                     <!-- Desired Weight -->
-                    <TextBlock Text="Desired Weight" Style="{StaticResource FieldLabel}" Grid.Row="10"/>
+                    <TextBlock Text="Desired Weight" Style="{StaticResource FieldLabel}" Grid.Row="8"/>
+                    
+                    <TextBox Grid.Row="8" Grid.Column="1"
+                            Style="{StaticResource ModernTextBox}"
+                            Text="{Binding DesiredWeight, Mode=TwoWay}"/>
+                    
+                    <Button Grid.Row="8" Grid.Column="2" Content="Save"
+                            Style="{StaticResource ModernButton}"
+                            Command="{Binding UpdateAccountInfoCommand}"
+                            Margin="20,0,0,0"/>
+
+                    <!-- Height -->
+                    <TextBlock Text="Height" Style="{StaticResource FieldLabel}" Grid.Row="10"/>
                     
                     <TextBox Grid.Row="10" Grid.Column="1"
                             Style="{StaticResource ModernTextBox}"
-                            Text="{Binding DesiredWeight, Mode=TwoWay}"/>
+                            Text="{Binding Height, Mode=TwoWay}"/>
                     
                     <Button Grid.Row="10" Grid.Column="2" Content="Save"
                             Style="{StaticResource ModernButton}"
                             Command="{Binding UpdateAccountInfoCommand}"
                             Margin="20,0,0,0"/>
 
-                    <!-- Height -->
-                    <TextBlock Text="Height" Style="{StaticResource FieldLabel}" Grid.Row="12"/>
-                    
-                    <TextBox Grid.Row="12" Grid.Column="1"
-                            Style="{StaticResource ModernTextBox}"
-                            Text="{Binding Height, Mode=TwoWay}"/>
-                    
-                    <Button Grid.Row="12" Grid.Column="2" Content="Save"
-                            Style="{StaticResource ModernButton}"
-                            Command="{Binding UpdateAccountInfoCommand}"
-                            Margin="20,0,0,0"/>
-
                     <!-- Image Upload -->
-                    <TextBlock Text="Profile Image" Style="{StaticResource FieldLabel}" Grid.Row="14"/>
+                    <TextBlock Text="Profile Image" Style="{StaticResource FieldLabel}" Grid.Row="12"/>
                     
-                    <Button Grid.Row="14" Grid.Column="1" 
+                    <Button Grid.Row="12" Grid.Column="1" 
                             Content="Upload Image"
                             Style="{StaticResource ModernButton}"
                             HorizontalAlignment="Left"
