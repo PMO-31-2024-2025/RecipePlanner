@@ -32,9 +32,10 @@
                 <!--Top left-->
                 <Button Background="White" BorderThickness="0" Grid.Column="0"
                         Command="{Binding ChangeImageCommand}">
-                    <Ellipse Width="190" Height="190">
+                    <Ellipse Width="190" Height="190"
+                             Stroke="#011627" StrokeThickness="3">
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="{Binding DishToEditOrDelete.ImageUrl}"/>
+                            <ImageBrush ImageSource="{Binding DishToEditOrDelete.ImageUrl}" Stretch="Uniform"/>
                         </Ellipse.Fill>
                     </Ellipse>
                 </Button>

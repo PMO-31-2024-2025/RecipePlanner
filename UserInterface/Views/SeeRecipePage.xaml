@@ -8,114 +8,126 @@
       xmlns:liveCharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SeeRecipePage"
-      Style="{StaticResource PageResource}">
+      Title="SeeRecipePage">
 
     <Page.DataContext>
         <viewModel:RecipesViewModel/>
     </Page.DataContext>
-    
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.3*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <!--Top-->
-        <Border Grid.Row="0" Margin="10" Background="White" CornerRadius="40">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Visible" 
+                  HorizontalScrollBarVisibility="Disabled">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                <!--Top left-->
-                <Ellipse Grid.Column="0" Width="190" Height="190">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="{Binding DishToEditOrDelete.ImageUrl}"/>
-                    </Ellipse.Fill>
-                </Ellipse>
-
-                <!--Top middle-->
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-
-                    <ListView VerticalAlignment="Center" 
-                          Margin="10" Grid.Row="0"
-                              ItemsSource="{Binding IngredientsOfDishToEditOrDelete}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock FontSize="20" FontWeight="SemiBold"
-                                           Text="{Binding}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                    <TextBlock Text="{Binding DishToEditOrDelete.Calories, StringFormat='{}{0} cal'}"
-                               Grid.Row="1"
-                               FontSize="18"
-                               FontWeight="SemiBold"
-                               HorizontalAlignment="Center"/>
-                </Grid>
+            <!--Top-->
+            <Grid Grid.Row="0">
+                <Image Width="Auto" Height="Auto"
+               Source="{Binding DishToEditOrDelete.ImageUrl}" Stretch="Fill"/>
             </Grid>
-        </Border>
 
-
-        <!--Bottom-->
-        <Border Grid.Row="1" Margin="10" Background="White" CornerRadius="40">
+            <!--Other-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!--Bottom left-->
-                <Grid Grid.Column="0" Margin="15">
+                <!--Left-->
+                <Grid Grid.Column="0" Background="#FFF2DF"
+                      Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Main-->
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="{Binding DishToEditOrDelete.Title, UpdateSourceTrigger=PropertyChanged}" 
+                                       FontSize="30"
+                                       HorizontalAlignment="Center"
+                                       FontWeight="SemiBold"
+                                       FontStyle="Italic"/>
+
+                            <Line Stroke="#011627" StrokeThickness="1.2"
+                                  Margin="5" X1="0" X2="350" 
+                                  HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        
+                        <!--Ingredients-->
+                        <StackPanel Grid.Row="1" VerticalAlignment="Center"
+                                    Margin="0, 50">
+                            <TextBlock Text="Ingredients"
+                                       FontSize="25" HorizontalAlignment="Center"
+                                       Margin="10"/>
+
+                            <ListView VerticalAlignment="Center" HorizontalAlignment="Center"
+                              Margin="10" BorderThickness="0" Background="#FFF2DF"
+                              ItemsSource="{Binding IngredientsOfDishToEditOrDelete}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="20" FontWeight="SemiBold"
+                                           Text="{Binding}"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </Grid>
+
+                    <!--LiveChart-->
+                    <Grid Grid.Row="1" Height="200">
+                        <liveCharts:PieChart LegendLocation="Top">
+                            <liveCharts:PieChart.Series>
+                                <liveCharts:PieSeries Title="Protein" 
+                                                  Values="{Binding ChartProtein}" DataLabels="True"
+                                                  LabelPoint="{Binding LabelFormatter}"
+                                                  Foreground="#FAF9F6"
+                                                  Fill="#C19AB7"/>
+                                <liveCharts:PieSeries Title="Carbs" 
+                                                  Values="{Binding ChartCarbs}" DataLabels="True"
+                                                  LabelPoint="{Binding LabelFormatter}"
+                                                  Foreground="#FAF9F6"
+                                                  Fill="#721121"/>
+                                <liveCharts:PieSeries Title="Fat" 
+                                                  Values="{Binding ChartFat}" DataLabels="True"
+                                                  LabelPoint="{Binding LabelFormatter}"
+                                                  Foreground="#FAF9F6"
+                                                  Fill="#283845"/>
+                            </liveCharts:PieChart.Series>
+                        </liveCharts:PieChart>
+                    </Grid>
+                </Grid>
+
+                <!--Right-->
+                <Grid Grid.Column="1" Background="#FFFFFF"
+                      Margin="8">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="{Binding DishToEditOrDelete.Title, UpdateSourceTrigger=PropertyChanged}" 
-                               FontSize="20" FontWeight="Bold"
-                               HorizontalAlignment="Center"/>
-
-                    <TextBox Grid.Row="1" FontSize="18"
-                             FontWeight="SemiBold"
-                             Text="{Binding DishToEditOrDelete.Recipe}"
-                             IsEnabled="False"
-                             TextWrapping="Wrap"
-                             VerticalScrollBarVisibility="Visible"/>
-                </Grid>
-
-                <!--Bottom right-->
-                <Grid Grid.Column="1">
-                    <liveCharts:PieChart LegendLocation="Right">
-                        <liveCharts:PieChart.Series>
-                            <liveCharts:PieSeries Title="Protein" 
-                                                  Values="{Binding ChartProtein}" DataLabels="True"
-                                                  LabelPoint="{Binding LabelFormatter}"
-                                                  Foreground="#FAF9F6"
-                                                  Fill="#89C4F4"/>
-
-                            <liveCharts:PieSeries Title="Carbs" 
-                                                  Values="{Binding ChartCarbs}" DataLabels="True"
-                                                  LabelPoint="{Binding LabelFormatter}"
-                                                  Foreground="#FAF9F6"
-                                                  Fill="#E84855"/>
-
-                            <liveCharts:PieSeries Title="Fat" 
-                                                  Values="{Binding ChartFat}" DataLabels="True"
-                                                  LabelPoint="{Binding LabelFormatter}"
-                                                  Foreground="#FAF9F6"
-                                                  Fill="#011627"/>
-
-
-                        </liveCharts:PieChart.Series>
-                    </liveCharts:PieChart>
+                    
+                    <TextBlock Text="Recipe" FontSize="30"
+                               FontStyle="Italic" Grid.Row="0"
+                               Foreground="#2D2D2D" Margin="0, 10"/>
+                    
+                    <TextBlock FontSize="18" Grid.Row="1"
+                               FontWeight="SemiBold"
+                               Text="{Binding DishToEditOrDelete.Recipe}"
+                               IsEnabled="False"
+                               Foreground="#283845"
+                               TextWrapping="Wrap"
+                               Margin="0, 20"/>
                 </Grid>
             </Grid>
-        </Border>
-    </Grid>
+        </Grid>
+    </ScrollViewer>
+    
 </Page>
