@@ -13,6 +13,25 @@
     <Page.DataContext>
         <viewModel:AccountViewModel/>
     </Page.DataContext>
+
+    <Page.Resources>
+        <Style TargetType="Ellipse" x:Key="AccountImage">
+            <Setter Property="Height" Value="140"/>
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Stroke" Value="#011627"/>
+            <Setter Property="StrokeThickness" Value="3"/>
+        </Style>
+        
+        <Style TargetType="TextBlock" x:Key="NiceTextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="#011627"/>
+        </Style>
+
+        <Style TargetType="Border" x:Key="PagePartStyle">
+            <Setter Property="CornerRadius" Value="40"/>
+            <Setter Property="Background" Value="#FAF9F6"/>
+        </Style>
+    </Page.Resources>
     
     <Grid Margin="10" x:Name="MainGrid">
         <Grid.RowDefinitions>
@@ -33,13 +52,14 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <!--Main Image-->
-                <Ellipse Grid.Column="0" Grid.Row="0"
-                         Style="{StaticResource AccountImage}">
+                <Ellipse Grid.Column="0" Grid.Row="0" 
+                         Width="190" Height="190"
+                         Style="{StaticResource AccountImage}"
+                         HorizontalAlignment="Center">
                     <Ellipse.Fill>
                         <ImageBrush ImageSource="{Binding ImagePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </Ellipse.Fill>
@@ -47,81 +67,36 @@
 
                 <!--Physical Information-->
                 <Grid Grid.Row="1" Margin="0, 5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Style="{StaticResource NiceTextBlock}" 
-                               Text="My profile" 
-                               Grid.Column="0" 
-                               FontWeight="Bold"/>
-
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                    <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Style="{StaticResource NiceTextBlock}"
-                                   Grid.Column="0" Grid.Row="0"
-                                   Text="Age:" FontSize="16"/>
+                        <TextBlock FontSize="24" Foreground="#011627"
+                                   Text="{Binding Email, Mode=TwoWay}"
+                                   HorizontalAlignment="Center"
+                                   Grid.Row="0" Margin="5"/>
 
-                        <TextBlock Style="{StaticResource NiceTextBlock}"
-                                   Grid.Column="0" Grid.Row="1"
-                                   Text="Gender:" FontSize="16"/>
-                        
-                        <TextBlock Style="{StaticResource NiceTextBlock}"
-                                   Grid.Column="1" Grid.Row="0"
-                                   Text="{Binding Age, Mode=TwoWay}" FontSize="16"/>
+                        <TextBlock Text="{Binding Age, Mode=TwoWay, StringFormat='Age: {0}'}" 
+                                   Style="{StaticResource NiceTextBlock}"       
+                                   FontSize="16" Grid.Row="1"/>
 
-                        <TextBlock Style="{StaticResource NiceTextBlock}"
-                                   Grid.Column="1" Grid.Row="1"
-                                   Text="{Binding Gender, Mode=TwoWay}" FontSize="16"/>
+                        <TextBlock Text="{Binding Gender, Mode=TwoWay, StringFormat='Gender: {0}'}"
+                                   Style="{StaticResource NiceTextBlock}"
+                                   Grid.Row="2" FontSize="16"/>
                     </Grid>
-                </Grid>
-
-                <!--Main Information-->
-                <Grid VerticalAlignment="Center" Grid.Row="2" Margin="0, 30">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <TextBlock Style="{StaticResource NiceTextBlock}"
-                               Grid.Column="0" Grid.Row="0"
-                               Text="User"
-                               HorizontalAlignment="Center"/>
-
-                    <TextBlock Style="{StaticResource NiceTextBlock}"
-                               Grid.Column="1" Grid.Row="0" 
-                               Text="{Binding Email, Mode=TwoWay}"
-                               HorizontalAlignment="Center"/>
-
-                    <Line Margin="0" Grid.ColumnSpan="2" Grid.Row="1"
-                          Stroke="Gray" StrokeThickness="1.2"
-                          X1="0" X2="500"/>
                 </Grid>
 
                 <!--Buttons-->
                 <StackPanel Grid.Row="3" VerticalAlignment="Center">
-                    <Button Style="{StaticResource NiceButton}"
-                            Width="120" Height="40"
+                    <Button Width="120" Height="40"
                             Content="Edit" FontSize="18"
                             x:Name="EditCommand"
                             Click="EditCommand_Click"/>
 
-                    <Button Style="{StaticResource NiceButton}"
-                            Width="120" Height="40" 
+                    <Button Width="120" Height="40" 
                             Margin="0, 10, 0, 0"
                             Content="Exit" FontSize="18"
                             x:Name="ExitButton"

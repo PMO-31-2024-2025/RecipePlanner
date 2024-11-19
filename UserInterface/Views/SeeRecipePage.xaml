@@ -79,6 +79,10 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
+
+                            <TextBlock Text="{Binding DishToEditOrDelete.Calories, StringFormat='{}{0} cal.'}"
+                                       FontSize="25" HorizontalAlignment="Center"
+                                       Margin="10" FontWeight="SemiBold"/>
                         </StackPanel>
                     </Grid>
 

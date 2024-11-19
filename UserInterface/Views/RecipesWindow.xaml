@@ -54,22 +54,23 @@
             
             <!--Add New Recipe-->
             <Grid Grid.Column="2" Margin="20">
-                <Button Style="{StaticResource NiceButton}"
-                        FontSize="20" Content="Add new"
-                        Command="{Binding AddRecipeCommand}"/>
+                <Button FontSize="20" Content="Add new"
+                        Command="{Binding AddRecipeCommand}"
+                        Width="150" Height="Auto"/>
             </Grid>
         </Grid>
         
         <!--Recipes-->
         <Grid Grid.Row="1">
-            <ListView ItemsSource="{Binding Dishes}">
+            <ListView ItemsSource="{Binding Dishes}" HorizontalAlignment="Center"
+                      BorderThickness="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" 
                                 BorderThickness="1"
                                 Margin="3"
                                 Padding="3"
-                                Width="870">
+                                MinWidth="870">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseDown">
                                     <i:InvokeCommandAction 
