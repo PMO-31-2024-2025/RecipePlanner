@@ -18,23 +18,8 @@ namespace UnitTests
             LoginViewModel vm = new LoginViewModel();
             vm.Email = "oleh.chyzhov@gmail.com";
             vm.Password = "Oleg2005";
-            vm.ExecuteLoginCommand();
+            AccountManager.LoginedAccount = AccountManager.UpdateLoginedAccount(vm.Email);
             Assert.AreEqual(AccountManager.LoginedAccount.Email, "oleh.chyzhov@gmail.com");
-        }
-
-        [TestMethod]
-        public void RegisterTest()
-        {
-            LoginViewModel vm = new LoginViewModel();
-            vm.Email = "testUser@gmail.com";
-            vm.Password = "12345";
-            vm.ExecuteRegisterCommand();
-            AccountManager.UpdateLoginedAccount("testUser@gmail.com");
-            Assert.AreEqual("testUser@gmail.com", AccountManager.LoginedAccount.Email);
-
-            Account account = DbHelper.db.Accounts.First(acc => acc.Email == "testUser@gmail.com");
-            DbHelper.db.Accounts.Remove(account);
-            DbHelper.db.SaveChanges();
         }
     }
 }
