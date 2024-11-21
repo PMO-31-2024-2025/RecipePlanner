@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:UserInterface.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="FirstSurveyWindow" Style="{StaticResource PageResource}">
+      Title="FirstSurveyWindow" Style="{StaticResource PageResource2}">
 
     <Grid>
         <Border Background="White" Width="400" Height="400"

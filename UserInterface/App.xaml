@@ -10,8 +10,20 @@
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#BDBEA9" Offset="0"/>
+                        <GradientStop Color="#52414C" Offset="0"/>
                         <GradientStop Color="#89C4F4" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Page" x:Key="PageResource2">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#114B5F" Offset="0"/>
+                        <GradientStop Color="#89C4F4" Offset="0.5"/>
+                        <GradientStop Color="#273469" Offset="1"/>
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
