@@ -47,25 +47,6 @@
             <Setter Property="BorderBrush" Value="#E4E7EB"/>
         </Style>
 
-
-        <!-- Button Styles -->
-        <Style x:Key="ModernButton" TargetType="Button">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Background" Value="#D1C6AD"/>
-            <Setter Property="Foreground" Value="#011627"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#B5A78E"/>
-                    <Setter Property="Foreground" Value="#011627"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-
         <!-- Label Styles -->
         <Style x:Key="FieldLabel" TargetType="TextBlock">
             <Setter Property="FontSize" Value="15"/>
@@ -115,9 +96,10 @@
                             Text="{Binding Password, Mode=TwoWay}"/>
                   
                     <Button Grid.Row="0" Grid.Column="2" Content="Save"
-                            Style="{StaticResource ModernButton}"
-                            Command="{Binding UpdateAccountCommand}"
-                            Margin="20,0,0,0"/>
+                            Style="{StaticResource BeautifulButton}"
+                            Width="100" Height="40"
+                            FontSize="20"
+                            Command="{Binding UpdateAccountCommand}"/>
 
                     <!-- Age -->
                     <TextBlock Text="Age" Style="{StaticResource FieldLabel}" Grid.Row="2"/>
@@ -127,9 +109,10 @@
                             Text="{Binding Age, Mode=TwoWay}"/>
                     
                     <Button Grid.Row="2" Grid.Column="2" Content="Save"
-                            Style="{StaticResource ModernButton}"
-                            Command="{Binding UpdateAccountInfoCommand}"
-                            Margin="20,0,0,0"/>
+                            Style="{StaticResource BeautifulButton}"
+                            Width="100" Height="40"
+                            FontSize="20"
+                            Command="{Binding UpdateAccountInfoCommand}"/>
 
                     <!-- Gender -->
                     <TextBlock Text="Gender" Style="{StaticResource FieldLabel}" Grid.Row="4"/>
@@ -142,9 +125,10 @@
                     </ComboBox>
                     
                     <Button Grid.Row="4" Grid.Column="2" Content="Save"
-                            Style="{StaticResource ModernButton}"
-                            Command="{Binding UpdateAccountInfoCommand}"
-                            Margin="20,0,0,0"/>
+                            Style="{StaticResource BeautifulButton}"
+                            Width="100" Height="40"
+                            FontSize="20"
+                            Command="{Binding UpdateAccountInfoCommand}"/>
 
                     <!-- Goal -->
                     <TextBlock Text="Goal" Style="{StaticResource FieldLabel}" Grid.Row="6"/>
@@ -157,9 +141,10 @@
                     </ComboBox>
                     
                     <Button Grid.Row="6" Grid.Column="2" Content="Save"
-                            Style="{StaticResource ModernButton}"
-                            Command="{Binding UpdateAccountInfoCommand}"
-                            Margin="20,0,0,0"/>
+                            Style="{StaticResource BeautifulButton}"
+                            Width="100" Height="40"
+                            FontSize="20"
+                            Command="{Binding UpdateAccountInfoCommand}"/>
 
                     <!-- Desired Weight -->
                     <TextBlock Text="Desired Weight" Style="{StaticResource FieldLabel}" Grid.Row="8"/>
@@ -169,9 +154,10 @@
                             Text="{Binding DesiredWeight, Mode=TwoWay}"/>
                     
                     <Button Grid.Row="8" Grid.Column="2" Content="Save"
-                            Style="{StaticResource ModernButton}"
-                            Command="{Binding UpdateAccountInfoCommand}"
-                            Margin="20,0,0,0"/>
+                            Style="{StaticResource BeautifulButton}"
+                            Width="100" Height="40"
+                            FontSize="20"
+                            Command="{Binding UpdateAccountInfoCommand}"/>
 
                     <!-- Height -->
                     <TextBlock Text="Height" Style="{StaticResource FieldLabel}" Grid.Row="10"/>
@@ -181,18 +167,22 @@
                             Text="{Binding Height, Mode=TwoWay}"/>
                     
                     <Button Grid.Row="10" Grid.Column="2" Content="Save"
-                            Style="{StaticResource ModernButton}"
-                            Command="{Binding UpdateAccountInfoCommand}"
-                            Margin="20,0,0,0"/>
+                            Style="{StaticResource BeautifulButton}"
+                            Width="100" Height="40"
+                            FontSize="20"
+                            Command="{Binding UpdateAccountInfoCommand}"/>
 
                     <!-- Image Upload -->
                     <TextBlock Text="Profile Image" Style="{StaticResource FieldLabel}" Grid.Row="12"/>
                     
                     <Button Grid.Row="12" Grid.Column="1" 
                             Content="Upload Image"
-                            Style="{StaticResource ModernButton}"
+                            Style="{StaticResource BeautifulButton}"
+                            Width="120" Height="40"
+                            FontSize="16"
                             HorizontalAlignment="Left"
-                            Command="{Binding ChangeImageCommand}"/>
+                            Command="{Binding ChangeImageCommand}"
+                            Margin="20,0,0,0"/>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

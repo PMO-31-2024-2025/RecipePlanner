@@ -60,20 +60,23 @@
                             <TextBlock Text="{Binding ZoomingMode, UpdateSourceTrigger=PropertyChanged, StringFormat='ZoomingMode: {0}'}"
                                        Margin="20, 5" FontWeight="SemiBold"/>
 
-                            <Button Content="Entities" FontSize="16" 
+                            <Button Style="{StaticResource BeautifulButton}"
+                                    Content="Entities" FontSize="16" 
                                     Width="100"
                                     Command="{Binding ManageEntitiesCommand}"/>
 
-                            <Button Content="Reset"
+                            <Button Style="{StaticResource BeautifulButton}"
+                                    Content="Reset"
                                     FontSize="16" 
                                     Width="100"
                                     Margin="5, 0"
                                     Command="{Binding ResetZoomingModeCommand}"/>
 
-                            <Button Content="Change Zoom Mode" 
+                            <Button Style="{StaticResource BeautifulButton}" 
+                                    Content="Change Zoom Mode" 
                                     Grid.Column="1" 
                                     FontSize="16"
-                                    Width="150" 
+                                    Width="160" 
                                     Command="{Binding ToggleZoomingModeCommand}"/>
                         </StackPanel>
 

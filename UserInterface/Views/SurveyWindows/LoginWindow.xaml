@@ -207,7 +207,7 @@
 
         <Border Style="{StaticResource LoginBorder}"
                 CornerRadius="50" x:Name="SurviesBorder" Visibility="Hidden">
-            <Frame x:Name="SurviesFrame"/>
+            <Frame x:Name="SurviesFrame" NavigationUIVisibility="Hidden"/>
         </Border>
     </Grid>
 </Window>

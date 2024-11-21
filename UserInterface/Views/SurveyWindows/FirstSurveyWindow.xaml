@@ -9,34 +9,35 @@
       Title="FirstSurveyWindow" Style="{StaticResource PageResource}">
 
     <Grid>
-        <Border Background="White" Width="600" Height="400"
+        <Border Background="White" Width="400" Height="400"
                 CornerRadius="50">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
             </Border.Effect>
 
-            <StackPanel>
+            <StackPanel VerticalAlignment="Center">
                 <TextBlock HorizontalAlignment="Center"
-                           Margin="0 60 0 25" 
-                           FontWeight="Bold" 
+                           Margin="0 0 0 25" 
+                           FontWeight="SemiBold" 
                            Text="What is your goal?"
                            FontSize="32"/>
 
-                <Button Background="LightGray"
+                <Button Style="{StaticResource BeautifulButton}"
                         Width="170" 
-                        Height="35" 
+                        Height="35"
                         Content="Lose weight"
                         FontSize="18"
                         x:Name="LoseWeightButton" Click="LoseWeightButton_Click"/>
                 
-                <Button Background="LightGray"
+                <Button Style="{StaticResource BeautifulButton}"
                         Width="170" Height="35"
                         Margin="0 20 0 0" 
                         Content="Gain weight"
                         FontSize="18"
                         x:Name="GainWeightButton" Click="GainWeightButton_Click"/>
-                
-                <Button Background="LightGray" Width="170"
+
+                <Button Style="{StaticResource BeautifulButton}"
+                        Width="170"
                         Height="35" Margin="0 20 0 0" 
                         Content="Maintain the weight"
                         FontSize="18"

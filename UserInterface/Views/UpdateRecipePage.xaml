@@ -73,14 +73,16 @@
                                  Grid.Column="0" Padding="0, 10, 0, 0"
                                  Height="50"
                                  FontSize="16"/>
-                        
-                        <Button Content="Add"
+
+                        <Button Style="{StaticResource BeautifulButton}"
+                                Content="Add"
                                 Grid.Column="1"
                                 FontSize="18"
                                 Margin="5, 0"
                                 Command="{Binding AddIngredientCommand}"/>
-                        
-                        <Button Content="Remove"
+
+                        <Button Style="{StaticResource BeautifulButton}"
+                                Content="Remove"
                                 Grid.Column="2"
                                 FontSize="18"
                                 Margin="5, 0"
@@ -90,7 +92,8 @@
                 <!--Top Right-->
                 <Grid Grid.Column="2">
 
-                    <Button Content="Update Recipe"
+                    <Button Style="{StaticResource BeautifulButton}" 
+                            Content="Update Recipe"
                             Margin="15" FontSize="20"
                             Height="100"
                             Command="{Binding UpdateDishCommand}"/>

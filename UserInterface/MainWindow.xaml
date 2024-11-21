@@ -6,6 +6,26 @@
         xmlns:local="clr-namespace:UserInterface"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
+
+    <Window.Resources>
+        <!--Main Buttons-->
+        <Style TargetType="Button" x:Key="MainButtonStyle">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="5"/>
+
+            <Setter Property="Background" Value="#89C4F4"/>
+            <Setter Property="Foreground" Value="#011627"/>
+
+
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <!--Main Buttons Image-->
+        <Style TargetType="Image" x:Key="ButtonsImageStyle">
+            <Setter Property="Width" Value="50"/>
+        </Style>
+    </Window.Resources>
+    
     <!--General Grid-->
     <Grid Margin="8">
         <!--Divide all application workspace into two parts-->
@@ -15,8 +35,7 @@
         </Grid.ColumnDefinitions>
         
         <!--Left Side-->
-        <Grid Grid.Column="0" 
-                    Style="{StaticResource LeftSideGrid}">
+        <Grid Grid.Column="0" Background="#89C4F4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -30,9 +49,8 @@
                     Style="{StaticResource MainButtonStyle}">
 
                 <StackPanel Orientation="Horizontal">
-                    <Image 
-                        Source="pack://application:,,,/Images/MainButtons/Account.ico"
-                        Style="{StaticResource ButtonsImageStyle}"/>
+                    <Image Style="{StaticResource ButtonsImageStyle}"
+                        Source="pack://application:,,,/Images/MainButtons/Account.ico"/>
                 </StackPanel>
             </Button>
 
@@ -42,9 +60,8 @@
                     Grid.Row="1"
                     Style="{StaticResource MainButtonStyle}">
                 <StackPanel Orientation="Horizontal">
-                    <Image 
-                        Source="pack://application:,,,/Images/MainButtons/Statistics.ico"
-                        Style="{StaticResource ButtonsImageStyle}"/>
+                    <Image Style="{StaticResource ButtonsImageStyle}"
+                        Source="pack://application:,,,/Images/MainButtons/Statistics.ico"/>
                 </StackPanel>
             </Button>
 
@@ -53,9 +70,8 @@
                     Grid.Row="2" 
                     Style="{StaticResource MainButtonStyle}">
                 <StackPanel Orientation="Horizontal">
-                    <Image 
-                        Source="pack://application:,,,/Images/MainButtons/Recipe-Book.ico"
-                        Style="{StaticResource ButtonsImageStyle}"/>
+                    <Image Style="{StaticResource ButtonsImageStyle}"
+                        Source="pack://application:,,,/Images/MainButtons/Recipe-Book.ico"/>
                 </StackPanel>
             </Button>
 
@@ -64,9 +80,8 @@
                     Grid.Row="5"
                     Style="{StaticResource MainButtonStyle}">
                 <StackPanel Orientation="Horizontal">
-                    <Image 
-                        Source="pack://application:,,,/Images/MainButtons/Settings.ico"
-                        Style="{StaticResource ButtonsImageStyle}"/>
+                    <Image Style="{StaticResource ButtonsImageStyle}"
+                        Source="pack://application:,,,/Images/MainButtons/Settings.ico"/>
                 </StackPanel>
             </Button>
         </Grid>
@@ -74,7 +89,7 @@
         <!--Right Side-->
         <Grid Grid.Column="1">
             <!--This will load the page. It sets in MainWindow.xaml.cs file-->
-            <Frame x:Name="RightSideFrame"/>
+            <Frame x:Name="RightSideFrame" NavigationUIVisibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

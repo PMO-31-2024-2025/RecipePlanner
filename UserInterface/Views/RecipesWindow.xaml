@@ -7,11 +7,27 @@
              xmlns:viewModel="clr-namespace:UserInterface.MVVM"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" 
+      Style="{StaticResource PageResource}">
 
     <Page.DataContext>
         <viewModel:RecipesViewModel/>
     </Page.DataContext>
+
+    <Page.Resources>
+        <Style TargetType="ComboBox" x:Key="RecipeCombobox">
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        
+        <Style TargetType="TextBox" x:Key="RecipeTextBox">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+    </Page.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
@@ -54,7 +70,8 @@
             
             <!--Add New Recipe-->
             <Grid Grid.Column="2" Margin="20">
-                <Button FontSize="20" Content="Add new"
+                <Button Style="{StaticResource BeautifulButton}"
+                        FontSize="20" Content="Add new"
                         Command="{Binding AddRecipeCommand}"
                         Width="150" Height="Auto"/>
             </Grid>
@@ -95,13 +112,19 @@
                                            Grid.Column="1"
                                            FontSize="20"/>
 
-                                <Button Content="Edit"
+                                <Button Style="{StaticResource BeautifulButton}" 
+                                        Content="Edit"
                                         Grid.Column="2"
                                         FontSize="20"
+                                        BorderThickness="1"
+                                        FontWeight="Normal"
                                         Command="{Binding DataContext.EditRecipeCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                                         CommandParameter="{Binding}"/>
 
-                                <Button Content="Remove"
+                                <Button Style="{StaticResource BeautifulButton}"
+                                        BorderThickness="1"
+                                        FontWeight="Normal"
+                                        Content="Remove"
                                         Grid.Column="3"
                                         FontSize="20"
                                         Command="{Binding DataContext.RemoveRecipeCommand, RelativeSource={RelativeSource AncestorType=Page}}"

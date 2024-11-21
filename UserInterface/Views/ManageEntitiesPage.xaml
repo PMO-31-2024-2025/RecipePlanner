@@ -66,11 +66,13 @@
             
             <Grid Grid.Row="1" Margin="10">
                 <StackPanel>
-                    <Button Content="Add" Width="100" Height="50"
+                    <Button Style="{StaticResource BeautifulButton}"
+                            Content="Add" Width="100" Height="50"
                             FontSize="20" Margin="10"
                             Command="{Binding AddNewEntityCommand}"/>
-                    
-                    <Button Content="Remove" Width="100" Height="50"
+
+                    <Button Style="{StaticResource BeautifulButton}"
+                            Content="Remove" Width="100" Height="50"
                             FontSize="20"
                             Command="{Binding RemoveSelectedEntityCommand}"/>
                 </StackPanel>
