@@ -29,15 +29,11 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Top left-->
-                <Button Background="White" BorderThickness="0" Grid.Column="0"
-                        Command="{Binding ChangeImageCommand}">
-                    <Ellipse Width="190" Height="190">
-                        <Ellipse.Fill>
-                            <ImageBrush ImageSource="pack://application:,,,/Images/Accounts/MainPictures/Test.png"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                </Button>
-
+                <Ellipse Width="190" Height="190" Grid.Column="0">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="pack://application:,,,/Images/Accounts/MainPictures/Test.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
 
                 <!--Top middle-->
                 <Grid Grid.Column="1">
