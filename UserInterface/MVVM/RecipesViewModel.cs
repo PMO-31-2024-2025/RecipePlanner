@@ -190,6 +190,9 @@ namespace UserInterface.MVVM
         /// </summary>
         public AddNewDishCommand AddNewDishCommand { get; }
 
+        /// <summary>
+        /// Gets image and sets it to the dish.
+        /// </summary>
         public ChangeDishImageCommand ChangeImageCommand { get; }
 
         /// <summary>
@@ -401,7 +404,7 @@ namespace UserInterface.MVVM
         /// </summary>
         public void ExecuteChangeDishImageCommand()
         {
-            string fileName = $"{AccountManager.LoginedAccount.Email.Substring(0, 5)}.{DishToEditOrDelete.Title.Replace(" ", string.Empty)}";
+            string fileName = $"{AccountManager.LoginedAccount.Email.Substring(0, 5)}.{this.DishToEditOrDelete.Title.Replace(" ", string.Empty)}";
             OpenFileDialog openDialog = new OpenFileDialog();
             openDialog.Filter = "Image files|*.jpg;*.png";
             openDialog.FilterIndex = 1;

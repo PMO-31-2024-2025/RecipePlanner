@@ -80,7 +80,7 @@
         <!--Recipes-->
         <Grid Grid.Row="1">
             <ListView ItemsSource="{Binding Dishes}" HorizontalAlignment="Center"
-                      BorderThickness="0">
+                      BorderThickness="0" MinWidth="870">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" 

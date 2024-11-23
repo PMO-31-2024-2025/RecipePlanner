@@ -12,7 +12,7 @@
         <Border Background="White" Width="400" Height="400"
                 CornerRadius="50">
             <Border.Effect>
-                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+                <DropShadowEffect BlurRadius="30" ShadowDepth="0"/>
             </Border.Effect>
 
             <StackPanel VerticalAlignment="Center">
