@@ -30,17 +30,14 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Top left-->
-                <Button Background="White" BorderThickness="0" Grid.Column="0" 
-                Command="{Binding ChangeImageCommand}" Margin="15">
-                    <Grid>
-                        <Ellipse Width="180" Height="180" Fill="Transparent" Stroke="LightGray" StrokeThickness="2"/>
-                        <Ellipse Width="170" Height="170">
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="pack://application:,,,/Images/Accounts/MainPictures/Test.png"/>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                    </Grid>
-                </Button>
+                <Grid Grid.Column="0" Margin="15">
+                    <Ellipse Width="180" Height="180" Fill="Transparent" Stroke="LightGray" StrokeThickness="2"/>
+                    <Ellipse Width="170" Height="170">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="pack://application:,,,/Images/Accounts/MainPictures/Test.png"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
 
                 <!--Top middle-->
                 <Grid Grid.Column="1">
