@@ -22,8 +22,7 @@
                            FontWeight="SemiBold"
                            FontSize="24"></TextBlock>
 
-                <Button Background="LightGray" 
-                        Width="160" 
+                <Button Width="160" 
                         Height="35" 
                         Content="Not very active"
                         Margin="0 20 0 0"
@@ -31,16 +30,14 @@
                         x:Name="NotVeryActiveButton" 
                         Click="Button_Click"
                         Style="{DynamicResource BeautifulButton}"/>
-                <Button Background="LightGray" 
-                        Width="160" Height="35" 
+                <Button Width="160" Height="35" 
                         Content="Active" 
                         Margin="0 20 0 0"
                         FontSize="18"
                         x:Name="ActiveButton"
                         Click="Button_Click"
                         Style="{DynamicResource BeautifulButton}"/>
-                <Button Background="LightGray" 
-                        Width="160" Height="35" 
+                <Button Width="160" Height="35" 
                         Content="Very active" 
                         Margin="0 20 0 0"
                         FontSize="18"
