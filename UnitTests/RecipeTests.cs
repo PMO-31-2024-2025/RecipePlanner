@@ -23,7 +23,7 @@ namespace UnitTests
             Dish? dish = vm.Dishes.FirstOrDefault();
             if (dish != null)
             {
-                Assert.AreEqual(dish.Title, "Sushi");
+                Assert.AreEqual(dish.Title, "Sushi Nigiri");
             }
             else
             {

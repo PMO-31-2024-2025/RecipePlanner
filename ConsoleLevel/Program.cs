@@ -39,18 +39,13 @@ public class Program
 
     public static void Main(string[] args)
     {
-        // DbHelper.ClearAccountInfo();
-        // DbHelper.ClearAccounts();
-        // DbHelper.ClearDishes();
-        // DbHelper.ClearStatisticEntities();
-        // FillAccount();
-        // FillAccountInformations();
-        // FillDishes();
-        // FillStatisticEntities();
-
-        foreach (var item in DefaultDataProvider.GetStatisticEntities("oleh.chyzhov@gmail.com"))
-        {
-            Console.WriteLine(item);
-        }
+        DbHelper.ClearAccountInfo();
+        DbHelper.ClearAccounts();
+        DbHelper.ClearDishes();
+        DbHelper.ClearStatisticEntities();
+        FillAccount();
+        FillAccountInformations();
+        FillDishes();
+        FillStatisticEntities();
     }
 }
